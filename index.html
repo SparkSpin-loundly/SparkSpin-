@@ -1,505 +1,520 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SparkSpin Laundry Co.</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        body {
-            background-color: #0f172a;
-            color: #f8fafc;
-            font-family: system-ui, -apple-system, sans-serif;
-        }
-        .card-spark {
-            background-color: #1e293b;
-            border: 1px solid #334155;
-        }
-        .btn-cyan {
-            background-color: #06b6d4;
-            color: #0f172a;
-        }
-        .btn-cyan:hover {
-            background-color: #22d3ee;
-        }
-        .btn-gold {
-            background-color: #eab308;
-            color: #0f172a;
-        }
-        .btn-gold:hover {
-            background-color: #facc15;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SparkSpin Laundry Co. | We spin, so you can chill</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --brand-yellow: #FFCB05;
+      --brand-dark-blue: #0A192F;
+      --brand-blue: #004B87;
+      --brand-light-bg: #F4F8FB;
+    }
+    body {
+      background-color: var(--brand-light-bg);
+      color: #1E293B;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    .bg-brand-blue { background-color: var(--brand-blue); }
+    .bg-brand-dark { background-color: var(--brand-dark-blue); }
+    .bg-brand-yellow { background-color: var(--brand-yellow); }
+    .text-brand-blue { color: var(--brand-blue); }
+    .text-brand-yellow { color: var(--brand-yellow); }
+    .border-brand-yellow { border-color: var(--brand-yellow); }
+    .card-flyer {
+      background: white;
+      border: 3px solid var(--brand-yellow);
+      border-radius: 1rem;
+      box-shadow: 0 10px 25px -5px rgba(0, 75, 135, 0.1);
+    }
+    .btn-yellow {
+      background-color: var(--brand-yellow);
+      color: var(--brand-dark-blue);
+      font-weight: 700;
+      transition: all 0.2s ease;
+    }
+    .btn-yellow:hover {
+      background-color: #e5b700;
+      transform: translateY(-1px);
+    }
+    .btn-blue {
+      background-color: var(--brand-blue);
+      color: white;
+      font-weight: 700;
+      transition: all 0.2s ease;
+    }
+    .btn-blue:hover {
+      background-color: #003663;
+      transform: translateY(-1px);
+    }
+  </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between">
 
-    <!-- HEADER NAVIGATION -->
-    <header class="bg-slate-900 border-b border-slate-800 sticky top-0 z-40">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex flex-wrap justify-between items-center gap-4">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-lg bg-cyan-500 text-slate-900 font-extrabold text-xl flex items-center justify-center">
-                    S
-                </div>
-                <div>
-                    <h1 class="text-xl font-bold tracking-tight text-white">SparkSpin <span class="text-cyan-400">Laundry Co.</span></h1>
-                    <p class="text-xs text-slate-400">Springville Premium Care</p>
-                </div>
-            </div>
-
-            <nav class="flex gap-2 bg-slate-800 p-1 rounded-xl border border-slate-700">
-                <button onclick="switchTab('client')" id="btn-client" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold transition bg-cyan-500 text-slate-900">
-                    <i class="fa-solid fa-basket-shopping mr-1"></i> Order Laundry
-                </button>
-                <button onclick="switchTab('marketer')" id="btn-marketer" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold transition text-slate-300 hover:text-white">
-                    <i class="fa-solid fa-bullhorn mr-1"></i> Marketer Portal
-                </button>
-                <button onclick="switchTab('admin')" id="btn-admin" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold transition text-slate-300 hover:text-white">
-                    <i class="fa-solid fa-user-shield mr-1"></i> Admin
-                </button>
-            </nav>
+  <!-- Header / Navigation -->
+  <header class="bg-brand-dark text-white sticky top-0 z-50 border-b-4 border-brand-yellow shadow-lg">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-full bg-brand-yellow flex items-center justify-center font-extrabold text-brand-dark text-xl shadow">
+          S
         </div>
-    </header>
+        <div>
+          <h1 class="text-xl md:text-2xl font-black tracking-tight leading-none text-white">
+            SparkSpin <span class="bg-brand-yellow text-brand-dark px-2 py-0.5 rounded text-lg">LAUNDRY Co.</span>
+          </h1>
+          <p class="text-xs text-yellow-300 italic font-medium">We spin, so you can chill</p>
+        </div>
+      </div>
+      <div class="flex items-center space-x-2">
+        <button onclick="switchTab('booking')" class="px-3 py-1.5 text-xs md:text-sm font-bold rounded-lg bg-brand-yellow text-brand-dark hover:bg-yellow-400 transition">Book Now</button>
+        <button onclick="switchTab('marketer')" class="px-3 py-1.5 text-xs md:text-sm font-bold rounded-lg bg-slate-800 text-slate-200 hover:bg-slate-700 transition">Marketer Portal</button>
+        <button onclick="switchTab('admin')" class="px-3 py-1.5 text-xs md:text-sm font-bold rounded-lg bg-slate-800 text-slate-200 hover:bg-slate-700 transition"><i class="fas fa-lock"></i></button>
+      </div>
+    </div>
+  </header>
 
-    <!-- MAIN CONTAINER -->
-    <main class="max-w-6xl mx-auto px-4 py-8 w-full flex-grow">
+  <!-- Banner Top Notice -->
+  <div class="bg-brand-blue text-white py-2 px-4 text-center text-xs md:text-sm font-bold border-b border-yellow-400/30">
+    ⚡ Too busy for laundry? Don't stress – SparkSpin Laundry Co. has got you covered!
+  </div>
 
-        <!-- ================= CLIENT SECTION ================= -->
-        <section id="tab-client" class="tab-content space-y-6">
-            <div class="text-center space-y-2 max-w-xl mx-auto">
-                <h2 class="text-3xl font-bold text-white">SparkSpin Laundry Service</h2>
-                <p class="text-slate-400 text-sm">Fast, professional, doorstep laundry pickup and delivery in Springville.</p>
+  <main class="max-w-6xl mx-auto w-full p-4 md:p-6 flex-grow">
+
+    <!-- TAB 1: CLIENT BOOKING & SERVICES -->
+    <div id="tab-booking" class="space-y-8">
+      
+      <!-- Hero Banner Matching Flyer -->
+      <div class="bg-brand-dark rounded-2xl p-6 md:p-8 text-white border-4 border-brand-yellow shadow-xl relative overflow-hidden">
+        <div class="max-w-2xl z-10 relative space-y-4">
+          <span class="bg-brand-yellow text-brand-dark text-xs font-black uppercase px-3 py-1 rounded-full tracking-wider">Official Laundry Service</span>
+          <h2 class="text-3xl md:text-5xl font-black tracking-tight text-white">
+            We spin, <span class="text-brand-yellow underline decoration-wavy">so you can chill!</span>
+          </h2>
+          <p class="text-slate-300 text-sm md:text-base">Fast, reliable, and pristine cleaning for all your garments, duvets, carpets, and household fabrics with free doorstep delivery.</p>
+          
+          <div class="pt-2 flex flex-wrap gap-4 text-xs md:text-sm font-bold">
+            <a href="tel:+254706765603" class="btn-yellow px-4 py-2.5 rounded-xl flex items-center gap-2 shadow-lg">
+              <i class="fas fa-phone-alt"></i> +254 706 765 603
+            </a>
+            <a href="https://wa.me/254783410660" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-4 py-2.5 rounded-xl flex items-center gap-2 shadow-lg transition">
+              <i class="fab fa-whatsapp text-base"></i> +254 783 410 660
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Services Grid -->
+      <section>
+        <div class="text-center mb-6">
+          <h3 class="text-2xl font-black text-brand-blue inline-block bg-brand-yellow/20 px-4 py-1 rounded-full border border-brand-yellow">Our Services</h3>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+          <div class="card-flyer p-4 text-center space-y-2 hover:scale-105 transition transform">
+            <div class="w-12 h-12 mx-auto bg-brand-blue text-brand-yellow rounded-full flex items-center justify-center text-xl font-bold shadow">
+              <i class="fas fa-tshirt"></i>
             </div>
+            <h4 class="font-black text-brand-blue text-base">Clothes</h4>
+            <p class="text-xs text-slate-500">Washed, folded & fresh</p>
+          </div>
 
-            <!-- Client Order Form -->
-            <div class="max-w-lg mx-auto card-spark rounded-2xl p-6 shadow-xl space-y-4">
-                <h3 class="text-lg font-bold text-white border-b border-slate-700 pb-3 flex items-center gap-2">
-                    <i class="fa-solid fa-calendar-check text-cyan-400"></i> Place Your Order
-                </h3>
-
-                <form id="orderForm" onsubmit="handlePlaceOrder(event)" class="space-y-4">
-                    <div>
-                        <label class="block text-xs font-medium text-slate-400 mb-1">Full Name</label>
-                        <input type="text" id="custName" required placeholder="e.g. John Doe" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:border-cyan-400 focus:outline-none">
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-xs font-medium text-slate-400 mb-1">Phone Number</label>
-                            <input type="tel" id="custPhone" required placeholder="07XXXXXXXX" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:border-cyan-400 focus:outline-none">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-medium text-slate-400 mb-1">Location / Estate</label>
-                            <input type="text" id="custLoc" required placeholder="e.g. Springville" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:border-cyan-400 focus:outline-none">
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-xs font-medium text-slate-400 mb-1">Items / Package</label>
-                            <input type="text" id="custPkg" required placeholder="e.g. 2 Baskets, 1 Duvet" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:border-cyan-400 focus:outline-none">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-medium text-slate-400 mb-1">Marketer Ref Code (Optional)</label>
-                            <input type="text" id="custRefCode" placeholder="e.g. MK-1001" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:border-cyan-400 focus:outline-none">
-                        </div>
-                    </div>
-
-                    <button type="submit" class="w-full py-3 btn-cyan font-bold rounded-xl shadow-lg flex items-center justify-center gap-2">
-                        <i class="fa-brands fa-whatsapp text-lg"></i> Send Order on WhatsApp
-                    </button>
-                </form>
+          <div class="card-flyer p-4 text-center space-y-2 hover:scale-105 transition transform">
+            <div class="w-12 h-12 mx-auto bg-brand-blue text-brand-yellow rounded-full flex items-center justify-center text-xl font-bold shadow">
+              <i class="fas fa-bed"></i>
             </div>
-        </section>
+            <h4 class="font-black text-brand-blue text-base">Duvets</h4>
+            <p class="text-xs text-slate-500">Deep steam clean</p>
+          </div>
 
-
-        <!-- ================= MARKETER SECTION ================= -->
-        <section id="tab-marketer" class="tab-content hidden space-y-6">
-            
-            <!-- Marketer Login Card -->
-            <div id="mktLoginCard" class="max-w-md mx-auto card-spark rounded-2xl p-6 shadow-xl space-y-4">
-                <div class="text-center space-y-1">
-                    <h3 class="text-xl font-bold text-white">Marketer Login</h3>
-                    <p class="text-xs text-slate-400">Access your registered marketer dashboard</p>
-                </div>
-
-                <form onsubmit="handleMarketerLogin(event)" class="space-y-4">
-                    <div>
-                        <label class="block text-xs text-slate-400 mb-1">Phone Number</label>
-                        <input type="tel" id="mktPhone" required placeholder="07XXXXXXXX" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2 text-sm text-white focus:border-cyan-400 focus:outline-none">
-                    </div>
-                    <div>
-                        <label class="block text-xs text-slate-400 mb-1">Password</label>
-                        <input type="password" id="mktPass" required placeholder="••••••••" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2 text-sm text-white focus:border-cyan-400 focus:outline-none">
-                    </div>
-                    <button type="submit" class="w-full py-2.5 btn-gold font-bold rounded-xl transition">
-                        Log In
-                    </button>
-                </form>
-                <p class="text-xs text-center text-slate-500">Note: Marketers must be registered by the Admin first.</p>
+          <div class="card-flyer p-4 text-center space-y-2 hover:scale-105 transition transform">
+            <div class="w-12 h-12 mx-auto bg-brand-blue text-brand-yellow rounded-full flex items-center justify-center text-xl font-bold shadow">
+              <i class="fas fa-rug"></i>
             </div>
+            <h4 class="font-black text-brand-blue text-base">Floor Mats & Carpets</h4>
+            <p class="text-xs text-slate-500">Stain & dirt removal</p>
+          </div>
 
-            <!-- Marketer Dashboard (Shows after valid login) -->
-            <div id="mktDashboard" class="hidden space-y-6">
-                <div class="card-spark rounded-2xl p-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                    <div>
-                        <h2 class="text-2xl font-bold text-white" id="mktNameHeading">Welcome, Marketer</h2>
-                        <p class="text-slate-400 text-sm">Referral Code: <span id="mktCodeDisplay" class="text-cyan-400 font-mono font-bold"></span></p>
-                    </div>
-                    <button onclick="logoutMarketer()" class="px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-xl text-xs font-bold text-white">
-                        Log Out
-                    </button>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="card-spark p-6 rounded-2xl">
-                        <p class="text-xs text-slate-400 font-medium">Total Referrals</p>
-                        <p id="mktTotalRefs" class="text-3xl font-extrabold text-white mt-1">0</p>
-                    </div>
-                    <div class="card-spark p-6 rounded-2xl">
-                        <p class="text-xs text-slate-400 font-medium">Accumulated Earnings</p>
-                        <p id="mktTotalMoney" class="text-3xl font-extrabold text-yellow-400 mt-1">0 KSh</p>
-                    </div>
-                </div>
-
-                <!-- Referred Clients Table -->
-                <div class="card-spark rounded-2xl overflow-hidden">
-                    <div class="p-4 border-b border-slate-700">
-                        <h3 class="font-bold text-white text-sm">Your Referred Clients</h3>
-                    </div>
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-left text-sm text-slate-300">
-                            <thead class="bg-slate-900 text-xs text-slate-400 uppercase">
-                                <tr>
-                                    <th class="p-3">Client Name</th>
-                                    <th class="p-3">Location</th>
-                                    <th class="p-3">Package</th>
-                                    <th class="p-3">Date</th>
-                                </tr>
-                            </thead>
-                            <tbody id="mktClientTable" class="divide-y divide-slate-800">
-                                <!-- Populated dynamically -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+          <div class="card-flyer p-4 text-center space-y-2 hover:scale-105 transition transform">
+            <div class="w-12 h-12 mx-auto bg-brand-blue text-brand-yellow rounded-full flex items-center justify-center text-xl font-bold shadow">
+              <i class="fas fa-scroll"></i>
             </div>
+            <h4 class="font-black text-brand-blue text-base">Towels</h4>
+            <p class="text-xs text-slate-500">Soft & sanitized</p>
+          </div>
+        </div>
+      </section>
 
-        </section>
-
-
-        <!-- ================= ADMIN SECTION ================= -->
-        <section id="tab-admin" class="tab-content hidden space-y-6">
-
-            <!-- Admin Login Card -->
-            <div id="adminLoginCard" class="max-w-md mx-auto card-spark rounded-2xl p-6 shadow-xl space-y-4">
-                <div class="text-center space-y-1">
-                    <h3 class="text-xl font-bold text-white">Admin Login</h3>
-                    <p class="text-xs text-slate-400">Enter system administrator password</p>
-                </div>
-
-                <form onsubmit="handleAdminLogin(event)" class="space-y-4">
-                    <div>
-                        <label class="block text-xs text-slate-400 mb-1">Password</label>
-                        <input type="password" id="adminPassInput" required placeholder="Enter password" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2 text-sm text-white focus:border-cyan-400 focus:outline-none">
-                    </div>
-                    <button type="submit" class="w-full py-2.5 btn-cyan font-bold rounded-xl transition">
-                        Authenticate
-                    </button>
-                </form>
-
-                <div class="text-center pt-2">
-                    <button onclick="handleForgotPassword()" class="text-xs text-cyan-400 hover:underline">
-                        Forgot Password? Recover via Email
-                    </button>
-                </div>
+      <!-- Free Delivery Areas Banner -->
+      <div class="card-flyer bg-brand-dark text-white p-6 rounded-2xl border-4 border-brand-yellow">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-full bg-brand-yellow text-brand-dark flex items-center justify-center text-2xl">
+              <i class="fas fa-motorcycle"></i>
             </div>
-
-            <!-- Admin Panel (Shows after valid login) -->
-            <div id="adminPanel" class="hidden space-y-6">
-                
-                <div class="card-spark rounded-2xl p-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                    <div>
-                        <h2 class="text-2xl font-bold text-white">Admin Dashboard</h2>
-                        <p class="text-xs text-slate-400">Manage marketers, update security credentials, and view system stats</p>
-                    </div>
-                    <button onclick="logoutAdmin()" class="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-xl text-xs font-bold">
-                        Log Out
-                    </button>
-                </div>
-
-                <!-- Admin Security Section: Change Password -->
-                <div class="card-spark rounded-2xl p-6 space-y-4">
-                    <h3 class="text-lg font-bold text-white border-b border-slate-700 pb-2 flex items-center gap-2">
-                        <i class="fa-solid fa-key text-yellow-400"></i> Security & Password Settings
-                    </h3>
-                    
-                    <form onsubmit="handleChangeAdminPassword(event)" class="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
-                        <div class="md:col-span-2">
-                            <label class="block text-xs text-slate-400 mb-1">New Admin Password</label>
-                            <input type="password" id="newAdminPassword" required placeholder="Enter new admin password" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2 text-sm text-white focus:border-cyan-400 focus:outline-none">
-                        </div>
-                        <button type="submit" class="py-2 bg-yellow-500 hover:bg-yellow-400 text-slate-900 font-bold rounded-xl transition text-sm">
-                            Update Password
-                        </button>
-                    </form>
-                </div>
-
-                <!-- Register Marketer Section -->
-                <div class="card-spark rounded-2xl p-6 space-y-4">
-                    <h3 class="text-lg font-bold text-white border-b border-slate-700 pb-2 flex items-center gap-2">
-                        <i class="fa-solid fa-user-plus text-cyan-400"></i> Register New Marketer
-                    </h3>
-                    
-                    <form onsubmit="handleRegisterMarketer(event)" class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                        <div>
-                            <label class="block text-xs text-slate-400 mb-1">Name</label>
-                            <input type="text" id="regMktName" required placeholder="Marketer Name" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-sm text-white">
-                        </div>
-                        <div>
-                            <label class="block text-xs text-slate-400 mb-1">Phone Number</label>
-                            <input type="tel" id="regMktPhone" required placeholder="07XXXXXXXX" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-sm text-white">
-                        </div>
-                        <div>
-                            <label class="block text-xs text-slate-400 mb-1">Set Password</label>
-                            <input type="text" id="regMktPass" required placeholder="Password" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-sm text-white">
-                        </div>
-                        <div class="flex items-end">
-                            <button type="submit" class="w-full py-2 btn-cyan font-bold rounded-xl transition text-sm">
-                                Register Marketer
-                            </button>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- Registered Marketers Table -->
-                <div class="card-spark rounded-2xl overflow-hidden">
-                    <div class="p-4 border-b border-slate-700">
-                        <h3 class="font-bold text-white text-sm">Registered Marketers List</h3>
-                    </div>
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-left text-sm text-slate-300">
-                            <thead class="bg-slate-900 text-xs text-slate-400 uppercase">
-                                <tr>
-                                    <th class="p-3">Ref Code</th>
-                                    <th class="p-3">Name</th>
-                                    <th class="p-3">Phone</th>
-                                    <th class="p-3">Total Referrals</th>
-                                    <th class="p-3">Money Accumulated</th>
-                                    <th class="p-3">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody id="adminMarketerList" class="divide-y divide-slate-800">
-                                <!-- Dynamic -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
+            <div>
+              <h4 class="font-black text-lg text-brand-yellow">Free Delivery Areas:</h4>
+              <p class="text-xs text-slate-300">We pick up and deliver right to your doorstep!</p>
             </div>
+          </div>
+          <div class="flex flex-wrap gap-2 text-xs font-bold">
+            <span class="bg-slate-800 text-brand-yellow px-3 py-1.5 rounded-lg border border-yellow-500/30"><i class="fas fa-check text-emerald-400 mr-1"></i> Marine</span>
+            <span class="bg-slate-800 text-brand-yellow px-3 py-1.5 rounded-lg border border-yellow-500/30"><i class="fas fa-check text-emerald-400 mr-1"></i> Ndagani</span>
+            <span class="bg-slate-800 text-brand-yellow px-3 py-1.5 rounded-lg border border-yellow-500/30"><i class="fas fa-check text-emerald-400 mr-1"></i> Chuka town</span>
+            <span class="bg-slate-800 text-brand-yellow px-3 py-1.5 rounded-lg border border-yellow-500/30"><i class="fas fa-check text-emerald-400 mr-1"></i> Slaughter</span>
+            <span class="bg-slate-800 text-brand-yellow px-3 py-1.5 rounded-lg border border-yellow-500/30"><i class="fas fa-check text-emerald-400 mr-1"></i> Mungoni</span>
+          </div>
+        </div>
+      </div>
 
-        </section>
+      <!-- Booking Form -->
+      <div class="card-flyer p-6 md:p-8 max-w-2xl mx-auto">
+        <h3 class="text-xl font-black text-brand-blue mb-4 flex items-center gap-2">
+          <i class="fas fa-calendar-check text-brand-yellow"></i> Book Your Laundry Pickup
+        </h3>
+        <form onsubmit="handleOrderSubmit(event)" class="space-y-4">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Your Full Name</label>
+            <input type="text" id="clientName" required class="w-full px-4 py-2.5 rounded-xl border-2 border-slate-200 focus:border-brand-blue outline-none text-sm font-medium">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Phone Number (M-Pesa / WhatsApp)</label>
+            <input type="tel" id="clientPhone" required placeholder="07XX XXX XXX" class="w-full px-4 py-2.5 rounded-xl border-2 border-slate-200 focus:border-brand-blue outline-none text-sm font-medium">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Pickup Location / Area</label>
+            <select id="clientLocation" required class="w-full px-4 py-2.5 rounded-xl border-2 border-slate-200 focus:border-brand-blue outline-none text-sm font-medium bg-white">
+              <option value="">Select Pickup Location</option>
+              <option value="Marine">Marine</option>
+              <option value="Ndagani">Ndagani</option>
+              <option value="Chuka town">Chuka town</option>
+              <option value="Slaughter">Slaughter</option>
+              <option value="Mungoni">Mungoni</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Laundry Items / Details</label>
+            <textarea id="clientItems" rows="2" placeholder="e.g. 1 Duvet, 5 T-shirts, 2 Jeans" required class="w-full px-4 py-2.5 rounded-xl border-2 border-slate-200 focus:border-brand-blue outline-none text-sm font-medium"></textarea>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Marketer Referral Code (Optional)</label>
+            <input type="text" id="clientRefCode" placeholder="e.g. MK-1024" class="w-full px-4 py-2.5 rounded-xl border-2 border-slate-200 focus:border-brand-blue outline-none text-sm font-mono uppercase">
+          </div>
+          <button type="submit" class="w-full btn-yellow py-3.5 rounded-xl shadow-md text-base">Submit Pickup Request</button>
+        </form>
+      </div>
 
-    </main>
+    </div>
 
-    <footer class="bg-slate-900 border-t border-slate-800 py-4 text-center text-xs text-slate-500">
-        &copy; 2026 SparkSpin Laundry Co.
-    </footer>
+    <!-- TAB 2: MARKETER DASHBOARD -->
+    <div id="tab-marketer" class="hidden space-y-6">
+      
+      <!-- Marketer Login Card -->
+      <div id="marketerLoginCard" class="card-flyer p-6 max-w-md mx-auto space-y-4">
+        <div class="text-center">
+          <div class="w-12 h-12 bg-brand-blue text-brand-yellow rounded-full flex items-center justify-center mx-auto mb-2 text-xl font-bold">
+            <i class="fas fa-user-tie"></i>
+          </div>
+          <h3 class="text-xl font-black text-brand-blue">Marketer Portal Access</h3>
+          <p class="text-xs text-slate-500">Sign in with your admin-registered credentials</p>
+        </div>
+        <form onsubmit="handleMarketerLogin(event)" class="space-y-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Phone Number</label>
+            <input type="tel" id="mktLoginPhone" required class="w-full px-4 py-2 rounded-lg border-2 border-slate-200 text-sm">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Password</label>
+            <input type="password" id="mktLoginPass" required class="w-full px-4 py-2 rounded-lg border-2 border-slate-200 text-sm">
+          </div>
+          <button type="submit" class="w-full btn-blue py-2.5 rounded-lg text-sm">Log In</button>
+        </form>
+      </div>
 
-    <!-- SCRIPT LOGIC -->
-    <script>
-        const ADMIN_EMAIL = "sparkspinlaundry@gmail.com";
+      <!-- Marketer Active Dashboard -->
+      <div id="marketerDash" class="hidden space-y-6">
+        <div class="card-flyer p-6 bg-brand-dark text-white flex flex-col md:flex-row justify-between items-center gap-4">
+          <div>
+            <span class="text-xs text-brand-yellow font-bold uppercase tracking-wider">Welcome back,</span>
+            <h3 id="mktDashName" class="text-2xl font-black text-white">Marketer</h3>
+            <p class="text-xs text-slate-300">Your Ref Code: <span id="mktDashCode" class="font-mono text-brand-yellow font-bold"></span></p>
+          </div>
+          <button onclick="logoutMarketer()" class="px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white rounded-lg text-xs font-bold">Log Out</button>
+        </div>
 
-        // Local Storage Defaults
-        if (!localStorage.getItem('adminPass')) {
-            localStorage.setItem('adminPass', 'admin123');
-        }
-        if (!localStorage.getItem('registeredMarketers')) {
-            localStorage.setItem('registeredMarketers', JSON.stringify([]));
-        }
-        if (!localStorage.getItem('clientOrders')) {
-            localStorage.setItem('clientOrders', JSON.stringify([]));
-        }
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="card-flyer p-6 text-center">
+            <p class="text-xs font-bold text-slate-500 uppercase">Total Referrals Delivered</p>
+            <h4 id="mktDashCount" class="text-4xl font-black text-brand-blue my-1">0</h4>
+            <p class="text-xs text-slate-400">Completed client orders</p>
+          </div>
+          <div class="card-flyer p-6 text-center">
+            <p class="text-xs font-bold text-slate-500 uppercase">Total Earnings (50 KSh / Ref)</p>
+            <h4 id="mktDashEarnings" class="text-4xl font-black text-emerald-600 my-1">0 KSh</h4>
+            <p class="text-xs text-slate-400">Calculated automatically</p>
+          </div>
+        </div>
+      </div>
 
-        let currentActiveMarketer = null;
+    </div>
 
-        function switchTab(tab) {
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-            document.querySelectorAll('.tab-btn').forEach(el => {
-                el.classList.remove('bg-cyan-500', 'text-slate-900');
-                el.classList.add('text-slate-300');
-            });
+    <!-- TAB 3: ADMIN PANEL -->
+    <div id="tab-admin" class="hidden space-y-6">
+      
+      <!-- Admin Login Card -->
+      <div id="adminLoginCard" class="card-flyer p-6 max-w-md mx-auto space-y-4">
+        <div class="text-center">
+          <div class="w-12 h-12 bg-brand-dark text-brand-yellow rounded-full flex items-center justify-center mx-auto mb-2 text-xl font-bold">
+            <i class="fas fa-user-shield"></i>
+          </div>
+          <h3 class="text-xl font-black text-brand-dark">Admin Access Panel</h3>
+        </div>
+        <form onsubmit="handleAdminLogin(event)" class="space-y-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Admin Password</label>
+            <input type="password" id="adminPassInput" required class="w-full px-4 py-2 rounded-lg border-2 border-slate-200 text-sm">
+          </div>
+          <button type="submit" class="w-full btn-yellow py-2.5 rounded-lg text-sm">Login as Admin</button>
+        </form>
+        <div class="text-center pt-2">
+          <button onclick="handleForgotPassword()" class="text-xs font-bold text-brand-blue hover:underline">Forgot Admin Password?</button>
+        </div>
+      </div>
 
-            document.getElementById(`tab-${tab}`).classList.remove('hidden');
-            const activeBtn = document.getElementById(`btn-${tab}`);
-            activeBtn.classList.add('bg-cyan-500', 'text-slate-900');
-            activeBtn.classList.remove('text-slate-300');
-        }
+      <!-- Admin Control Panel -->
+      <div id="adminControlPanel" class="hidden space-y-8">
+        
+        <div class="card-flyer p-6 bg-brand-dark text-white flex justify-between items-center">
+          <div>
+            <h3 class="text-2xl font-black text-white">Admin Dashboard</h3>
+            <p class="text-xs text-brand-yellow">SparkSpin Management & Access Control</p>
+          </div>
+          <button onclick="logoutAdmin()" class="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-lg text-xs font-bold">Log Out</button>
+        </div>
 
-        // --- CLIENT ORDER ---
-        function handlePlaceOrder(e) {
-            e.preventDefault();
-            const name = document.getElementById('custName').value;
-            const phone = document.getElementById('custPhone').value;
-            const loc = document.getElementById('custLoc').value;
-            const pkg = document.getElementById('custPkg').value;
-            const refCode = document.getElementById('custRefCode').value.trim().toUpperCase();
+        <!-- Change Admin Password Section -->
+        <div class="card-flyer p-6">
+          <h4 class="font-black text-brand-blue text-lg mb-3"><i class="fas fa-key text-brand-yellow"></i> Update Admin Password</h4>
+          <form onsubmit="handleChangeAdminPassword(event)" class="flex gap-3">
+            <input type="password" id="newAdminPassword" placeholder="Enter new password" required class="flex-grow px-4 py-2 rounded-lg border-2 border-slate-200 text-sm">
+            <button type="submit" class="btn-blue px-6 py-2 rounded-lg text-sm">Save</button>
+          </form>
+        </div>
 
-            const orders = JSON.parse(localStorage.getItem('clientOrders'));
-            orders.push({
-                id: Date.now(),
-                name, phone, loc, pkg, refCode,
-                date: new Date().toLocaleDateString()
-            });
-            localStorage.setItem('clientOrders', JSON.stringify(orders));
+        <!-- Register Marketers -->
+        <div class="card-flyer p-6">
+          <h4 class="font-black text-brand-blue text-lg mb-3"><i class="fas fa-user-plus text-brand-yellow"></i> Register New Marketer</h4>
+          <form onsubmit="handleRegisterMarketer(event)" class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <input type="text" id="regMktName" placeholder="Full Name" required class="px-4 py-2 rounded-lg border-2 border-slate-200 text-sm">
+            <input type="tel" id="regMktPhone" placeholder="Phone Number" required class="px-4 py-2 rounded-lg border-2 border-slate-200 text-sm">
+            <input type="text" id="regMktPass" placeholder="Assign Password" required class="px-4 py-2 rounded-lg border-2 border-slate-200 text-sm">
+            <button type="submit" class="md:col-span-3 btn-yellow py-2.5 rounded-lg text-sm">Register Marketer & Generate Code</button>
+          </form>
+        </div>
 
-            const msg = `Hello SparkSpin Laundry, I would like to order:%0A- Name: ${name}%0A- Phone: ${phone}%0A- Location: ${loc}%0A- Package: ${pkg}${refCode ? `%0A- Ref Code: ${refCode}` : ''}`;
-            window.open(`https://wa.me/254727932881?text=${msg}`, '_blank');
-            document.getElementById('orderForm').reset();
-        }
+        <!-- Marketer List Table -->
+        <div class="card-flyer p-6 overflow-x-auto">
+          <h4 class="font-black text-brand-blue text-lg mb-3"><i class="fas fa-users"></i> Registered Marketers & Commission</h4>
+          <table class="w-full text-left text-xs">
+            <thead class="bg-brand-dark text-white uppercase font-bold">
+              <tr>
+                <th class="p-3">Ref Code</th>
+                <th class="p-3">Name</th>
+                <th class="p-3">Phone</th>
+                <th class="p-3">Referrals</th>
+                <th class="p-3">Commission (KSh)</th>
+                <th class="p-3">Action</th>
+              </tr>
+            </thead>
+            <tbody id="adminMarketerList" class="divide-y divide-slate-200 font-medium">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
 
-        // --- MARKETER SYSTEM ---
-        function handleMarketerLogin(e) {
-            e.preventDefault();
-            const phone = document.getElementById('mktPhone').value.trim();
-            const pass = document.getElementById('mktPass').value;
+      </div>
 
-            const marketers = JSON.parse(localStorage.getItem('registeredMarketers'));
-            const found = marketers.find(m => m.phone === phone && m.password === pass);
+    </div>
 
-            if (!found) {
-                alert('Access Denied. Ensure you are registered by the Admin.');
-                return;
-            }
+  </main>
 
-            currentActiveMarketer = found;
-            renderMarketerDashboard();
-        }
+  <!-- Footer Matching Flyer -->
+  <footer class="bg-brand-dark text-white border-t-4 border-brand-yellow py-6 px-4">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+      <div>
+        <h4 class="text-lg font-black text-brand-yellow">SparkSpin LAUNDRY Co.</h4>
+        <p class="text-xs text-slate-300">Too busy for laundry? Don't stress – SparkSpin Laundry Co. has got you covered!</p>
+      </div>
+      <div class="text-xs font-bold space-y-1">
+        <p><i class="fas fa-phone-alt text-brand-yellow"></i> +254 706 765 603 / +254 783 410 660</p>
+        <p><i class="fas fa-map-marker-alt text-brand-yellow"></i> Serving Marine, Ndagani, Chuka town, Slaughter, Mungoni</p>
+      </div>
+    </div>
+  </footer>
 
-        function renderMarketerDashboard() {
-            document.getElementById('mktLoginCard').classList.add('hidden');
-            document.getElementById('mktDashboard').classList.remove('hidden');
+  <!-- Embedded JS Logic -->
+  <script>
+    // System Constants
+    const ADMIN_EMAIL = "sparkspinlaundry@gmail.com";
 
-            document.getElementById('mktNameHeading').innerText = `Welcome, ${currentActiveMarketer.name}`;
-            document.getElementById('mktCodeDisplay').innerText = currentActiveMarketer.code;
+    // Data Storage Initialization
+    if (!localStorage.getItem('adminPass')) localStorage.setItem('adminPass', 'admin123');
+    if (!localStorage.getItem('registeredMarketers')) localStorage.setItem('registeredMarketers', JSON.stringify([]));
+    if (!localStorage.getItem('clientOrders')) localStorage.setItem('clientOrders', JSON.stringify([]));
 
-            const orders = JSON.parse(localStorage.getItem('clientOrders'));
-            const myRefs = orders.filter(o => o.refCode === currentActiveMarketer.code);
+    // Tab Navigation
+    function switchTab(tab) {
+      document.getElementById('tab-booking').classList.add('hidden');
+      document.getElementById('tab-marketer').classList.add('hidden');
+      document.getElementById('tab-admin').classList.add('hidden');
 
-            const totalRefs = myRefs.length;
-            const moneyAccumulated = totalRefs * 50; // Standard reward rule (50 KSh per ref)
+      document.getElementById(`tab-${tab}`).classList.remove('hidden');
+    }
 
-            document.getElementById('mktTotalRefs').innerText = totalRefs;
-            document.getElementById('mktTotalMoney').innerText = `${moneyAccumulated} KSh`;
+    // Client Order Submission
+    function handleOrderSubmit(e) {
+      e.preventDefault();
+      const order = {
+        name: document.getElementById('clientName').value,
+        phone: document.getElementById('clientPhone').value,
+        location: document.getElementById('clientLocation').value,
+        items: document.getElementById('clientItems').value,
+        refCode: document.getElementById('clientRefCode').value.trim().toUpperCase(),
+        date: new Date().toISOString()
+      };
 
-            const tbody = document.getElementById('mktClientTable');
-            tbody.innerHTML = totalRefs ? myRefs.map(o => `
-                <tr class="hover:bg-slate-800/50">
-                    <td class="p-3 font-medium text-white">${o.name}</td>
-                    <td class="p-3">${o.loc}</td>
-                    <td class="p-3">${o.pkg}</td>
-                    <td class="p-3 text-xs text-slate-400">${o.date}</td>
-                </tr>
-            `).join('') : `<tr><td colspan="4" class="p-4 text-center text-slate-500 text-xs">No referrals logged yet.</td></tr>`;
-        }
+      const orders = JSON.parse(localStorage.getItem('clientOrders'));
+      orders.push(order);
+      localStorage.setItem('clientOrders', JSON.stringify(orders));
 
-        function logoutMarketer() {
-            currentActiveMarketer = null;
-            document.getElementById('mktLoginCard').classList.remove('hidden');
-            document.getElementById('mktDashboard').classList.add('hidden');
-        }
+      alert('Thank you! Your pickup request has been placed. SparkSpin team will contact you shortly.');
+      e.target.reset();
+    }
 
-        // --- ADMIN SYSTEM ---
-        function handleAdminLogin(e) {
-            e.preventDefault();
-            const inputPass = document.getElementById('adminPassInput').value;
-            const storedPass = localStorage.getItem('adminPass');
+    // Marketer Auth
+    function handleMarketerLogin(e) {
+      e.preventDefault();
+      const phone = document.getElementById('mktLoginPhone').value.trim();
+      const pass = document.getElementById('mktLoginPass').value;
 
-            if (inputPass !== storedPass) {
-                alert('Invalid Admin Password!');
-                return;
-            }
+      const marketers = JSON.parse(localStorage.getItem('registeredMarketers'));
+      const found = marketers.find(m => m.phone === phone && m.password === pass);
 
-            document.getElementById('adminLoginCard').classList.add('hidden');
-            document.getElementById('adminPanel').classList.remove('hidden');
-            renderAdminMarketers();
-        }
+      if (found) {
+        document.getElementById('marketerLoginCard').classList.add('hidden');
+        document.getElementById('marketerDash').classList.remove('hidden');
 
-        function logoutAdmin() {
-            document.getElementById('adminLoginCard').classList.remove('hidden');
-            document.getElementById('adminPanel').classList.add('hidden');
-            document.getElementById('adminPassInput').value = '';
-        }
+        document.getElementById('mktDashName').innerText = found.name;
+        document.getElementById('mktDashCode').innerText = found.code;
 
-        function handleForgotPassword() {
-            const currentPass = localStorage.getItem('adminPass');
-            const subject = encodeURIComponent("SparkSpin Admin Password Recovery Request");
-            const body = encodeURIComponent(`Hello Admin,\n\nYour current SparkSpin Admin Password is: ${currentPass}\n\nIf you requested a password reset, please log in and update your password from the security settings.`);
-            
-            window.location.href = `mailto:${ADMIN_EMAIL}?subject=${subject}&body=${body}`;
-            alert(`Password recovery instructions prepared! Opening your mail app to send password details to ${ADMIN_EMAIL}.`);
-        }
+        // Calculate Stats
+        const orders = JSON.parse(localStorage.getItem('clientOrders'));
+        const refCount = orders.filter(o => o.refCode === found.code).length;
 
-        function handleChangeAdminPassword(e) {
-            e.preventDefault();
-            const newPass = document.getElementById('newAdminPassword').value;
-            localStorage.setItem('adminPass', newPass);
-            alert('Admin Password updated successfully!');
-            document.getElementById('newAdminPassword').value = '';
-        }
+        document.getElementById('mktDashCount').innerText = refCount;
+        document.getElementById('mktDashEarnings').innerText = `${refCount * 50} KSh`;
+      } else {
+        alert('Invalid Marketer Credentials! Contact Admin for registration.');
+      }
+    }
 
-        function handleRegisterMarketer(e) {
-            e.preventDefault();
-            const name = document.getElementById('regMktName').value;
-            const phone = document.getElementById('regMktPhone').value.trim();
-            const password = document.getElementById('regMktPass').value;
+    function logoutMarketer() {
+      document.getElementById('marketerDash').classList.add('hidden');
+      document.getElementById('marketerLoginCard').classList.remove('hidden');
+    }
 
-            const marketers = JSON.parse(localStorage.getItem('registeredMarketers'));
-            if (marketers.some(m => m.phone === phone)) {
-                alert('A marketer with this phone number already exists.');
-                return;
-            }
+    // Admin Auth
+    function handleAdminLogin(e) {
+      e.preventDefault();
+      const inputPass = document.getElementById('adminPassInput').value;
+      const currentPass = localStorage.getItem('adminPass');
 
-            const code = `MK-${Math.floor(1000 + Math.random() * 9000)}`;
-            marketers.push({ name, phone, password, code });
-            localStorage.setItem('registeredMarketers', JSON.stringify(marketers));
+      if (inputPass === currentPass) {
+        document.getElementById('adminLoginCard').classList.add('hidden');
+        document.getElementById('adminControlPanel').classList.remove('hidden');
+        renderAdminMarketers();
+      } else {
+        alert('Incorrect Admin Password!');
+      }
+    }
 
-            alert(`Marketer Registered Successfully!\nRef Code: ${code}`);
-            e.target.reset();
-            renderAdminMarketers();
-        }
+    function logoutAdmin() {
+      document.getElementById('adminControlPanel').classList.add('hidden');
+      document.getElementById('adminLoginCard').classList.remove('hidden');
+    }
 
-        function renderAdminMarketers() {
-            const marketers = JSON.parse(localStorage.getItem('registeredMarketers'));
-            const orders = JSON.parse(localStorage.getItem('clientOrders'));
-            const tbody = document.getElementById('adminMarketerList');
+    function handleForgotPassword() {
+      const currentPass = localStorage.getItem('adminPass');
+      const subject = encodeURIComponent("SparkSpin Admin Password Recovery Request");
+      const body = encodeURIComponent(`Hello Admin,\n\nYour current SparkSpin Admin Password is: ${currentPass}\n\nIf you requested a password reset, please update it upon login.`);
+      
+      window.location.href = `mailto:${ADMIN_EMAIL}?subject=${subject}&body=${body}`;
+      alert(`Password recovery instructions prepared! Opening your mail app to send password details to ${ADMIN_EMAIL}.`);
+    }
 
-            tbody.innerHTML = marketers.length ? marketers.map(m => {
-                const refCount = orders.filter(o => o.refCode === m.code).length;
-                const money = refCount * 50;
+    function handleChangeAdminPassword(e) {
+      e.preventDefault();
+      const newPass = document.getElementById('newAdminPassword').value;
+      localStorage.setItem('adminPass', newPass);
+      alert('Admin Password updated successfully!');
+      document.getElementById('newAdminPassword').value = '';
+    }
 
-                return `
-                <tr class="hover:bg-slate-800/50">
-                    <td class="p-3 font-mono text-cyan-400 font-bold">${m.code}</td>
-                    <td class="p-3 font-medium text-white">${m.name}</td>
-                    <td class="p-3 text-xs">${m.phone}</td>
-                    <td class="p-3 font-bold text-white">${refCount}</td>
-                    <td class="p-3 font-bold text-yellow-400">${money} KSh</td>
-                    <td class="p-3">
-                        <button onclick="removeMarketer('${m.phone}')" class="text-xs text-rose-400 hover:underline">Remove</button>
-                    </td>
-                </tr>
-                `;
-            }).join('') : `<tr><td colspan="6" class="p-4 text-center text-slate-500 text-xs">No marketers registered yet.</td></tr>`;
-        }
+    function handleRegisterMarketer(e) {
+      e.preventDefault();
+      const name = document.getElementById('regMktName').value;
+      const phone = document.getElementById('regMktPhone').value.trim();
+      const password = document.getElementById('regMktPass').value;
 
-        function removeMarketer(phone) {
-            if (!confirm('Remove this marketer?')) return;
-            let marketers = JSON.parse(localStorage.getItem('registeredMarketers'));
-            marketers = marketers.filter(m => m.phone !== phone);
-            localStorage.setItem('registeredMarketers', JSON.stringify(marketers));
-            renderAdminMarketers();
-        }
-    </script>
+      const marketers = JSON.parse(localStorage.getItem('registeredMarketers'));
+      if (marketers.some(m => m.phone === phone)) {
+        alert('A marketer with this phone number already exists.');
+        return;
+      }
+
+      const code = `MK-${Math.floor(1000 + Math.random() * 9000)}`;
+      marketers.push({ name, phone, password, code });
+      localStorage.setItem('registeredMarketers', JSON.stringify(marketers));
+
+      alert(`Marketer Registered Successfully!\nRef Code: ${code}`);
+      e.target.reset();
+      renderAdminMarketers();
+    }
+
+    function renderAdminMarketers() {
+      const marketers = JSON.parse(localStorage.getItem('registeredMarketers'));
+      const orders = JSON.parse(localStorage.getItem('clientOrders'));
+      const tbody = document.getElementById('adminMarketerList');
+
+      tbody.innerHTML = marketers.length ? marketers.map(m => {
+        const refCount = orders.filter(o => o.refCode === m.code).length;
+        const money = refCount * 50;
+
+        return `
+          <tr class="hover:bg-slate-50">
+            <td class="p-3 font-mono font-bold text-brand-blue">${m.code}</td>
+            <td class="p-3 font-bold text-slate-800">${m.name}</td>
+            <td class="p-3">${m.phone}</td>
+            <td class="p-3 font-bold text-slate-800">${refCount}</td>
+            <td class="p-3 font-bold text-emerald-600">${money} KSh</td>
+            <td class="p-3">
+              <button onclick="removeMarketer('${m.phone}')" class="text-xs text-rose-600 hover:underline">Remove</button>
+            </td>
+          </tr>
+        `;
+      }).join('') : '<tr><td colspan="6" class="p-4 text-center text-slate-400">No marketers registered yet.</td></tr>';
+    }
+
+    function removeMarketer(phone) {
+      if (!confirm('Remove this marketer?')) return;
+      let marketers = JSON.parse(localStorage.getItem('registeredMarketers'));
+      marketers = marketers.filter(m => m.phone !== phone);
+      localStorage.setItem('registeredMarketers', JSON.stringify(marketers));
+      renderAdminMarketers();
+    }
+  </script>
 </body>
 </html>
