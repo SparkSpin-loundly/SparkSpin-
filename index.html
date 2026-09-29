@@ -1,1369 +1,882 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SparkSpin Laundry Co. | Portal & Management</title>
+    <title>SparkSpin Laundry Co.</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        navy: {
-                            800: '#00223E',
-                            900: '#00192E',
-                            DEFAULT: '#002B49',
-                        },
-                        sparkyellow: {
-                            light: '#FFE066',
-                            DEFAULT: '#FFCC00',
-                            dark: '#E6B800'
-                        },
-                        cyanbrand: '#00A8E8'
+                        navy: { 800: '#001A33', 900: '#001122' },
+                        gold: { 400: '#FFC72C', 500: '#E6B200' },
+                        cyan: { 400: '#00D2FF', 500: '#00B8E6' }
                     },
-                    fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                    }
+                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] }
                 }
             }
         }
     </script>
-    <style>
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #F4F7F9;
-        }
-        .bg-pattern {
-            background-color: #002B49;
-            background-image: radial-gradient(#00A8E8 0.75px, transparent 0.75px), radial-gradient(#FFCC00 0.75px, #002B49 0.75px);
-            background-size: 30px 30px;
-            background-position: 0 0, 15px 15px;
-            background-opacity: 0.08;
-        }
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 4px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
-    </style>
 </head>
-<body class="min-h-screen text-slate-800 flex flex-col justify-between">
+<body class="bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-sans min-h-screen flex flex-col justify-between transition-colors duration-200">
 
-    <!-- Top Bar & Main Header -->
-    <header class="sticky top-0 z-50 bg-navy text-white shadow-xl">
-        <!-- Utility Contact Bar -->
-        <div class="bg-navy-900 border-b border-white/10 px-4 py-1.5 text-xs">
-            <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
-                <div class="flex items-center gap-4 text-slate-300">
-                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-phone text-sparkyellow"></i> +254 706 765 603</span>
-                    <span class="hidden sm:inline-flex items-center gap-1.5"><i class="fa-solid fa-phone text-sparkyellow"></i> +254 783 410 660</span>
-                    <span class="hidden md:inline-flex items-center gap-1.5 text-emerald-400"><i class="fa-solid fa-truck-fast"></i> Free Delivery Areas Active</span>
-                </div>
-                <div class="flex items-center gap-2">
-                    <span class="text-sparkyellow font-semibold"><i class="fa-solid fa-sparkles"></i> "We spin, so you can chill"</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Main Navigation -->
-        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-4">
-            <!-- Brand Logo -->
-            <div class="flex items-center gap-3 cursor-pointer" onclick="switchView('client')">
-                <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-cyanbrand to-sparkyellow p-0.5 shadow-lg flex items-center justify-center">
-                    <div class="w-full h-full bg-navy rounded-full flex items-center justify-center">
-                        <i class="fa-solid fa-rotate text-sparkyellow text-2xl animate-spin-slow"></i>
-                    </div>
+    <!-- NAVIGATION HEADER -->
+    <header class="bg-white dark:bg-navy-900 border-b border-slate-200 dark:border-slate-800 sticky top-0 z-40 transition-colors duration-200">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-3">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-400 to-gold-400 flex items-center justify-center text-navy-900 font-extrabold text-xl shadow-md">
+                    S
                 </div>
                 <div>
-                    <h1 class="text-xl md:text-2xl font-extrabold tracking-tight text-white flex items-center gap-1">
-                        SparkSpin <span class="text-sparkyellow">Laundry Co.</span>
-                    </h1>
-                    <p class="text-[11px] text-cyan-200 hidden sm:block">Too busy for laundry? Don't stress - We've got you covered!</p>
+                    <h1 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">SparkSpin <span class="text-cyan-500 dark:text-cyan-400">Laundry</span></h1>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Springville Premium Care</p>
                 </div>
             </div>
 
-            <!-- Navigation Tabs -->
-            <nav class="flex items-center bg-navy-800 p-1.5 rounded-xl border border-white/10 gap-1 text-sm font-medium">
-                <button id="nav-client" onclick="switchView('client')" class="px-3 py-1.5 rounded-lg transition-all flex items-center gap-2 bg-sparkyellow text-navy font-bold shadow">
-                    <i class="fa-solid fa-store"></i> <span class="hidden sm:inline">Services & Rates</span>
+            <!-- Live Status & Theme Toggle -->
+            <div class="flex items-center gap-3">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    Accepting Orders Today
+                </span>
+
+                <button onclick="toggleDarkMode()" class="p-2 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-cyan-500 transition">
+                    <i id="themeIcon" class="fa-solid fa-moon"></i>
                 </button>
-                <button id="nav-offers" onclick="switchView('offers')" class="px-3 py-1.5 rounded-lg transition-all flex items-center gap-2 text-slate-200 hover:text-white hover:bg-white/10">
-                    <i class="fa-solid fa-gift text-sparkyellow"></i> <span class="hidden sm:inline">Earn & Refer</span>
+            </div>
+            
+            <nav class="flex gap-2 bg-slate-200/80 dark:bg-slate-800/80 p-1 rounded-xl border border-slate-300/50 dark:border-slate-700/50 w-full md:w-auto justify-center">
+                <button onclick="switchTab('client')" id="btn-client" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold transition bg-cyan-500 text-navy-900 shadow-md">
+                    <i class="fa-solid fa-basket-shopping mr-1"></i> Order
                 </button>
-                <button id="nav-support" onclick="switchView('support')" class="px-3 py-1.5 rounded-lg transition-all flex items-center gap-2 text-slate-200 hover:text-white hover:bg-white/10">
-                    <i class="fa-solid fa-headset text-cyanbrand"></i> <span class="hidden sm:inline">Customer Service</span>
+                <button onclick="switchTab('marketer')" id="btn-marketer" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold transition text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white">
+                    <i class="fa-solid fa-bullhorn mr-1"></i> Marketer
                 </button>
-                <div class="h-5 w-px bg-white/20 mx-1"></div>
-                <button id="nav-admin" onclick="openAdminAuth()" class="px-3 py-1.5 rounded-lg transition-all flex items-center gap-2 text-slate-200 hover:text-white hover:bg-white/10">
-                    <i class="fa-solid fa-user-shield text-emerald-400"></i> <span>Admin</span>
+                <button onclick="switchTab('admin')" id="btn-admin" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold transition text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white">
+                    <i class="fa-solid fa-user-shield mr-1"></i> Admin
                 </button>
             </nav>
         </div>
     </header>
 
-    <!-- Alert / Toast Container -->
-    <div id="toast-container" class="fixed top-20 right-4 z-50 flex flex-col gap-2 max-w-sm pointer-events-none"></div>
+    <!-- MAIN CONTAINER -->
+    <main class="max-w-7xl mx-auto px-4 py-8 w-full flex-grow">
 
-    <main class="flex-grow max-w-7xl w-full mx-auto p-4 md:p-6 space-y-6">
-
-        <!-- VIEW 1: CLIENT PAGE & RATES HUB -->
-        <section id="view-client" class="space-y-6">
-            <!-- Hero Banner -->
-            <div class="relative bg-gradient-to-r from-navy via-navy-800 to-slate-900 rounded-3xl p-6 md:p-10 text-white overflow-hidden shadow-2xl border border-navy-800">
-                <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-sparkyellow/10 rounded-full blur-3xl pointer-events-none"></div>
-                <div class="absolute right-1/3 -top-10 w-64 h-64 bg-cyanbrand/10 rounded-full blur-3xl pointer-events-none"></div>
-
-                <div class="relative z-10 max-w-2xl space-y-4">
-                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-sparkyellow/20 text-sparkyellow border border-sparkyellow/30">
-                        <i class="fa-solid fa-bolt"></i> Fast 24HR Turnaround Service
-                    </span>
-                    <h2 class="text-3xl md:text-5xl font-black leading-tight">
-                        Too busy for laundry? <br><span class="text-sparkyellow">Don't stress!</span>
-                    </h2>
-                    <p class="text-slate-300 text-sm md:text-base">
-                        SparkSpin Laundry Co. delivers pristine, fresh, and perfectly folded clothes right back to your doorstep. Drop off or request a quick pickup today!
-                    </p>
-                    <div class="flex flex-wrap items-center gap-3 pt-2">
-                        <button onclick="scrollToRates()" class="bg-sparkyellow text-navy hover:bg-sparkyellow-dark font-bold px-6 py-3 rounded-xl shadow-lg transition-all flex items-center gap-2 transform active:scale-95">
-                            <i class="fa-solid fa-list-check"></i> View Pricing & Rates
-                        </button>
-                        <a href="https://wa.me/254706765603?text=Hello%20SparkSpin%20Laundry,%20I%20would%20like%20to%20book%20a%20laundry%20pickup!" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-3 rounded-xl shadow-lg transition-all flex items-center gap-2">
-                            <i class="fa-brands fa-whatsapp text-lg"></i> Instant WhatsApp Order
-                        </a>
-                    </div>
-                </div>
+        <!-- ================= CLIENT SECTION ================= -->
+        <section id="tab-client" class="tab-content space-y-8">
+            <div class="text-center space-y-3 max-w-2xl mx-auto">
+                <span class="bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/20 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">Springville Doorstep Delivery</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white">Fresh Laundry Delivered Fast</h2>
+                <p class="text-slate-600 dark:text-slate-400">Calculate your total instantly, select your location, and order directly on WhatsApp.</p>
             </div>
 
-            <!-- Rates Grid from Flyer -->
-            <div id="rates-section" class="space-y-4">
-                <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-slate-200 pb-3">
+            <!-- Interactive Laundry Calculator Card -->
+            <div class="bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 shadow-lg max-w-3xl mx-auto space-y-6">
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-700 pb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-calculator text-cyan-500 dark:text-cyan-400"></i> Interactive Laundry Cost Calculator
+                </h3>
+
+                <div class="grid md:grid-cols-3 gap-4">
+                    <!-- Standard Basket counter -->
+                    <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50 space-y-2 text-center">
+                        <i class="fa-solid fa-soap text-2xl text-cyan-500 dark:text-cyan-400"></i>
+                        <h4 class="font-bold text-sm text-slate-900 dark:text-white">Standard Basket</h4>
+                        <p class="text-xs text-slate-500">250 KSh / unit</p>
+                        <div class="flex items-center justify-center gap-3 pt-2">
+                            <button onclick="updateCalc('basket', -1)" class="w-8 h-8 rounded-lg bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-white font-bold hover:bg-cyan-500 transition">-</button>
+                            <span id="calc-basket-qty" class="font-mono font-bold text-lg">0</span>
+                            <button onclick="updateCalc('basket', 1)" class="w-8 h-8 rounded-lg bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-white font-bold hover:bg-cyan-500 transition">+</button>
+                        </div>
+                    </div>
+
+                    <!-- Duvets counter -->
+                    <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50 space-y-2 text-center">
+                        <i class="fa-solid fa-bed text-2xl text-gold-500 dark:text-gold-400"></i>
+                        <h4 class="font-bold text-sm text-slate-900 dark:text-white">Duvets & Bedding</h4>
+                        <p class="text-xs text-slate-500">350 KSh / unit</p>
+                        <div class="flex items-center justify-center gap-3 pt-2">
+                            <button onclick="updateCalc('duvet', -1)" class="w-8 h-8 rounded-lg bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-white font-bold hover:bg-cyan-500 transition">-</button>
+                            <span id="calc-duvet-qty" class="font-mono font-bold text-lg">0</span>
+                            <button onclick="updateCalc('duvet', 1)" class="w-8 h-8 rounded-lg bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-white font-bold hover:bg-cyan-500 transition">+</button>
+                        </div>
+                    </div>
+
+                    <!-- Floor Mats counter -->
+                    <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50 space-y-2 text-center">
+                        <i class="fa-solid fa-rug text-2xl text-cyan-500 dark:text-cyan-400"></i>
+                        <h4 class="font-bold text-sm text-slate-900 dark:text-white">Floor Mats & Rugs</h4>
+                        <p class="text-xs text-slate-500">300 KSh / unit</p>
+                        <div class="flex items-center justify-center gap-3 pt-2">
+                            <button onclick="updateCalc('mats', -1)" class="w-8 h-8 rounded-lg bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-white font-bold hover:bg-cyan-500 transition">-</button>
+                            <span id="calc-mats-qty" class="font-mono font-bold text-lg">0</span>
+                            <button onclick="updateCalc('mats', 1)" class="w-8 h-8 rounded-lg bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-white font-bold hover:bg-cyan-500 transition">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row justify-between items-center bg-slate-100 dark:bg-slate-900/80 p-4 rounded-xl gap-4">
                     <div>
-                        <h3 class="text-2xl font-bold text-navy flex items-center gap-2">
-                            <i class="fa-solid fa-tag text-sparkyellow"></i> Our Pricing & Rates
-                        </h3>
-                        <p class="text-slate-500 text-sm">Transparent pricing for laundry baskets, duvets, and carpets.</p>
+                        <p class="text-xs text-slate-500">Estimated Total Cost</p>
+                        <p id="calc-total" class="text-2xl font-extrabold text-gold-500 dark:text-gold-400">0 KSh</p>
                     </div>
-                    <span class="text-xs bg-slate-200 text-slate-700 px-3 py-1 rounded-full font-medium self-start md:self-auto">All prices in KSh ( Kenyan Shillings )</span>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <!-- Laundry Basket Card -->
-                    <div class="bg-white rounded-2xl p-6 shadow-md border-t-4 border-sparkyellow hover:shadow-xl transition-all flex flex-col justify-between">
-                        <div>
-                            <div class="flex justify-between items-center mb-4">
-                                <h4 class="text-xl font-bold text-navy flex items-center gap-2">
-                                    <i class="fa-solid fa-basket-shopping text-sparkyellow"></i> Laundry Basket
-                                </h4>
-                                <span class="bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-1 rounded-full">Popular</span>
-                            </div>
-                            <ul class="space-y-3 mb-6">
-                                <li class="flex justify-between items-center border-b border-slate-100 pb-2">
-                                    <span class="font-medium text-slate-700">Large Basket</span>
-                                    <span class="font-extrabold text-navy text-lg">400/=</span>
-                                </li>
-                                <li class="flex justify-between items-center border-b border-slate-100 pb-2">
-                                    <span class="font-medium text-slate-700">Medium Basket</span>
-                                    <span class="font-extrabold text-navy text-lg">350/=</span>
-                                </li>
-                                <li class="flex justify-between items-center border-b border-slate-100 pb-2">
-                                    <span class="font-medium text-slate-700">Small Basket</span>
-                                    <span class="font-extrabold text-navy text-lg">300/=</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <button onclick="openBookingModal('Laundry Basket')" class="w-full bg-navy text-white hover:bg-navy-800 font-semibold py-2.5 rounded-xl transition-all flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-cart-plus"></i> Request Wash
-                        </button>
-                    </div>
-
-                    <!-- Duvets Card -->
-                    <div class="bg-white rounded-2xl p-6 shadow-md border-t-4 border-navy hover:shadow-xl transition-all flex flex-col justify-between">
-                        <div>
-                            <div class="flex justify-between items-center mb-4">
-                                <h4 class="text-xl font-bold text-navy flex items-center gap-2">
-                                    <i class="fa-solid fa-bed text-navy"></i> Duvets & Bedding
-                                </h4>
-                                <span class="bg-blue-100 text-blue-800 text-xs font-bold px-2.5 py-1 rounded-full">Deep Clean</span>
-                            </div>
-                            <ul class="space-y-3 mb-6">
-                                <li class="flex justify-between items-center border-b border-slate-100 pb-2">
-                                    <span class="font-medium text-slate-700">4 x 6 Duvet</span>
-                                    <span class="font-extrabold text-navy text-lg">250/=</span>
-                                </li>
-                                <li class="flex justify-between items-center border-b border-slate-100 pb-2">
-                                    <span class="font-medium text-slate-700">5 x 6 Duvet</span>
-                                    <span class="font-extrabold text-navy text-lg">300/=</span>
-                                </li>
-                                <li class="flex justify-between items-center border-b border-slate-100 pb-2">
-                                    <span class="font-medium text-slate-700">6 x 6 Duvet</span>
-                                    <span class="font-extrabold text-navy text-lg">350/=</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <button onclick="openBookingModal('Duvet Clean')" class="w-full bg-navy text-white hover:bg-navy-800 font-semibold py-2.5 rounded-xl transition-all flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-cart-plus"></i> Request Wash
-                        </button>
-                    </div>
-
-                    <!-- Floor Mats Card -->
-                    <div class="bg-white rounded-2xl p-6 shadow-md border-t-4 border-cyanbrand hover:shadow-xl transition-all flex flex-col justify-between">
-                        <div>
-                            <div class="flex justify-between items-center mb-4">
-                                <h4 class="text-xl font-bold text-navy flex items-center gap-2">
-                                    <i class="fa-solid fa-rugs text-cyanbrand"></i> Floor Mats & Carpets
-                                </h4>
-                                <span class="bg-cyan-100 text-cyan-800 text-xs font-bold px-2.5 py-1 rounded-full">Sanitized</span>
-                            </div>
-                            <ul class="space-y-3 mb-6">
-                                <li class="flex justify-between items-center border-b border-slate-100 pb-2">
-                                    <span class="font-medium text-slate-700">Fluffy Mat</span>
-                                    <span class="font-extrabold text-navy text-lg">250/=</span>
-                                </li>
-                                <li class="flex justify-between items-center border-b border-slate-100 pb-2">
-                                    <span class="font-medium text-slate-700">Door Mat</span>
-                                    <span class="font-extrabold text-navy text-lg">70/=</span>
-                                </li>
-                                <li class="flex justify-between items-center border-b border-slate-100 pb-2">
-                                    <span class="font-medium text-slate-700">Hard Carpet (Large)</span>
-                                    <span class="font-extrabold text-navy text-lg">450/=</span>
-                                </li>
-                                <li class="flex justify-between items-center border-b border-slate-100 pb-2">
-                                    <span class="font-medium text-slate-700">Hard Carpet (Small)</span>
-                                    <span class="font-extrabold text-navy text-lg">350/=</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <button onclick="openBookingModal('Floor Mat / Carpet')" class="w-full bg-navy text-white hover:bg-navy-800 font-semibold py-2.5 rounded-xl transition-all flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-cart-plus"></i> Request Wash
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Free Delivery Areas Banner -->
-            <div class="bg-white rounded-2xl p-6 shadow-md border border-slate-200 flex flex-col md:flex-row items-center justify-between gap-6">
-                <div class="flex items-center gap-4">
-                    <div class="w-16 h-16 rounded-2xl bg-amber-100 text-sparkyellow-dark flex items-center justify-center text-3xl shrink-0">
-                        <i class="fa-solid fa-motorcycle"></i>
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-extrabold text-navy">Free Delivery Locations</h4>
-                        <p class="text-slate-500 text-sm">We collect and deliver back to your doorstep at no extra delivery fee in these regions!</p>
-                    </div>
-                </div>
-                <div class="flex flex-wrap gap-2 justify-start md:justify-end">
-                    <span class="bg-navy/5 text-navy font-bold px-3.5 py-2 rounded-xl text-sm border border-navy/10 flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-emerald-500"></i> Marine</span>
-                    <span class="bg-navy/5 text-navy font-bold px-3.5 py-2 rounded-xl text-sm border border-navy/10 flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-emerald-500"></i> Ndagani</span>
-                    <span class="bg-navy/5 text-navy font-bold px-3.5 py-2 rounded-xl text-sm border border-navy/10 flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-emerald-500"></i> Chuka Town</span>
-                    <span class="bg-navy/5 text-navy font-bold px-3.5 py-2 rounded-xl text-sm border border-navy/10 flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-emerald-500"></i> Slaughter</span>
-                    <span class="bg-navy/5 text-navy font-bold px-3.5 py-2 rounded-xl text-sm border border-navy/10 flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-emerald-500"></i> Mungoni</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- VIEW 2: MARKETER / REFERRAL OFFERS PAGE -->
-        <section id="view-offers" class="hidden space-y-6">
-            <!-- Header Rules Banner -->
-            <div class="bg-gradient-to-br from-navy to-navy-800 rounded-3xl p-6 md:p-8 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 border border-white/10">
-                <div class="space-y-3 max-w-2xl">
-                    <div class="inline-flex items-center gap-2 bg-sparkyellow text-navy font-extrabold text-xs px-3 py-1 rounded-full uppercase tracking-wide">
-                        <i class="fa-solid fa-coins"></i> SparkSpin Marketer Program
-                    </div>
-                    <h2 class="text-3xl font-black">Refer Friends & Earn Cash Daily!</h2>
-                    <p class="text-slate-300 text-sm">
-                        Registration is strictly by Admin Invitation. Use the single-use invite code sent by the SparkSpin Admin to activate your Marketer account.
-                    </p>
-                </div>
-                <!-- Commission Badges -->
-                <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
-                    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 text-center min-w-[150px]">
-                        <span class="text-xs text-slate-300 uppercase block font-semibold">Every 2 Referrals</span>
-                        <span class="text-2xl font-black text-sparkyellow">50 KSh</span>
-                        <span class="text-[11px] text-emerald-300 block">Instant Reward</span>
-                    </div>
-                    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 text-center min-w-[150px]">
-                        <span class="text-xs text-slate-300 uppercase block font-semibold">Every 10 Referrals</span>
-                        <span class="text-2xl font-black text-sparkyellow">300 KSh</span>
-                        <span class="text-[11px] text-emerald-300 block">Mega Bonus</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Login / Code Activation Panel -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Registration & Authentication Card -->
-                <div class="bg-white rounded-2xl p-6 shadow-md border border-slate-200 md:col-span-1 flex flex-col justify-between">
-                    <div>
-                        <!-- Tab Switcher (Login vs Activate Code) -->
-                        <div class="flex border-b border-slate-200 mb-4 text-xs font-bold">
-                            <button id="marketer-tab-activate" onclick="switchMarketerAuthMode('activate')" class="pb-2 border-b-2 border-sparkyellow text-navy flex-1 text-center">
-                                <i class="fa-solid fa-id-card"></i> Activate Code
-                            </button>
-                            <button id="marketer-tab-login" onclick="switchMarketerAuthMode('login')" class="pb-2 border-b-2 border-transparent text-slate-400 hover:text-navy flex-1 text-center">
-                                <i class="fa-solid fa-key"></i> Passcode Login
-                            </button>
-                        </div>
-
-                        <!-- MODE A: ACTIVATE ADMIN CODE -->
-                        <form id="marketer-activate-form" onsubmit="handleActivateCode(event)" class="space-y-3">
-                            <div class="bg-amber-50 p-3 rounded-xl border border-amber-200 text-xs text-amber-900 mb-2">
-                                <i class="fa-solid fa-shield-halved text-amber-600"></i> Enter the single-use invite code generated by SparkSpin Admin.
-                            </div>
-                            <div>
-                                <label class="block text-[11px] font-bold text-slate-700 uppercase mb-1">Admin Invite Code</label>
-                                <input type="text" id="activate-code-input" required placeholder="e.g. MK-7821" class="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sparkyellow focus:outline-none text-xs font-mono uppercase">
-                            </div>
-                            <div>
-                                <label class="block text-[11px] font-bold text-slate-700 uppercase mb-1">Create Access Password</label>
-                                <input type="password" id="activate-password-input" required placeholder="Create a password" class="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sparkyellow focus:outline-none text-xs">
-                            </div>
-                            <button type="submit" class="w-full bg-sparkyellow hover:bg-sparkyellow-dark text-navy font-bold py-2.5 rounded-xl transition-all text-xs flex items-center justify-center gap-2">
-                                <i class="fa-solid fa-user-check"></i> Validate & Register Account
-                            </button>
-                        </form>
-
-                        <!-- MODE B: LOGIN WITH EXISTING PASSWORD -->
-                        <form id="marketer-login-form" onsubmit="handleMarketerLogin(event)" class="space-y-3 hidden">
-                            <div>
-                                <label class="block text-[11px] font-bold text-slate-700 uppercase mb-1">Your Marketer Code / Phone</label>
-                                <input type="text" id="login-identifier-input" required placeholder="Code or Phone" class="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sparkyellow focus:outline-none text-xs font-mono uppercase">
-                            </div>
-                            <div>
-                                <label class="block text-[11px] font-bold text-slate-700 uppercase mb-1">Password</label>
-                                <input type="password" id="login-password-input" required placeholder="Your password" class="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sparkyellow focus:outline-none text-xs">
-                            </div>
-                            <button type="submit" class="w-full bg-navy text-white font-bold py-2.5 rounded-xl hover:bg-navy-800 transition-all text-xs flex items-center justify-center gap-2">
-                                <i class="fa-solid fa-right-to-bracket"></i> Login to Portal
-                            </button>
-                        </form>
-                    </div>
-
-                    <div class="mt-6 pt-4 border-t border-slate-100 text-center">
-                        <p class="text-[11px] text-slate-500">Don't have an invite code? Contact SparkSpin Admin on WhatsApp to request registration.</p>
-                    </div>
-                </div>
-
-                <!-- Active Marketer Dashboard Preview / Interactive Console -->
-                <div class="bg-white rounded-2xl p-6 shadow-md border border-slate-200 md:col-span-2 space-y-6" id="marketer-dashboard">
-                    <div id="marketer-logged-out" class="text-center py-12 space-y-3">
-                        <div class="w-16 h-16 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center mx-auto text-2xl">
-                            <i class="fa-solid fa-user-lock"></i>
-                        </div>
-                        <h4 class="text-lg font-bold text-slate-700">Admin Invitation Code Required</h4>
-                        <p class="text-sm text-slate-500 max-w-md mx-auto">Only admin-registered marketers can view referral links and cash earnings balance. Contact Admin to get your access code.</p>
-                        <div class="pt-2">
-                            <span class="text-xs bg-slate-100 border border-slate-200 text-slate-600 px-3 py-1.5 rounded-lg font-mono">Demo Admin Invite Code: <strong class="text-navy">MK-TEST</strong></span>
-                        </div>
-                    </div>
-
-                    <div id="marketer-logged-in" class="hidden space-y-6">
-                        <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-4">
-                            <div>
-                                <span class="text-xs text-emerald-600 font-bold bg-emerald-50 px-2.5 py-1 rounded-full"><i class="fa-solid fa-circle text-[8px] animate-pulse"></i> Active Verified Marketer</span>
-                                <h3 class="text-xl font-bold text-navy mt-1" id="marketer-name-display">Marketer Account</h3>
-                            </div>
-                            <button onclick="logoutMarketer()" class="text-xs text-rose-600 hover:text-rose-800 font-semibold flex items-center gap-1">
-                                <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
-                            </button>
-                        </div>
-
-                        <!-- Stats Cards -->
-                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                            <div class="bg-slate-50 rounded-xl p-4 border border-slate-200">
-                                <span class="text-xs text-slate-500 font-semibold block">Successful Refers</span>
-                                <span class="text-2xl font-black text-navy" id="stat-ref-count">0</span>
-                                <span class="text-[10px] text-slate-400 block mt-1">Completed orders</span>
-                            </div>
-                            <div class="bg-slate-50 rounded-xl p-4 border border-slate-200">
-                                <span class="text-xs text-slate-500 font-semibold block">Earned Commission</span>
-                                <span class="text-2xl font-black text-emerald-600" id="stat-earned">0 KSh</span>
-                                <span class="text-[10px] text-slate-400 block mt-1">Calculated automatically</span>
-                            </div>
-                            <div class="bg-slate-50 rounded-xl p-4 border border-slate-200 col-span-2 sm:col-span-1">
-                                <span class="text-xs text-slate-500 font-semibold block">Payout Status</span>
-                                <span class="inline-block bg-emerald-100 text-emerald-800 font-bold text-xs px-2.5 py-1 rounded-full mt-1" id="stat-payout">Ready for payout</span>
-                            </div>
-                        </div>
-
-                        <!-- Share Link Box -->
-                        <div class="bg-amber-50 rounded-xl p-4 border border-amber-200 space-y-2">
-                            <label class="block text-xs font-bold text-amber-900 uppercase">Your Exclusive Shareable Referral Link</label>
-                            <div class="flex gap-2">
-                                <input type="text" id="marketer-share-link" readonly class="w-full bg-white px-3 py-2 rounded-lg border border-amber-300 text-xs font-mono text-slate-700">
-                                <button onclick="copyReferralLink()" class="bg-sparkyellow hover:bg-sparkyellow-dark text-navy font-bold px-4 py-2 rounded-lg text-xs transition-all flex items-center gap-1 shrink-0">
-                                    <i class="fa-solid fa-copy"></i> Copy Link
-                                </button>
-                            </div>
-                            <p class="text-[11px] text-amber-800">Share this link with your contacts. When they order laundry using your code, your earnings increase automatically!</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- VIEW 3: CUSTOMER SERVICE PAGE -->
-        <section id="view-support" class="hidden space-y-6">
-            <div class="bg-white rounded-2xl p-6 md:p-8 shadow-md border border-slate-200 space-y-6">
-                <div>
-                    <h3 class="text-2xl font-bold text-navy flex items-center gap-2">
-                        <i class="fa-solid fa-headset text-sparkyellow"></i> SparkSpin Customer Care Hub
-                    </h3>
-                    <p class="text-slate-500 text-sm">We are here to assist you with order tracking, custom requests, and queries.</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Quick Direct Contacts -->
-                    <div class="space-y-4">
-                        <h4 class="font-bold text-slate-800 border-b border-slate-100 pb-2 flex items-center gap-2">
-                            <i class="fa-solid fa-phone-volume text-cyanbrand"></i> Direct Helpline & WhatsApp
-                        </h4>
-
-                        <div class="space-y-3">
-                            <a href="https://wa.me/254706765603" target="_blank" class="flex items-center justify-between p-4 rounded-xl bg-emerald-50 border border-emerald-200 hover:bg-emerald-100 transition-all text-emerald-900">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 rounded-full bg-emerald-500 text-white flex items-center justify-center text-lg">
-                                        <i class="fa-brands fa-whatsapp"></i>
-                                    </div>
-                                    <div>
-                                        <span class="font-bold block text-sm">Primary WhatsApp / Call</span>
-                                        <span class="text-xs text-emerald-700">+254 706 765 603</span>
-                                    </div>
-                                </div>
-                                <i class="fa-solid fa-chevron-right text-xs"></i>
-                            </a>
-
-                            <a href="https://wa.me/254783410660" target="_blank" class="flex items-center justify-between p-4 rounded-xl bg-cyan-50 border border-cyan-200 hover:bg-cyan-100 transition-all text-cyan-900">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 rounded-full bg-cyanbrand text-white flex items-center justify-center text-lg">
-                                        <i class="fa-solid fa-phone"></i>
-                                    </div>
-                                    <div>
-                                        <span class="font-bold block text-sm">Alternative Support Line</span>
-                                        <span class="text-xs text-cyan-700">+254 783 410 660</span>
-                                    </div>
-                                </div>
-                                <i class="fa-solid fa-chevron-right text-xs"></i>
-                            </a>
-                        </div>
-
-                        <!-- FAQ Accordion -->
-                        <div class="pt-4 space-y-2">
-                            <h5 class="font-bold text-slate-700 text-sm">Frequently Asked Questions</h5>
-                            <details class="bg-slate-50 rounded-xl p-3 border border-slate-200 text-xs text-slate-600 cursor-pointer">
-                                <summary class="font-bold text-navy">How fast is the turnaround time?</summary>
-                                <p class="mt-2">Standard washes are processed and delivered back within 24 hours. Express same-day wash is available upon request.</p>
-                            </details>
-                            <details class="bg-slate-50 rounded-xl p-3 border border-slate-200 text-xs text-slate-600 cursor-pointer">
-                                <summary class="font-bold text-navy">How are payments handled?</summary>
-                                <p class="mt-2">We accept M-PESA payments upon delivery or drop-off. Admin records successful payments on your account.</p>
-                            </details>
-                        </div>
-                    </div>
-
-                    <!-- Interactive Live Support Simulator -->
-                    <div class="bg-slate-900 rounded-2xl p-4 text-white flex flex-col justify-between h-[400px]">
-                        <div class="flex items-center justify-between border-b border-white/10 pb-3">
-                            <div class="flex items-center gap-2">
-                                <div class="w-3 h-3 rounded-full bg-emerald-400 animate-ping"></div>
-                                <span class="font-bold text-xs text-slate-200">SparkSpin Customer Desk Assistant</span>
-                            </div>
-                            <span class="text-[10px] bg-white/10 px-2 py-0.5 rounded text-sparkyellow">Online</span>
-                        </div>
-
-                        <!-- Message Chat Screen -->
-                        <div id="chat-messages" class="flex-grow overflow-y-auto space-y-3 py-3 px-1 custom-scrollbar text-xs">
-                            <div class="bg-white/10 p-3 rounded-xl max-w-[85%] text-slate-200">
-                                👋 Hello! Welcome to SparkSpin Laundry Co. How can we help you today? Leave us a message below!
-                            </div>
-                        </div>
-
-                        <!-- Message Input -->
-                        <form onsubmit="handleLiveChat(event)" class="flex gap-2 pt-2 border-t border-white/10">
-                            <input type="text" id="chat-input" required placeholder="Type your inquiry..." class="w-full bg-white/10 text-white placeholder-slate-400 px-3 py-2 rounded-xl text-xs focus:outline-none focus:ring-1 focus:ring-sparkyellow">
-                            <button type="submit" class="bg-sparkyellow text-navy font-bold px-4 py-2 rounded-xl text-xs hover:bg-sparkyellow-dark transition-all">
-                                Send
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- VIEW 4: ADMIN MANAGEMENT DASHBOARD -->
-        <section id="view-admin" class="hidden space-y-6">
-            <!-- Admin Top Analytics Header -->
-            <div class="bg-navy rounded-2xl p-6 text-white shadow-xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                <div>
-                    <span class="text-xs text-sparkyellow font-bold uppercase tracking-wider">SparkSpin System Control Panel</span>
-                    <h2 class="text-2xl font-black">Admin Management Dashboard</h2>
-                </div>
-                <div class="flex items-center gap-2">
-                    <button onclick="resetSystemData()" class="bg-rose-600/30 hover:bg-rose-600 text-rose-200 text-xs px-3 py-2 rounded-lg border border-rose-500/30 transition-all flex items-center gap-1.5">
-                        <i class="fa-solid fa-rotate-left"></i> Reset Demo Data
-                    </button>
-                    <button onclick="switchView('client')" class="bg-white/10 hover:bg-white/20 text-xs px-3 py-2 rounded-lg transition-all">
-                        Exit Admin
+                    <button onclick="applyCalcToForm()" class="px-5 py-2.5 bg-cyan-500 hover:bg-cyan-400 text-navy-900 font-bold rounded-xl transition shadow-md text-sm">
+                        Use Calculated Order
                     </button>
                 </div>
             </div>
 
-            <!-- Key Metrics Overview -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-200">
-                    <div class="text-xs font-semibold text-slate-500">Total Orders</div>
-                    <div class="text-2xl font-black text-navy mt-1" id="dash-total-orders">0</div>
-                    <div class="text-[11px] text-emerald-600 font-bold mt-1" id="dash-delivered-orders">0 Delivered</div>
-                </div>
-                <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-200">
-                    <div class="text-xs font-semibold text-slate-500">Total Revenue</div>
-                    <div class="text-2xl font-black text-emerald-600 mt-1" id="dash-total-revenue">0 KSh</div>
-                    <div class="text-[11px] text-slate-400 mt-1">Successful payments</div>
-                </div>
-                <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-200">
-                    <div class="text-xs font-semibold text-slate-500">Registered Clients</div>
-                    <div class="text-2xl font-black text-cyanbrand mt-1" id="dash-total-clients">0</div>
-                    <div class="text-[11px] text-slate-400 mt-1">Recorded in database</div>
-                </div>
-                <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-200">
-                    <div class="text-xs font-semibold text-slate-500">Marketers (Claimed/Total)</div>
-                    <div class="text-2xl font-black text-sparkyellow-dark mt-1" id="dash-total-marketers">0</div>
-                    <div class="text-[11px] text-slate-400 mt-1" id="dash-total-referrals">0 Total Referrals</div>
-                </div>
-            </div>
+            <!-- Order Booking Form -->
+            <div class="max-w-xl mx-auto bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 shadow-xl space-y-4">
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-700 pb-2 flex items-center gap-2">
+                    <i class="fa-solid fa-calendar-check text-cyan-500 dark:text-cyan-400"></i> Place Laundry Order
+                </h3>
 
-            <!-- Admin Section Tabs -->
-            <div class="flex border-b border-slate-200 gap-2 overflow-x-auto pb-1">
-                <button id="admin-tab-btn-orders" onclick="switchAdminTab('orders')" class="px-4 py-2 font-bold text-sm text-navy border-b-2 border-sparkyellow flex items-center gap-2 shrink-0">
-                    <i class="fa-solid fa-list-check"></i> Daily Orders & Payments
-                </button>
-                <button id="admin-tab-btn-clients" onclick="switchAdminTab('clients')" class="px-4 py-2 font-bold text-sm text-slate-500 hover:text-navy border-b-2 border-transparent flex items-center gap-2 shrink-0">
-                    <i class="fa-solid fa-address-book"></i> Client Directory
-                </button>
-                <button id="admin-tab-btn-marketers" onclick="switchAdminTab('marketers')" class="px-4 py-2 font-bold text-sm text-slate-500 hover:text-navy border-b-2 border-transparent flex items-center gap-2 shrink-0">
-                    <i class="fa-solid fa-bullhorn"></i> Marketer Registration & Codes
-                </button>
-            </div>
+                <!-- Auto Referral Banner (shows if URL contains ?ref=MK-XXXX) -->
+                <div id="autoRefBanner" class="hidden bg-cyan-500/10 border border-cyan-500/30 text-cyan-700 dark:text-cyan-300 p-3 rounded-xl text-xs flex items-center gap-2">
+                    <i class="fa-solid fa-circle-check text-base"></i>
+                    <span>Marketer referral code applied automatically from link!</span>
+                </div>
 
-            <!-- ADMIN TAB 1: ORDERS & PAYMENTS -->
-            <div id="admin-tab-orders" class="space-y-4">
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="font-bold text-lg text-navy">Record New Order</h3>
-                        <span class="text-xs bg-cyan-50 text-cyanbrand font-semibold px-2.5 py-1 rounded-full">Date auto-logs</span>
+                <form id="orderForm" onsubmit="handlePlaceOrder(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">Full Name</label>
+                        <input type="text" id="custName" required placeholder="e.g. Mary Wanjiku" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-2 text-sm focus:border-cyan-400 focus:outline-none">
                     </div>
 
-                    <form onsubmit="saveNewOrder(event)" class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <div class="grid grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Select / Client Name</label>
-                            <input type="text" id="order-client-name" required placeholder="Client name" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-sparkyellow focus:outline-none">
+                            <label class="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">Phone Number</label>
+                            <input type="tel" id="custPhone" required placeholder="0712345678" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-2 text-sm focus:border-cyan-400 focus:outline-none">
                         </div>
                         <div>
-                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Service Type</label>
-                            <select id="order-service-type" required class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-sparkyellow focus:outline-none bg-white">
-                                <option value="Laundry Basket (Large)">Laundry Basket (Large - 400/=)</option>
-                                <option value="Laundry Basket (Medium)">Laundry Basket (Medium - 350/=)</option>
-                                <option value="Laundry Basket (Small)">Laundry Basket (Small - 300/=)</option>
-                                <option value="Duvet Clean 4x6">Duvet Clean 4x6 (250/=)</option>
-                                <option value="Duvet Clean 5x6">Duvet Clean 5x6 (300/=)</option>
-                                <option value="Duvet Clean 6x6">Duvet Clean 6x6 (350/=)</option>
-                                <option value="Fluffy Mat">Fluffy Mat (250/=)</option>
-                                <option value="Door Mat">Door Mat (70/=)</option>
-                                <option value="Hard Carpet Large">Hard Carpet Large (450/=)</option>
-                                <option value="Hard Carpet Small">Hard Carpet Small (350/=)</option>
+                            <label class="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">Select Location</label>
+                            <select id="custLoc" required class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-2 text-sm focus:border-cyan-400 focus:outline-none">
+                                <option value="" disabled selected>Select Estate/Apt</option>
+                                <option value="Springville Phase 1">Springville Phase 1</option>
+                                <option value="Springville Phase 2">Springville Phase 2</option>
+                                <option value="Springville Heights">Springville Heights</option>
+                                <option value="Springville Court">Springville Court</option>
+                                <option value="Other Area">Other / Nearby Area</option>
                             </select>
                         </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Amount Charged (KSh)</label>
-                            <input type="number" id="order-amount" required placeholder="400" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-sparkyellow focus:outline-none">
+                            <label class="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">Order Details Summary</label>
+                            <input type="text" id="custPkg" required placeholder="Select items above or type" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-2 text-sm focus:border-cyan-400 focus:outline-none">
                         </div>
                         <div>
-                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Referred By Marketer Code (Optional)</label>
-                            <input type="text" id="order-marketer-code" placeholder="e.g. MK-TEST" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-sparkyellow focus:outline-none font-mono uppercase">
+                            <label class="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">Marketer Referral Code</label>
+                            <input type="text" id="custRefCode" placeholder="e.g. MK-102" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-2 text-sm focus:border-cyan-400 focus:outline-none">
                         </div>
-                        <div class="md:col-span-4 flex justify-end">
-                            <button type="submit" class="bg-navy text-white font-bold text-xs px-6 py-2.5 rounded-xl hover:bg-navy-800 transition-all flex items-center gap-2">
-                                <i class="fa-solid fa-plus-circle"></i> Log Order Entry
-                            </button>
-                        </div>
-                    </form>
+                    </div>
+
+                    <button type="submit" class="w-full py-3 bg-gradient-to-r from-cyan-400 to-gold-400 text-navy-900 font-extrabold rounded-xl hover:opacity-95 transition shadow-lg flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> Send Order via WhatsApp
+                    </button>
+                </form>
+            </div>
+        </section>
+
+
+        <!-- ================= MARKETER DASHBOARD SECTION ================= -->
+        <section id="tab-marketer" class="tab-content hidden space-y-6">
+            <!-- Marketer Auth Box -->
+            <div id="marketerAuthCard" class="max-w-md mx-auto bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 shadow-xl">
+                <div class="text-center mb-6">
+                    <div class="w-12 h-12 bg-gold-400/10 text-gold-500 dark:text-gold-400 rounded-xl flex items-center justify-center text-xl mx-auto mb-2">
+                        <i class="fa-solid fa-user-lock"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white">Marketer Login</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Access your referral dashboard & commissions</p>
+                </div>
+                <form onsubmit="handleMarketerLogin(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">Phone Number</label>
+                        <input type="tel" id="mktLoginPhone" required placeholder="07XXXXXXXX" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-2 text-sm focus:border-gold-400 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">Password</label>
+                        <input type="password" id="mktLoginPass" required placeholder="••••••••" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-2 text-sm focus:border-gold-400 focus:outline-none">
+                    </div>
+                    <button type="submit" class="w-full py-2.5 bg-gold-400 text-navy-900 font-bold rounded-xl hover:bg-gold-500 transition">
+                        Login to Dashboard
+                    </button>
+                </form>
+            </div>
+
+            <!-- Marketer Dashboard View (Hidden until logged in) -->
+            <div id="marketerDashboardView" class="hidden space-y-6">
+                <!-- Header Banner & Unique Copy Link -->
+                <div class="bg-gradient-to-r from-slate-800 to-navy-800 border border-slate-700 rounded-2xl p-6 text-white flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div>
+                        <span class="text-xs font-bold text-gold-400 bg-gold-400/10 border border-gold-400/20 px-3 py-1 rounded-full uppercase">Approved Marketer</span>
+                        <h2 class="text-2xl font-bold mt-2" id="mktDashName">Welcome, Marketer</h2>
+                        <p class="text-slate-300 text-sm">Referral Code: <span id="mktDashCode" class="text-cyan-400 font-mono font-bold"></span></p>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-2">
+                        <button onclick="copyMarketerReferralLink()" class="px-4 py-2 bg-cyan-500 hover:bg-cyan-400 text-navy-900 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow">
+                            <i class="fa-solid fa-copy"></i> Copy Referral Link
+                        </button>
+                        <button onclick="logoutMarketer()" class="px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-xl text-xs font-bold text-slate-300">
+                            <i class="fa-solid fa-right-from-bracket mr-1"></i> Logout
+                        </button>
+                    </div>
                 </div>
 
-                <!-- Orders Log Table -->
-                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
-                    <div class="p-4 border-b border-slate-100 flex justify-between items-center">
-                        <h4 class="font-bold text-navy text-sm">Monthly Order Records</h4>
-                        <span class="text-xs text-slate-400">Manage status & payments</span>
+                <!-- Reward Bonus Progress Bar -->
+                <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 space-y-2">
+                    <div class="flex justify-between text-xs font-bold text-slate-700 dark:text-slate-300">
+                        <span>Reward Bonus Progress</span>
+                        <span id="mktProgressText">0 / 10 Referrals</span>
+                    </div>
+                    <div class="w-full h-3 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+                        <div id="mktProgressBar" class="h-full bg-gradient-to-r from-cyan-400 to-gold-400 w-0 transition-all duration-500"></div>
+                    </div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Reach 10 referrals to unlock the 300 KSh milestone reward bonus!</p>
+                </div>
+
+                <!-- Metrics Overview -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-5 rounded-2xl">
+                        <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Total Valid Referrals</p>
+                        <p id="mktDashRefCount" class="text-3xl font-extrabold text-slate-900 dark:text-white mt-1">0</p>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-5 rounded-2xl">
+                        <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Earned Reward Balance</p>
+                        <p id="mktDashReward" class="text-3xl font-extrabold text-gold-500 dark:text-gold-400 mt-1">0 KSh</p>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-5 rounded-2xl flex flex-col justify-between">
+                        <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Commission System</p>
+                        <p class="text-xs text-slate-600 dark:text-slate-300 mt-1">2 refs = 50 KSh | 10 refs = 300 KSh</p>
+                    </div>
+                </div>
+
+                <!-- Withdrawal Request Card -->
+                <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 space-y-4">
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                        <i class="fa-solid fa-wallet text-gold-500 dark:text-gold-400"></i> Withdraw Commission Rewards
+                    </h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">Alert the admin via direct WhatsApp message to approve and release your accumulated reward money to your M-Pesa line.</p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 items-center">
+                        <input type="number" id="withdrawAmount" placeholder="Amount to withdraw (KSh)" class="w-full sm:w-64 bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-2.5 text-sm focus:border-gold-400 focus:outline-none">
+                        <button onclick="triggerWithdrawal()" class="w-full sm:w-auto px-6 py-2.5 bg-gold-400 hover:bg-gold-500 text-navy-900 font-bold rounded-xl transition flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp"></i> Alert Admin to Release Funds
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Referrals Table -->
+                <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden">
+                    <div class="p-4 border-b border-slate-200 dark:border-slate-700">
+                        <h3 class="font-bold text-slate-900 dark:text-white text-sm">Your Referred Clients</h3>
                     </div>
                     <div class="overflow-x-auto">
-                        <table class="w-full text-left text-xs text-slate-600">
-                            <thead class="bg-slate-50 uppercase text-[10px] font-bold text-slate-500 border-b border-slate-200">
+                        <table class="w-full text-left text-sm text-slate-700 dark:text-slate-300">
+                            <thead class="bg-slate-50 dark:bg-slate-900/50 text-xs text-slate-500 uppercase">
                                 <tr>
+                                    <th class="p-3">Client Name</th>
+                                    <th class="p-3">Location</th>
+                                    <th class="p-3">Order Status</th>
                                     <th class="p-3">Date</th>
-                                    <th class="p-3">Client</th>
-                                    <th class="p-3">Service</th>
-                                    <th class="p-3">Amount</th>
-                                    <th class="p-3">Delivery Status</th>
-                                    <th class="p-3">Payment</th>
-                                    <th class="p-3">Marketer Code</th>
-                                    <th class="p-3 text-right">Action</th>
                                 </tr>
                             </thead>
-                            <tbody id="admin-orders-table-body" class="divide-y divide-slate-100">
-                                <!-- Dynamic rendering -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ADMIN TAB 2: CLIENT DIRECTORY -->
-            <div id="admin-tab-clients" class="hidden space-y-4">
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
-                    <h3 class="font-bold text-lg text-navy mb-4">Register New Client Entry</h3>
-                    <form onsubmit="saveNewClient(event)" class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div>
-                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Full Client Name</label>
-                            <input type="text" id="client-name" required placeholder="e.g. Mary Wanjiku" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-sparkyellow focus:outline-none">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Mobile Phone Number</label>
-                            <input type="tel" id="client-phone" required placeholder="0700123456" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-sparkyellow focus:outline-none">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Location / Apartment / Estate</label>
-                            <input type="text" id="client-location" required placeholder="e.g. Ndagani, Sunshine Heights Apt 3B" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-sparkyellow focus:outline-none">
-                        </div>
-                        <div class="md:col-span-3 flex justify-end">
-                            <button type="submit" class="bg-navy text-white font-bold text-xs px-6 py-2.5 rounded-xl hover:bg-navy-800 transition-all flex items-center gap-2">
-                                <i class="fa-solid fa-user-plus"></i> Save Client Record
-                            </button>
-                        </div>
-                    </form>
-                </div>
-
-                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
-                    <div class="p-4 border-b border-slate-100 flex justify-between items-center">
-                        <h4 class="font-bold text-navy text-sm">Registered Client Directory</h4>
-                    </div>
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-left text-xs text-slate-600">
-                            <thead class="bg-slate-50 uppercase text-[10px] font-bold text-slate-500 border-b border-slate-200">
-                                <tr>
-                                    <th class="p-3">Client ID</th>
-                                    <th class="p-3">Name</th>
-                                    <th class="p-3">Phone</th>
-                                    <th class="p-3">Location / Apartment</th>
-                                    <th class="p-3 text-right">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody id="admin-clients-table-body" class="divide-y divide-slate-100">
-                                <!-- Dynamic Client Rows -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ADMIN TAB 3: MARKETERS & INVITATION CODES -->
-            <div id="admin-tab-marketers" class="hidden space-y-4">
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
-                    <div class="flex justify-between items-center mb-4">
-                        <div>
-                            <h3 class="font-bold text-lg text-navy">Admin-Only Marketer Registration</h3>
-                            <p class="text-xs text-slate-500">Only Admin can issue single-use invitation codes to new marketers.</p>
-                        </div>
-                        <span class="text-xs bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full font-bold">Single-Use Code System</span>
-                    </div>
-
-                    <form onsubmit="saveNewMarketer(event)" class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div>
-                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Marketer Full Name</label>
-                            <input type="text" id="marketer-name" required placeholder="e.g. John Marketer" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-sparkyellow focus:outline-none">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Phone Number (WhatsApp)</label>
-                            <input type="tel" id="marketer-phone" required placeholder="0712345678" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-sparkyellow focus:outline-none">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Generated Invite Code</label>
-                            <div class="flex gap-2">
-                                <input type="text" id="marketer-code" required readonly placeholder="e.g. MK-7782" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs font-mono uppercase bg-slate-50 text-navy font-bold">
-                                <button type="button" onclick="generateRandomCode()" class="bg-sparkyellow hover:bg-sparkyellow-dark px-3 py-2 rounded-xl text-xs font-bold text-navy shrink-0 flex items-center gap-1">
-                                    <i class="fa-solid fa-arrows-rotate"></i> New
-                                </button>
-                            </div>
-                        </div>
-                        <div class="md:col-span-3 flex justify-end">
-                            <button type="submit" class="bg-navy text-white font-bold text-xs px-6 py-2.5 rounded-xl hover:bg-navy-800 transition-all flex items-center gap-2">
-                                <i class="fa-solid fa-paper-plane text-sparkyellow"></i> Register & Issue Invite Code
-                            </button>
-                        </div>
-                    </form>
-                </div>
-
-                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
-                    <div class="p-4 border-b border-slate-100 flex justify-between items-center">
-                        <h4 class="font-bold text-navy text-sm">Issued Marketer Codes & Account Statuses</h4>
-                    </div>
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-left text-xs text-slate-600">
-                            <thead class="bg-slate-50 uppercase text-[10px] font-bold text-slate-500 border-b border-slate-200">
-                                <tr>
-                                    <th class="p-3">Invite Code</th>
-                                    <th class="p-3">Marketer Name</th>
-                                    <th class="p-3">Phone</th>
-                                    <th class="p-3">Status</th>
-                                    <th class="p-3">Referrals</th>
-                                    <th class="p-3">Owed Earnings</th>
-                                    <th class="p-3 text-right">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody id="admin-marketers-table-body" class="divide-y divide-slate-100">
-                                <!-- Dynamic Marketers Rows -->
+                            <tbody id="mktReferralsTable" class="divide-y divide-slate-200 dark:divide-slate-700/50">
+                                <!-- Populated dynamically -->
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </section>
+
+
+        <!-- ================= ADMIN PORTAL SECTION ================= -->
+        <section id="tab-admin" class="tab-content hidden space-y-6">
+            <!-- Admin Security Login Card -->
+            <div id="adminAuthCard" class="max-w-md mx-auto bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 shadow-xl">
+                <div class="text-center mb-6">
+                    <div class="w-12 h-12 bg-cyan-400/10 text-cyan-500 dark:text-cyan-400 rounded-xl flex items-center justify-center text-xl mx-auto mb-2">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white">Admin Security Access</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Enter secure admin password</p>
+                </div>
+                <form onsubmit="handleAdminLogin(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">Admin Password</label>
+                        <input type="password" id="adminPassInput" required placeholder="Enter password" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-2 text-sm focus:border-cyan-400 focus:outline-none">
+                    </div>
+                    <button type="submit" class="w-full py-2.5 bg-cyan-500 text-navy-900 font-bold rounded-xl hover:bg-cyan-400 transition">
+                        Authenticate
+                    </button>
+                </form>
+            </div>
+
+            <!-- Admin Control Panel (Hidden until authenticated) -->
+            <div id="adminPanel" class="hidden space-y-6">
+                
+                <!-- Admin Analytics Counters -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-5 rounded-2xl">
+                        <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Estimated Revenue</p>
+                        <p id="adminTotalRevenue" class="text-3xl font-extrabold text-gold-500 dark:text-gold-400 mt-1">0 KSh</p>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-5 rounded-2xl">
+                        <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Approved Marketers</p>
+                        <p id="adminActiveMarketers" class="text-3xl font-extrabold text-cyan-500 dark:text-cyan-400 mt-1">0</p>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-5 rounded-2xl">
+                        <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Pending Orders</p>
+                        <p id="adminPendingOrders" class="text-3xl font-extrabold text-amber-500 mt-1">0</p>
+                    </div>
+                </div>
+
+                <!-- Admin Header Actions -->
+                <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div>
+                        <h2 class="text-2xl font-bold text-slate-900 dark:text-white">System Control Panel</h2>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Manage marketers, orders, CSV exports, and security</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="exportOrdersCSV()" class="px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-navy-900 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow">
+                            <i class="fa-solid fa-file-csv"></i> Export CSV
+                        </button>
+                        <button onclick="togglePasswordChangeModal()" class="px-4 py-2 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-800 dark:text-slate-200 rounded-xl text-xs font-bold flex items-center gap-1.5">
+                            <i class="fa-solid fa-key text-gold-500 dark:text-gold-400"></i> Change Password
+                        </button>
+                        <button onclick="logoutAdmin()" class="px-4 py-2 bg-rose-500/10 text-rose-500 hover:bg-rose-500/20 border border-rose-500/20 rounded-xl text-xs font-bold">
+                            Logout
+                        </button>
+                    </div>
+                </div>
+
+                <!-- REGISTER MARKETER CARD -->
+                <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 space-y-4">
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-700 pb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-user-plus text-cyan-500 dark:text-cyan-400"></i> Register & Approve Marketer
+                    </h3>
+                    
+                    <form onsubmit="handleAddMarketer(event)" class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <div>
+                            <label class="block text-xs text-slate-500 mb-1">Marketer Name</label>
+                            <input type="text" id="newMktName" required placeholder="John Doe" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-2 text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-slate-500 mb-1">Phone Number (Login ID)</label>
+                            <input type="tel" id="newMktPhone" required placeholder="0712345678" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-2 text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-slate-500 mb-1">Assign Password</label>
+                            <input type="text" id="newMktPass" required placeholder="Set password" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-2 text-sm">
+                        </div>
+                        <div class="flex items-end">
+                            <button type="submit" class="w-full py-2 bg-cyan-500 text-navy-900 font-bold rounded-xl hover:bg-cyan-400 transition text-sm">
+                                Create & Approve
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- MARKETERS MANAGEMENT TABLE -->
+                <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden">
+                    <div class="p-4 border-b border-slate-200 dark:border-slate-700">
+                        <h3 class="font-bold text-slate-900 dark:text-white text-sm">Active Approved Marketers</h3>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm text-slate-700 dark:text-slate-300">
+                            <thead class="bg-slate-50 dark:bg-slate-900/50 text-xs text-slate-500 uppercase">
+                                <tr>
+                                    <th class="p-3">Ref Code</th>
+                                    <th class="p-3">Name</th>
+                                    <th class="p-3">Phone</th>
+                                    <th class="p-3">Total Referrals</th>
+                                    <th class="p-3">Reward Balance</th>
+                                    <th class="p-3">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminMarketersTable" class="divide-y divide-slate-200 dark:divide-slate-700/50">
+                                <!-- Dynamic content -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- ORDERS MANAGEMENT TABLE WITH FILTER -->
+                <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden space-y-4">
+                    <div class="p-4 border-b border-slate-200 dark:border-slate-700 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <h3 class="font-bold text-slate-900 dark:text-white text-sm">Client Orders & Tracking</h3>
+                        
+                        <!-- Search & Status Filter Controls -->
+                        <div class="flex flex-wrap items-center gap-2 w-full md:w-auto">
+                            <input type="text" id="adminSearchInput" oninput="renderAdminTables()" placeholder="Search phone or name..." class="bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-1.5 text-xs">
+                            <select id="adminStatusFilter" onchange="renderAdminTables()" class="bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-1.5 text-xs">
+                                <option value="All">All Statuses</option>
+                                <option value="Pending">Pending</option>
+                                <option value="Completed">Completed</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm text-slate-700 dark:text-slate-300">
+                            <thead class="bg-slate-50 dark:bg-slate-900/50 text-xs text-slate-500 uppercase">
+                                <tr>
+                                    <th class="p-3">Client</th>
+                                    <th class="p-3">Phone</th>
+                                    <th class="p-3">Location</th>
+                                    <th class="p-3">Package Details</th>
+                                    <th class="p-3">Marketer Code</th>
+                                    <th class="p-3">Status</th>
+                                    <th class="p-3">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminOrdersTable" class="divide-y divide-slate-200 dark:divide-slate-700/50">
+                                <!-- Dynamic content -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <!-- MODALS SECTION -->
-    <!-- MODAL: CLIENT BOOKING REQUEST -->
-    <div id="booking-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-white rounded-3xl max-w-md w-full p-6 space-y-4 shadow-2xl relative">
-            <button onclick="closeBookingModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600">
-                <i class="fa-solid fa-xmark text-lg"></i>
-            </button>
-            <div>
-                <span class="text-xs font-bold text-sparkyellow-dark uppercase">SparkSpin Quick Wash</span>
-                <h3 class="text-xl font-bold text-navy" id="modal-service-title">Request Wash</h3>
-            </div>
-
-            <form onsubmit="handleClientQuickBooking(event)" class="space-y-3">
-                <div>
-                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Your Name</label>
-                    <input type="text" id="modal-client-name" required placeholder="Enter your full name" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-sparkyellow focus:outline-none">
-                </div>
-                <div>
-                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Phone Number</label>
-                    <input type="tel" id="modal-client-phone" required placeholder="e.g. 0706765603" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-sparkyellow focus:outline-none">
-                </div>
-                <div>
-                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Pickup Location / Apartment</label>
-                    <input type="text" id="modal-client-location" required placeholder="e.g. Ndagani, Marine Gate 2" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-sparkyellow focus:outline-none">
-                </div>
-                <div>
-                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Referral / Marketer Code (If any)</label>
-                    <input type="text" id="modal-ref-code" placeholder="Optional marketer code" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs font-mono uppercase focus:ring-2 focus:ring-sparkyellow focus:outline-none">
-                </div>
-
-                <div class="pt-2">
-                    <button type="submit" class="w-full bg-sparkyellow hover:bg-sparkyellow-dark text-navy font-bold py-3 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-paper-plane"></i> Submit Order Request
-                    </button>
-                </div>
-            </form>
-        </div>
+    <!-- FLOATING QUICK CALL / WHATSAPP BUTTON (Mobile & Web) -->
+    <div class="fixed bottom-5 right-5 z-50 flex flex-col gap-2">
+        <a href="https://wa.me/254727932881" target="_blank" class="w-12 h-12 bg-emerald-500 text-white rounded-full flex items-center justify-center text-2xl shadow-xl hover:scale-110 transition">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
     </div>
 
-    <!-- MODAL: ADMIN AUTH PASSCODE -->
-    <div id="admin-auth-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-white rounded-3xl max-w-sm w-full p-6 space-y-4 shadow-2xl relative">
-            <button onclick="closeAdminAuthModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600">
-                <i class="fa-solid fa-xmark text-lg"></i>
-            </button>
-            <div class="text-center">
-                <div class="w-12 h-12 bg-navy text-sparkyellow rounded-full flex items-center justify-center mx-auto text-xl mb-2">
-                    <i class="fa-solid fa-user-shield"></i>
-                </div>
-                <h3 class="text-xl font-bold text-navy">Admin Portal Security</h3>
-                <p class="text-xs text-slate-500 mt-1">Enter Master Passcode to access system</p>
+    <!-- COMPLEX PASSWORD CHANGE MODAL -->
+    <div id="passwordModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
+        <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 max-w-md w-full space-y-4">
+            <div class="flex justify-between items-center border-b border-slate-200 dark:border-slate-700 pb-2">
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white">Update Admin Password</h3>
+                <button onclick="togglePasswordChangeModal()" class="text-slate-400 hover:text-slate-600 dark:hover:text-white"><i class="fa-solid fa-xmark"></i></button>
             </div>
-
-            <form onsubmit="verifyAdminPasscode(event)" class="space-y-4">
+            
+            <form onsubmit="handlePasswordChange(event)" class="space-y-4">
                 <div>
-                    <input type="password" id="admin-passcode-input" required placeholder="Passcode (Default: 1234)" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-center font-mono text-lg tracking-widest focus:ring-2 focus:ring-navy focus:outline-none">
+                    <label class="block text-xs text-slate-500 mb-1">New Complex Password</label>
+                    <input type="password" id="newAdminPass" required oninput="validatePasswordStrength(this.value)" placeholder="Enter new password" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-2 text-sm focus:border-cyan-400 focus:outline-none">
                 </div>
-                <button type="submit" class="w-full bg-navy text-white font-bold py-2.5 rounded-xl hover:bg-navy-800 transition-all">
-                    Unlock Dashboard
+
+                <!-- Password Complexity Checklist -->
+                <div class="bg-slate-100 dark:bg-slate-900/50 p-3 rounded-xl space-y-1 text-xs">
+                    <p class="font-semibold text-slate-500 mb-1">Password Requirements:</p>
+                    <div id="rule-len" class="text-slate-400"><i class="fa-solid fa-circle-xmark mr-1"></i> At least 8 characters</div>
+                    <div id="rule-upper" class="text-slate-400"><i class="fa-solid fa-circle-xmark mr-1"></i> Uppercase letter (A-Z)</div>
+                    <div id="rule-lower" class="text-slate-400"><i class="fa-solid fa-circle-xmark mr-1"></i> Lowercase letter (a-z)</div>
+                    <div id="rule-num" class="text-slate-400"><i class="fa-solid fa-circle-xmark mr-1"></i> At least one number (0-9)</div>
+                    <div id="rule-spec" class="text-slate-400"><i class="fa-solid fa-circle-xmark mr-1"></i> Special character (@, #, $, %, etc.)</div>
+                </div>
+
+                <button type="submit" id="savePassBtn" disabled class="w-full py-2.5 bg-slate-300 dark:bg-slate-700 text-slate-500 font-bold rounded-xl cursor-not-allowed transition">
+                    Update Password
                 </button>
             </form>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-navy text-white py-6 border-t border-white/10 text-xs mt-12">
-        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
-            <div>
-                <p class="font-bold text-sm text-sparkyellow">SparkSpin Laundry Co.</p>
-                <p class="text-slate-400 mt-0.5">Too busy for laundry? Don't stress - SparkSpin Laundry Co. has got you covered!</p>
-            </div>
-            <div class="text-slate-400">
-                <p>Free Delivery Areas: Marine, Ndagani, Chuka town, Slaughter, Mungoni</p>
-                <p class="text-[11px] text-slate-500 mt-1">&copy; 2026 SparkSpin Laundry Co. All rights reserved.</p>
-            </div>
-        </div>
+    <!-- FOOTER -->
+    <footer class="bg-white dark:bg-navy-900 border-t border-slate-200 dark:border-slate-800 py-4 text-center text-xs text-slate-500 transition-colors duration-200">
+        <p>&copy; 2026 SparkSpin Laundry Co. | Admin Support: 0727932881</p>
     </footer>
 
+    <!-- APP LOGIC & PERSISTENCE ENGINE -->
     <script>
-        // Default Persistent Storage Schema including Admin Invites System
-        const INITIAL_DATA = {
-            clients: [
-                { id: 'CLI-101', name: 'Mary Wanjiku', phone: '+254700001122', location: 'Ndagani, Sunrise Apt 4' },
-                { id: 'CLI-102', name: 'James Omondi', phone: '+254711223344', location: 'Chuka Town, Plaza Blk B' }
-            ],
-            marketers: [
-                { name: 'Peter Marketer', phone: '+254712345678', code: 'MK-TEST', password: '123', status: 'Claimed', referrals: 4 }
-            ],
-            orders: [
-                { id: 'ORD-801', date: '2026-09-28', clientName: 'Mary Wanjiku', service: 'Laundry Basket (Large)', amount: 400, delivered: true, paid: true, marketerCode: 'MK-TEST' },
-                { id: 'ORD-802', date: '2026-09-29', clientName: 'James Omondi', service: 'Duvet Clean 5x6', amount: 300, delivered: false, paid: false, marketerCode: '' }
-            ]
-        };
+        const ADMIN_PHONE = "0727932881";
+        
+        // Initial LocalStorage Defaults
+        if (!localStorage.getItem('adminPassword')) {
+            localStorage.setItem('adminPassword', 'Admin123!');
+        }
+        if (!localStorage.getItem('marketers')) {
+            localStorage.setItem('marketers', JSON.stringify([]));
+        }
+        if (!localStorage.getItem('orders')) {
+            localStorage.setItem('orders', JSON.stringify([]));
+        }
 
-        // Application State
-        let appData = { clients: [], marketers: [], orders: [] };
-        let activeMarketerSession = null;
-        let selectedBookingService = '';
+        let currentActiveMarketer = null;
+        let calcCounts = { basket: 0, duvet: 0, mats: 0 };
 
-        // Initialization
+        // On Page Load: Check URL parameters for ?ref=MK-XXXX
         window.addEventListener('DOMContentLoaded', () => {
-            loadStorage();
-            generateRandomCode();
-            renderAdminTables();
-            updateDashboardMetrics();
+            const urlParams = new URLSearchParams(window.location.search);
+            const refParam = urlParams.get('ref');
+            if (refParam) {
+                document.getElementById('custRefCode').value = refParam.toUpperCase();
+                document.getElementById('autoRefBanner').classList.remove('hidden');
+            }
         });
 
-        function loadStorage() {
-            const stored = localStorage.getItem('sparkspin_app_data');
-            if (stored) {
-                try {
-                    appData = JSON.parse(stored);
-                } catch(e) {
-                    appData = INITIAL_DATA;
-                }
+        // Theme Toggle
+        function toggleDarkMode() {
+            const html = document.documentElement;
+            const icon = document.getElementById('themeIcon');
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                icon.className = 'fa-solid fa-sun';
             } else {
-                appData = INITIAL_DATA;
-                saveStorage();
+                html.classList.add('dark');
+                icon.className = 'fa-solid fa-moon';
             }
         }
 
-        function saveStorage() {
-            localStorage.setItem('sparkspin_app_data', JSON.stringify(appData));
-            renderAdminTables();
-            updateDashboardMetrics();
-            if (activeMarketerSession) {
-                refreshMarketerPortalDisplay();
-            }
-        }
-
-        function resetSystemData() {
-            if (confirm("Reset all stored clients, orders, and marketer data back to demo defaults?")) {
-                appData = JSON.parse(JSON.stringify(INITIAL_DATA));
-                saveStorage();
-                showToast("System data reset to initial defaults!", "info");
-            }
-        }
-
-        // View Navigation
-        function switchView(viewName) {
-            document.getElementById('view-client').classList.add('hidden');
-            document.getElementById('view-offers').classList.add('hidden');
-            document.getElementById('view-support').classList.add('hidden');
-            document.getElementById('view-admin').classList.add('hidden');
-
-            document.querySelectorAll('nav button').forEach(btn => {
-                btn.className = "px-3 py-1.5 rounded-lg transition-all flex items-center gap-2 text-slate-200 hover:text-white hover:bg-white/10";
+        // Tab Switching Logic
+        function switchTab(tab) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('bg-cyan-500', 'text-navy-900');
+                el.classList.add('text-slate-600', 'dark:text-slate-300');
             });
 
-            if (viewName === 'client') {
-                document.getElementById('view-client').classList.remove('hidden');
-                document.getElementById('nav-client').className = "px-3 py-1.5 rounded-lg transition-all flex items-center gap-2 bg-sparkyellow text-navy font-bold shadow";
-            } else if (viewName === 'offers') {
-                document.getElementById('view-offers').classList.remove('hidden');
-                document.getElementById('nav-offers').className = "px-3 py-1.5 rounded-lg transition-all flex items-center gap-2 bg-sparkyellow text-navy font-bold shadow";
-            } else if (viewName === 'support') {
-                document.getElementById('view-support').classList.remove('hidden');
-                document.getElementById('nav-support').className = "px-3 py-1.5 rounded-lg transition-all flex items-center gap-2 bg-sparkyellow text-navy font-bold shadow";
-            } else if (viewName === 'admin') {
-                document.getElementById('view-admin').classList.remove('hidden');
-                document.getElementById('nav-admin').className = "px-3 py-1.5 rounded-lg transition-all flex items-center gap-2 bg-sparkyellow text-navy font-bold shadow";
+            document.getElementById(`tab-${tab}`).classList.remove('hidden');
+            const activeBtn = document.getElementById(`btn-${tab}`);
+            activeBtn.classList.add('bg-cyan-500', 'text-navy-900');
+            activeBtn.classList.remove('text-slate-600', 'dark:text-slate-300');
+        }
+
+        // Calculator Controls
+        function updateCalc(item, change) {
+            calcCounts[item] = Math.max(0, calcCounts[item] + change);
+            document.getElementById(`calc-${item}-qty`).innerText = calcCounts[item];
+            
+            const total = (calcCounts.basket * 250) + (calcCounts.duvet * 350) + (calcCounts.mats * 300);
+            document.getElementById('calc-total').innerText = `${total} KSh`;
+        }
+
+        function applyCalcToForm() {
+            const items = [];
+            if (calcCounts.basket > 0) items.push(`${calcCounts.basket} Basket(s)`);
+            if (calcCounts.duvet > 0) items.push(`${calcCounts.duvet} Duvet(s)`);
+            if (calcCounts.mats > 0) items.push(`${calcCounts.mats} Mat(s)`);
+
+            if (items.length === 0) {
+                alert('Please select at least one item in the calculator.');
+                return;
             }
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            document.getElementById('custPkg').value = items.join(', ');
+            document.getElementById('orderForm').scrollIntoView({ behavior: 'smooth' });
         }
 
-        function scrollToRates() {
-            document.getElementById('rates-section').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Admin Auth Modal
-        function openAdminAuth() {
-            document.getElementById('admin-auth-modal').classList.remove('hidden');
-        }
-
-        function closeAdminAuthModal() {
-            document.getElementById('admin-auth-modal').classList.add('hidden');
-        }
-
-        function verifyAdminPasscode(e) {
+        // Client Order Submissions
+        function handlePlaceOrder(e) {
             e.preventDefault();
-            const pass = document.getElementById('admin-passcode-input').value;
-            if (pass === '1234' || pass === 'admin') {
-                closeAdminAuthModal();
-                switchView('admin');
-                showToast("Admin authenticated successfully!", "success");
-            } else {
-                showToast("Invalid passcode! Try '1234'", "error");
-            }
-        }
-
-        // Admin Sub-Tab Control
-        function switchAdminTab(tab) {
-            document.getElementById('admin-tab-orders').classList.add('hidden');
-            document.getElementById('admin-tab-clients').classList.add('hidden');
-            document.getElementById('admin-tab-marketers').classList.add('hidden');
-
-            document.getElementById('admin-tab-btn-orders').className = "px-4 py-2 font-bold text-sm text-slate-500 hover:text-navy border-b-2 border-transparent flex items-center gap-2 shrink-0";
-            document.getElementById('admin-tab-btn-clients').className = "px-4 py-2 font-bold text-sm text-slate-500 hover:text-navy border-b-2 border-transparent flex items-center gap-2 shrink-0";
-            document.getElementById('admin-tab-btn-marketers').className = "px-4 py-2 font-bold text-sm text-slate-500 hover:text-navy border-b-2 border-transparent flex items-center gap-2 shrink-0";
-
-            if (tab === 'orders') {
-                document.getElementById('admin-tab-orders').classList.remove('hidden');
-                document.getElementById('admin-tab-btn-orders').className = "px-4 py-2 font-bold text-sm text-navy border-b-2 border-sparkyellow flex items-center gap-2 shrink-0";
-            } else if (tab === 'clients') {
-                document.getElementById('admin-tab-clients').classList.remove('hidden');
-                document.getElementById('admin-tab-btn-clients').className = "px-4 py-2 font-bold text-sm text-navy border-b-2 border-sparkyellow flex items-center gap-2 shrink-0";
-            } else if (tab === 'marketers') {
-                document.getElementById('admin-tab-marketers').classList.remove('hidden');
-                document.getElementById('admin-tab-btn-marketers').className = "px-4 py-2 font-bold text-sm text-navy border-b-2 border-sparkyellow flex items-center gap-2 shrink-0";
-            }
-        }
-
-        // Calculation Helpers for Referrals (2 Refers = 50 KSh, 10 Refers = 300 KSh)
-        function calculateMarketerEarnings(refCount) {
-            const tens = Math.floor(refCount / 10);
-            const remaining = refCount % 10;
-            const twos = Math.floor(remaining / 2);
-            return (tens * 300) + (twos * 50);
-        }
-
-        // Render Tables
-        function renderAdminTables() {
-            // Orders Table
-            const ordersBody = document.getElementById('admin-orders-table-body');
-            ordersBody.innerHTML = appData.orders.map((o, idx) => `
-                <tr class="hover:bg-slate-50">
-                    <td class="p-3 font-mono">${o.date}</td>
-                    <td class="p-3 font-bold text-navy">${escapeHtml(o.clientName)}</td>
-                    <td class="p-3">${escapeHtml(o.service)}</td>
-                    <td class="p-3 font-bold text-emerald-600">${o.amount} KSh</td>
-                    <td class="p-3">
-                        <button onclick="toggleOrderDelivery(${idx})" class="px-2.5 py-1 rounded-full text-[10px] font-bold ${o.delivered ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}">
-                            ${o.delivered ? 'Delivered' : 'Pending'}
-                        </button>
-                    </td>
-                    <td class="p-3">
-                        <button onclick="toggleOrderPayment(${idx})" class="px-2.5 py-1 rounded-full text-[10px] font-bold ${o.paid ? 'bg-blue-100 text-blue-800' : 'bg-rose-100 text-rose-800'}">
-                            ${o.paid ? 'Paid' : 'Unpaid'}
-                        </button>
-                    </td>
-                    <td class="p-3 font-mono text-slate-500">${o.marketerCode ? escapeHtml(o.marketerCode) : '-'}</td>
-                    <td class="p-3 text-right">
-                        <button onclick="deleteOrder(${idx})" class="text-rose-500 hover:text-rose-700 p-1"><i class="fa-solid fa-trash"></i></button>
-                    </td>
-                </tr>
-            `).join('') || `<tr><td colspan="8" class="p-4 text-center text-slate-400">No orders recorded yet.</td></tr>`;
-
-            // Clients Table
-            const clientsBody = document.getElementById('admin-clients-table-body');
-            clientsBody.innerHTML = appData.clients.map((c, idx) => `
-                <tr class="hover:bg-slate-50">
-                    <td class="p-3 font-mono text-slate-400">${c.id}</td>
-                    <td class="p-3 font-bold text-navy">${escapeHtml(c.name)}</td>
-                    <td class="p-3">${escapeHtml(c.phone)}</td>
-                    <td class="p-3">${escapeHtml(c.location)}</td>
-                    <td class="p-3 text-right">
-                        <button onclick="deleteClient(${idx})" class="text-rose-500 hover:text-rose-700 p-1"><i class="fa-solid fa-trash"></i></button>
-                    </td>
-                </tr>
-            `).join('') || `<tr><td colspan="5" class="p-4 text-center text-slate-400">No registered clients.</td></tr>`;
-
-            // Marketers Table
-            const marketersBody = document.getElementById('admin-marketers-table-body');
-            marketersBody.innerHTML = appData.marketers.map((m, idx) => {
-                const earned = calculateMarketerEarnings(m.referrals || 0);
-                const isClaimed = m.status === 'Claimed';
-                return `
-                <tr class="hover:bg-slate-50">
-                    <td class="p-3 font-mono font-bold text-sparkyellow-dark">${escapeHtml(m.code)}</td>
-                    <td class="p-3 font-bold text-navy">${escapeHtml(m.name)}</td>
-                    <td class="p-3">${escapeHtml(m.phone)}</td>
-                    <td class="p-3">
-                        <span class="px-2.5 py-1 rounded-full text-[10px] font-bold ${isClaimed ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}">
-                            ${isClaimed ? 'Account Active' : 'Pending Activation'}
-                        </span>
-                    </td>
-                    <td class="p-3 font-bold text-cyanbrand">${m.referrals || 0}</td>
-                    <td class="p-3 font-bold text-emerald-600">${earned} KSh</td>
-                    <td class="p-3 text-right flex items-center justify-end gap-2">
-                        <button onclick="sendCodeWhatsApp('${m.phone}', '${m.code}', '${m.name}')" title="Send Code via WhatsApp" class="bg-emerald-50 text-emerald-600 hover:bg-emerald-100 p-1.5 rounded-lg"><i class="fa-brands fa-whatsapp"></i></button>
-                        <button onclick="deleteMarketer(${idx})" title="Delete/Revoke" class="text-rose-500 hover:text-rose-700 p-1.5"><i class="fa-solid fa-trash"></i></button>
-                    </td>
-                </tr>
-                `;
-            }).join('') || `<tr><td colspan="7" class="p-4 text-center text-slate-400">No active marketer codes.</td></tr>`;
-        }
-
-        // Metrics Calculator
-        function updateDashboardMetrics() {
-            const totalOrders = appData.orders.length;
-            const deliveredOrders = appData.orders.filter(o => o.delivered).length;
-            const totalRevenue = appData.orders.filter(o => o.paid).reduce((acc, curr) => acc + Number(curr.amount), 0);
-            const totalClients = appData.clients.length;
-            const claimedMarketers = appData.marketers.filter(m => m.status === 'Claimed').length;
-            const totalMarketers = appData.marketers.length;
-            const totalReferrals = appData.marketers.reduce((acc, curr) => acc + Number(curr.referrals || 0), 0);
-
-            document.getElementById('dash-total-orders').innerText = totalOrders;
-            document.getElementById('dash-delivered-orders').innerText = `${deliveredOrders} Delivered`;
-            document.getElementById('dash-total-revenue').innerText = `${totalRevenue.toLocaleString()} KSh`;
-            document.getElementById('dash-total-clients').innerText = totalClients;
-            document.getElementById('dash-total-marketers').innerText = `${claimedMarketers}/${totalMarketers}`;
-            document.getElementById('dash-total-referrals').innerText = `${totalReferrals} Total Referrals`;
-        }
-
-        // Handlers: Save Orders, Clients, Marketer Invites
-        function saveNewOrder(e) {
-            e.preventDefault();
-            const clientName = document.getElementById('order-client-name').value;
-            const service = document.getElementById('order-service-type').value;
-            const amount = document.getElementById('order-amount').value;
-            const marketerCode = document.getElementById('order-marketer-code').value.trim().toUpperCase();
+            const name = document.getElementById('custName').value;
+            const phone = document.getElementById('custPhone').value;
+            const loc = document.getElementById('custLoc').value;
+            const pkg = document.getElementById('custPkg').value;
+            const refCode = document.getElementById('custRefCode').value.trim().toUpperCase();
 
             const newOrder = {
-                id: 'ORD-' + Math.floor(100 + Math.random() * 900),
-                date: new Date().toISOString().split('T')[0],
-                clientName,
-                service,
-                amount: Number(amount),
-                delivered: false,
-                paid: true,
-                marketerCode
+                id: Date.now(),
+                name, phone, loc, pkg, refCode,
+                status: 'Pending',
+                date: new Date().toLocaleDateString()
             };
 
-            if (marketerCode) {
-                const mark = appData.marketers.find(m => m.code.toUpperCase() === marketerCode);
-                if (mark) {
-                    mark.referrals = (mark.referrals || 0) + 1;
-                    showToast(`Referral attributed to Marketer ${mark.name}!`, "success");
-                }
-            }
+            const orders = JSON.parse(localStorage.getItem('orders'));
+            orders.push(newOrder);
+            localStorage.setItem('orders', JSON.stringify(orders));
 
-            appData.orders.unshift(newOrder);
-            saveStorage();
-            e.target.reset();
-            showToast("New daily order logged successfully!", "success");
+            const msg = `Hello SparkSpin Laundry, I would like to place an order:%0A- *Name:* ${name}%0A- *Phone:* ${phone}%0A- *Location:* ${loc}%0A- *Order Details:* ${pkg}${refCode ? `%0A- *Ref Code:* ${refCode}` : ''}`;
+            window.open(`https://wa.me/254727932881?text=${msg}`, '_blank');
+
+            alert('Order placed successfully! Redirecting to WhatsApp.');
+            document.getElementById('orderForm').reset();
         }
 
-        function saveNewClient(e) {
-            e.preventDefault();
-            const name = document.getElementById('client-name').value;
-            const phone = document.getElementById('client-phone').value;
-            const location = document.getElementById('client-location').value;
-
-            appData.clients.unshift({
-                id: 'CLI-' + Math.floor(100 + Math.random() * 900),
-                name,
-                phone,
-                location
-            });
-            saveStorage();
-            e.target.reset();
-            showToast("Client added to database!", "success");
-        }
-
-        // Admin Issues New Single-Use Marketer Code
-        function saveNewMarketer(e) {
-            e.preventDefault();
-            const name = document.getElementById('marketer-name').value;
-            const phone = document.getElementById('marketer-phone').value;
-            const code = document.getElementById('marketer-code').value.trim().toUpperCase();
-
-            if (appData.marketers.some(m => m.code.toUpperCase() === code)) {
-                showToast("Code already exists! Click 'New' for another.", "error");
-                return;
-            }
-
-            appData.marketers.unshift({ 
-                name, 
-                phone, 
-                code, 
-                password: null, 
-                status: 'Pending', 
-                referrals: 0 
-            });
-
-            saveStorage();
-            e.target.reset();
-            generateRandomCode();
-            showToast(`Invite code ${code} generated for ${name}!`, "success");
-        }
-
-        function generateRandomCode() {
-            document.getElementById('marketer-code').value = 'MK-' + Math.floor(1000 + Math.random() * 9000);
-        }
-
-        function sendCodeWhatsApp(phone, code, name) {
-            const cleanPhone = phone.replace(/[^0-9]/g, '');
-            const msg = `Hello ${encodeURIComponent(name)}, here is your official SparkSpin Laundry Co. Marketer Invitation Code: ${encodeURIComponent(code)}.%0AUse this code on the SparkSpin Website Earn & Refer portal to activate your account and start earning cash!`;
-            window.open(`https://wa.me/${cleanPhone}?text=${msg}`, '_blank');
-        }
-
-        // Toggle / Delete Actions
-        function toggleOrderDelivery(idx) {
-            appData.orders[idx].delivered = !appData.orders[idx].delivered;
-            saveStorage();
-        }
-
-        function toggleOrderPayment(idx) {
-            appData.orders[idx].paid = !appData.orders[idx].paid;
-            saveStorage();
-        }
-
-        function deleteOrder(idx) {
-            if (confirm("Delete this order entry?")) {
-                appData.orders.splice(idx, 1);
-                saveStorage();
-            }
-        }
-
-        function deleteClient(idx) {
-            if (confirm("Delete client record?")) {
-                appData.clients.splice(idx, 1);
-                saveStorage();
-            }
-        }
-
-        function deleteMarketer(idx) {
-            if (confirm("Delete this marketer entry/code?")) {
-                appData.marketers.splice(idx, 1);
-                saveStorage();
-            }
-        }
-
-        // MARKETER AUTH & REGISTRATION LOGIC
-        function switchMarketerAuthMode(mode) {
-            if (mode === 'activate') {
-                document.getElementById('marketer-activate-form').classList.remove('hidden');
-                document.getElementById('marketer-login-form').classList.add('hidden');
-                document.getElementById('marketer-tab-activate').className = "pb-2 border-b-2 border-sparkyellow text-navy flex-1 text-center";
-                document.getElementById('marketer-tab-login').className = "pb-2 border-b-2 border-transparent text-slate-400 hover:text-navy flex-1 text-center";
-            } else {
-                document.getElementById('marketer-activate-form').classList.add('hidden');
-                document.getElementById('marketer-login-form').classList.remove('hidden');
-                document.getElementById('marketer-tab-login').className = "pb-2 border-b-2 border-sparkyellow text-navy flex-1 text-center";
-                document.getElementById('marketer-tab-activate').className = "pb-2 border-b-2 border-transparent text-slate-400 hover:text-navy flex-1 text-center";
-            }
-        }
-
-        function handleActivateCode(e) {
-            e.preventDefault();
-            const code = document.getElementById('activate-code-input').value.trim().toUpperCase();
-            const password = document.getElementById('activate-password-input').value;
-
-            const match = appData.marketers.find(m => m.code.toUpperCase() === code);
-
-            if (!match) {
-                showToast("Invalid Invite Code! Access denied. Ask Admin.", "error");
-                return;
-            }
-
-            if (match.status === 'Claimed' && match.password) {
-                showToast("This invite code was already claimed! Switch to Passcode Login.", "error");
-                return;
-            }
-
-            // Claim & Activate Code
-            match.password = password;
-            match.status = 'Claimed';
-            activeMarketerSession = match;
-
-            saveStorage();
-            refreshMarketerPortalDisplay();
-            showToast(`Account activated successfully! Welcome ${match.name}`, "success");
-        }
-
+        // Marketer Auth & Dashboard Functions
         function handleMarketerLogin(e) {
             e.preventDefault();
-            const identifier = document.getElementById('login-identifier-input').value.trim().toUpperCase();
-            const password = document.getElementById('login-password-input').value;
+            const phone = document.getElementById('mktLoginPhone').value.trim();
+            const pass = document.getElementById('mktLoginPass').value;
 
-            const match = appData.marketers.find(m => 
-                (m.code.toUpperCase() === identifier || m.phone.includes(identifier)) && 
-                m.status === 'Claimed'
-            );
+            const marketers = JSON.parse(localStorage.getItem('marketers'));
+            const mkt = marketers.find(m => m.phone === phone && m.password === pass);
 
-            if (match && match.password === password) {
-                activeMarketerSession = match;
-                refreshMarketerPortalDisplay();
-                showToast(`Welcome back, ${match.name}!`, "success");
-            } else {
-                showToast("Invalid login credentials or unactivated code!", "error");
+            if (!mkt) {
+                alert('Invalid phone number or password. Ensure you are approved by Admin.');
+                return;
             }
+
+            currentActiveMarketer = mkt;
+            renderMarketerDashboard();
         }
 
-        function refreshMarketerPortalDisplay() {
-            if (!activeMarketerSession) return;
+        function renderMarketerDashboard() {
+            document.getElementById('marketerAuthCard').classList.add('hidden');
+            document.getElementById('marketerDashboardView').classList.remove('hidden');
 
-            const current = appData.marketers.find(m => m.code.toUpperCase() === activeMarketerSession.code.toUpperCase());
-            if (!current) return logoutMarketer();
+            document.getElementById('mktDashName').innerText = `Welcome, ${currentActiveMarketer.name}`;
+            document.getElementById('mktDashCode').innerText = currentActiveMarketer.code;
 
-            document.getElementById('marketer-logged-out').classList.add('hidden');
-            document.getElementById('marketer-logged-in').classList.remove('hidden');
+            const orders = JSON.parse(localStorage.getItem('orders'));
+            const myRefs = orders.filter(o => o.refCode === currentActiveMarketer.code);
 
-            document.getElementById('marketer-name-display').innerText = current.name;
-            const refCount = current.referrals || 0;
-            const earnings = calculateMarketerEarnings(refCount);
+            const count = myRefs.length;
+            document.getElementById('mktDashRefCount').innerText = count;
 
-            document.getElementById('stat-ref-count').innerText = refCount;
-            document.getElementById('stat-earned').innerText = `${earnings} KSh`;
-            document.getElementById('marketer-share-link').value = `${window.location.origin}${window.location.pathname}?ref=${current.code}`;
+            // Progress Bar Logic (out of 10)
+            const progressPercent = Math.min(100, (count / 10) * 100);
+            document.getElementById('mktProgressBar').style.width = `${progressPercent}%`;
+            document.getElementById('mktProgressText').innerText = `${count} / 10 Referrals`;
+
+            // Reward Calculation Logic
+            let reward = 0;
+            if (count >= 10) {
+                reward = Math.floor(count / 10) * 300 + Math.floor((count % 10) / 2) * 50;
+            } else if (count >= 2) {
+                reward = Math.floor(count / 2) * 50;
+            }
+            document.getElementById('mktDashReward').innerText = `${reward} KSh`;
+
+            const tbody = document.getElementById('mktReferralsTable');
+            tbody.innerHTML = count ? myRefs.map(o => `
+                <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/30">
+                    <td class="p-3 font-semibold text-slate-900 dark:text-white">${o.name}</td>
+                    <td class="p-3">${o.loc}</td>
+                    <td class="p-3"><span class="px-2 py-0.5 rounded text-xs font-bold ${o.status === 'Completed' ? 'bg-emerald-500/20 text-emerald-600 dark:text-emerald-400' : 'bg-amber-500/20 text-amber-600 dark:text-amber-400'}">${o.status}</span></td>
+                    <td class="p-3 text-xs text-slate-500">${o.date}</td>
+                </tr>
+            `).join('') : `<tr><td colspan="4" class="p-4 text-center text-slate-500 text-xs">No referral orders logged yet.</td></tr>`;
+        }
+
+        function copyMarketerReferralLink() {
+            if (!currentActiveMarketer) return;
+            const baseUrl = window.location.href.split('?')[0];
+            const refUrl = `${baseUrl}?ref=${currentActiveMarketer.code}`;
+            navigator.clipboard.writeText(refUrl);
+            alert(`Referral link copied to clipboard:\n${refUrl}`);
+        }
+
+        function triggerWithdrawal() {
+            const amt = document.getElementById('withdrawAmount').value;
+            if (!amt || amt <= 0) {
+                alert('Please enter a valid withdrawal amount.');
+                return;
+            }
+            const msg = `Hello Admin, I am Marketer *${currentActiveMarketer.name}* (${currentActiveMarketer.code}). I would like to request a withdrawal of *${amt} KSh* for my referral rewards. Phone line: ${currentActiveMarketer.phone}`;
+            window.open(`https://wa.me/254${ADMIN_PHONE.substring(1)}?text=${encodeURIComponent(msg)}`, '_blank');
         }
 
         function logoutMarketer() {
-            activeMarketerSession = null;
-            document.getElementById('marketer-logged-out').classList.remove('hidden');
-            document.getElementById('marketer-logged-in').classList.add('hidden');
-            document.getElementById('marketer-activate-form').reset();
-            document.getElementById('marketer-login-form').reset();
-            showToast("Logged out of marketer portal.", "info");
+            currentActiveMarketer = null;
+            document.getElementById('marketerAuthCard').classList.remove('hidden');
+            document.getElementById('marketerDashboardView').classList.add('hidden');
         }
 
-        function copyReferralLink() {
-            const input = document.getElementById('marketer-share-link');
-            input.select();
-            document.execCommand('copy');
-            showToast("Referral link copied to clipboard!", "success");
-        }
-
-        // Booking Modal Operations
-        function openBookingModal(serviceName) {
-            selectedBookingService = serviceName;
-            document.getElementById('modal-service-title').innerText = `Request Service: ${serviceName}`;
-            document.getElementById('booking-modal').classList.remove('hidden');
-        }
-
-        function closeBookingModal() {
-            document.getElementById('booking-modal').classList.add('hidden');
-        }
-
-        function handleClientQuickBooking(e) {
+        // Admin Auth & Functions
+        function handleAdminLogin(e) {
             e.preventDefault();
-            const name = document.getElementById('modal-client-name').value;
-            const phone = document.getElementById('modal-client-phone').value;
-            const location = document.getElementById('modal-client-location').value;
-            const code = document.getElementById('modal-ref-code').value.trim().toUpperCase();
+            const inputPass = document.getElementById('adminPassInput').value;
+            const storedPass = localStorage.getItem('adminPassword');
 
-            if (!appData.clients.some(c => c.phone === phone)) {
-                appData.clients.unshift({
-                    id: 'CLI-' + Math.floor(100 + Math.random() * 900),
-                    name,
-                    phone,
-                    location
-                });
+            if (inputPass !== storedPass) {
+                alert('Incorrect Admin Password!');
+                return;
             }
 
-            appData.orders.unshift({
-                id: 'ORD-' + Math.floor(100 + Math.random() * 900),
-                date: new Date().toISOString().split('T')[0],
-                clientName: name,
-                service: selectedBookingService,
-                amount: 350,
-                delivered: false,
-                paid: false,
-                marketerCode: code
-            });
+            document.getElementById('adminAuthCard').classList.add('hidden');
+            document.getElementById('adminPanel').classList.remove('hidden');
+            renderAdminTables();
+        }
 
-            if (code) {
-                const mark = appData.marketers.find(m => m.code.toUpperCase() === code);
-                if (mark) {
-                    mark.referrals = (mark.referrals || 0) + 1;
-                }
+        function logoutAdmin() {
+            document.getElementById('adminAuthCard').classList.remove('hidden');
+            document.getElementById('adminPanel').classList.add('hidden');
+            document.getElementById('adminPassInput').value = '';
+        }
+
+        function handleAddMarketer(e) {
+            e.preventDefault();
+            const name = document.getElementById('newMktName').value;
+            const phone = document.getElementById('newMktPhone').value.trim();
+            const password = document.getElementById('newMktPass').value;
+
+            const marketers = JSON.parse(localStorage.getItem('marketers'));
+            if (marketers.some(m => m.phone === phone)) {
+                alert('A marketer with this phone number already exists.');
+                return;
             }
 
-            saveStorage();
-            closeBookingModal();
+            const code = `MK-${Math.floor(1000 + Math.random() * 9000)}`;
+            marketers.push({ name, phone, password, code });
+            localStorage.setItem('marketers', JSON.stringify(marketers));
+
+            alert(`Marketer Approved & Added!\nName: ${name}\nRef Code: ${code}`);
             e.target.reset();
-
-            const text = `Hello SparkSpin Laundry! I want to request a wash.%0AName: ${encodeURIComponent(name)}%0APhone: ${encodeURIComponent(phone)}%0ALocation: ${encodeURIComponent(location)}%0AService: ${encodeURIComponent(selectedBookingService)}%0AReferral Code: ${encodeURIComponent(code)}`;
-            window.open(`https://wa.me/254706765603?text=${text}`, '_blank');
+            renderAdminTables();
         }
 
-        // Live Chat Simulation
-        function handleLiveChat(e) {
-            e.preventDefault();
-            const input = document.getElementById('chat-input');
-            const msg = input.value.trim();
-            if (!msg) return;
+        function renderAdminTables() {
+            const marketers = JSON.parse(localStorage.getItem('marketers'));
+            let orders = JSON.parse(localStorage.getItem('orders'));
 
-            const chatBox = document.getElementById('chat-messages');
-
-            const userMsgDiv = document.createElement('div');
-            userMsgDiv.className = 'bg-sparkyellow text-navy p-3 rounded-xl max-w-[85%] ml-auto font-medium';
-            userMsgDiv.innerText = msg;
-            chatBox.appendChild(userMsgDiv);
-
-            input.value = '';
-            chatBox.scrollTop = chatBox.scrollHeight;
-
-            setTimeout(() => {
-                const botMsgDiv = document.createElement('div');
-                botMsgDiv.className = 'bg-white/10 p-3 rounded-xl max-w-[85%] text-slate-200';
-                botMsgDiv.innerText = "Thank you! Our customer support representative is reviewing your request. You can also directly WhatsApp us on +254 706 765 603 for instant dispatch!";
-                chatBox.appendChild(botMsgDiv);
-                chatBox.scrollTop = chatBox.scrollHeight;
-            }, 1000);
-        }
-
-        // Toast Notification System
-        function showToast(message, type = 'info') {
-            const container = document.getElementById('toast-container');
-            const toast = document.createElement('div');
+            // Calculate Admin Analytics
+            document.getElementById('adminActiveMarketers').innerText = marketers.length;
+            const pendingCount = orders.filter(o => o.status === 'Pending').length;
+            document.getElementById('adminPendingOrders').innerText = pendingCount;
             
-            let bg = 'bg-slate-900 text-white';
-            if (type === 'success') bg = 'bg-emerald-600 text-white';
-            if (type === 'error') bg = 'bg-rose-600 text-white';
+            // Rough Revenue Estimation from orders count
+            document.getElementById('adminTotalRevenue').innerText = `${orders.length * 250} KSh`;
 
-            toast.className = `${bg} px-4 py-3 rounded-xl shadow-2xl text-xs font-bold flex items-center gap-2 pointer-events-auto transition-all transform translate-y-2`;
-            toast.innerHTML = `<i class="fa-solid fa-circle-info"></i> <span>${escapeHtml(message)}</span>`;
-            
-            container.appendChild(toast);
-            setTimeout(() => {
-                toast.remove();
-            }, 3000);
+            // Filter Orders
+            const search = document.getElementById('adminSearchInput')?.value.toLowerCase() || '';
+            const statusFilter = document.getElementById('adminStatusFilter')?.value || 'All';
+
+            if (search) {
+                orders = orders.filter(o => o.name.toLowerCase().includes(search) || o.phone.includes(search));
+            }
+            if (statusFilter !== 'All') {
+                orders = orders.filter(o => o.status === statusFilter);
+            }
+
+            // Render Marketers Table
+            const mktBody = document.getElementById('adminMarketersTable');
+            mktBody.innerHTML = marketers.length ? marketers.map(m => {
+                const count = orders.filter(o => o.refCode === m.code).length;
+                let reward = 0;
+                if (count >= 10) reward = Math.floor(count / 10) * 300 + Math.floor((count % 10) / 2) * 50;
+                else if (count >= 2) reward = Math.floor(count / 2) * 50;
+
+                return `
+                <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/30">
+                    <td class="p-3 font-mono text-cyan-500 font-bold">${m.code}</td>
+                    <td class="p-3 font-semibold text-slate-900 dark:text-white">${m.name}</td>
+                    <td class="p-3 text-xs">${m.phone}</td>
+                    <td class="p-3 font-bold">${count}</td>
+                    <td class="p-3 font-bold text-gold-500">${reward} KSh</td>
+                    <td class="p-3">
+                        <button onclick="deleteMarketer('${m.phone}')" class="text-rose-500 hover:text-rose-400 text-xs font-bold"><i class="fa-solid fa-trash"></i> Remove</button>
+                    </td>
+                </tr>
+            `}).join('') : `<tr><td colspan="6" class="p-4 text-center text-slate-500 text-xs">No marketers registered yet.</td></tr>`;
+
+            // Render Orders Table
+            const ordBody = document.getElementById('adminOrdersTable');
+            ordBody.innerHTML = orders.length ? orders.map(o => `
+                <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/30">
+                    <td class="p-3 font-semibold text-slate-900 dark:text-white">${o.name}</td>
+                    <td class="p-3 text-xs">${o.phone}</td>
+                    <td class="p-3 text-xs">${o.loc}</td>
+                    <td class="p-3 text-xs">${o.pkg}</td>
+                    <td class="p-3 font-mono text-xs text-cyan-500">${o.refCode || 'N/A'}</td>
+                    <td class="p-3"><span class="px-2 py-0.5 rounded text-xs font-bold ${o.status === 'Completed' ? 'bg-emerald-500/20 text-emerald-600 dark:text-emerald-400' : 'bg-amber-500/20 text-amber-600 dark:text-amber-400'}">${o.status}</span></td>
+                    <td class="p-3">
+                        <button onclick="toggleOrderStatus(${o.id})" class="text-xs bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 px-2 py-1 rounded text-slate-800 dark:text-slate-200">Toggle Status</button>
+                    </td>
+                </tr>
+            `).join('') : `<tr><td colspan="7" class="p-4 text-center text-slate-500 text-xs">No orders match filter criteria.</td></tr>`;
         }
 
-        function escapeHtml(str) {
-            return String(str).replace(/[&<>"']/g, function(m) {
-                return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m];
+        function deleteMarketer(phone) {
+            if (!confirm('Are you sure you want to remove this marketer?')) return;
+            let marketers = JSON.parse(localStorage.getItem('marketers'));
+            marketers = marketers.filter(m => m.phone !== phone);
+            localStorage.setItem('marketers', JSON.stringify(marketers));
+            renderAdminTables();
+        }
+
+        function toggleOrderStatus(orderId) {
+            let orders = JSON.parse(localStorage.getItem('orders'));
+            const ord = orders.find(o => o.id === orderId);
+            if (ord) {
+                ord.status = ord.status === 'Pending' ? 'Completed' : 'Pending';
+                localStorage.setItem('orders', JSON.stringify(orders));
+                renderAdminTables();
+            }
+        }
+
+        // CSV Export Feature
+        function exportOrdersCSV() {
+            const orders = JSON.parse(localStorage.getItem('orders'));
+            if (!orders.length) {
+                alert('No orders available to export.');
+                return;
+            }
+
+            let csvContent = "data:text/csv;charset=utf-8,ID,Name,Phone,Location,Package,RefCode,Status,Date\n";
+            orders.forEach(o => {
+                csvContent += `"${o.id}","${o.name}","${o.phone}","${o.loc}","${o.pkg}","${o.refCode || ''}","${o.status}","${o.date}"\n`;
             });
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "SparkSpin_Orders_Report.csv");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Complex Password Functions
+        function togglePasswordChangeModal() {
+            const modal = document.getElementById('passwordModal');
+            modal.classList.toggle('hidden');
+            modal.classList.toggle('flex');
+        }
+
+        function validatePasswordStrength(pass) {
+            const rules = {
+                len: pass.length >= 8,
+                upper: /[A-Z]/.test(pass),
+                lower: /[a-z]/.test(pass),
+                num: /[0-9]/.test(pass),
+                spec: /[^A-Za-z0-9]/.test(pass)
+            };
+
+            const updateRuleUI = (id, isValid) => {
+                const el = document.getElementById(`rule-${id}`);
+                if (isValid) {
+                    el.className = 'text-emerald-500 font-medium';
+                    el.innerHTML = `<i class="fa-solid fa-circle-check mr-1"></i> ${el.innerText.slice(2)}`;
+                } else {
+                    el.className = 'text-slate-400';
+                    el.innerHTML = `<i class="fa-solid fa-circle-xmark mr-1"></i> ${el.innerText.slice(2)}`;
+                }
+            };
+
+            updateRuleUI('len', rules.len);
+            updateRuleUI('upper', rules.upper);
+            updateRuleUI('lower', rules.lower);
+            updateRuleUI('num', rules.num);
+            updateRuleUI('spec', rules.spec);
+
+            const allValid = Object.values(rules).every(Boolean);
+            const btn = document.getElementById('savePassBtn');
+            if (allValid) {
+                btn.disabled = false;
+                btn.className = "w-full py-2.5 bg-cyan-500 hover:bg-cyan-400 text-navy-900 font-extrabold rounded-xl transition cursor-pointer";
+            } else {
+                btn.disabled = true;
+                btn.className = "w-full py-2.5 bg-slate-300 dark:bg-slate-700 text-slate-500 font-bold rounded-xl cursor-not-allowed transition";
+            }
+        }
+
+        function handlePasswordChange(e) {
+            e.preventDefault();
+            const newPass = document.getElementById('newAdminPass').value;
+            localStorage.setItem('adminPassword', newPass);
+            alert('Admin Password updated successfully!');
+            document.getElementById('newAdminPass').value = '';
+            togglePasswordChangeModal();
         }
     </script>
 </body>
