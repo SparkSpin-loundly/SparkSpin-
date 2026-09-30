@@ -55,25 +55,21 @@
       border-radius: 1.25rem;
       overflow: hidden;
       transition: all 0.3s ease;
-      cursor: pointer;
-    }
-    .service-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 24px -6px rgba(0, 59, 115, 0.2);
     }
   </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between">
 
-  <!-- Top Announcement Bar -->
+  <!-- Top Announcement Bar displaying all 3 Admin Numbers -->
   <div class="bg-brand-dark text-white text-xs py-2.5 px-4 border-b-2 border-amber-400">
     <div class="max-w-6xl mx-auto flex flex-wrap justify-between items-center gap-2">
-      <div class="flex items-center gap-4 font-bold">
+      <div class="flex items-center flex-wrap gap-3 font-bold text-[11px] md:text-xs">
         <span><i class="fas fa-phone-alt text-brand-yellow mr-1"></i> +254 758 589 325</span>
-        <span><i class="fab fa-whatsapp text-emerald-400 mr-1"></i> +254 758 589 325</span>
+        <span><i class="fas fa-phone-alt text-brand-yellow mr-1"></i> +254 706 765 603</span>
+        <span><i class="fab fa-whatsapp text-emerald-400 mr-1"></i> +254 783 410 660</span>
       </div>
       <div class="text-brand-yellow font-extrabold tracking-wide uppercase text-[11px] flex items-center gap-1.5">
-        <i class="fas fa-truck-fast"></i> Free Pickup & Delivery Active
+        <i class="fas fa-truck-fast"></i> Free Doorstep Delivery Active
       </div>
     </div>
   </div>
@@ -96,7 +92,7 @@
 
       <nav class="flex items-center gap-2 text-xs font-bold">
         <button onclick="switchTab('booking')" id="nav-booking" class="px-3.5 py-2 rounded-xl btn-yellow shadow-md flex items-center gap-1.5">
-          <i class="fas fa-soap"></i> Services & Booking
+          <i class="fas fa-soap"></i> Services & Rates
         </button>
         <button onclick="switchTab('marketer')" id="nav-marketer" class="px-3.5 py-2 rounded-xl bg-slate-800 text-slate-200 hover:bg-slate-700 flex items-center gap-1.5">
           <i class="fas fa-bullhorn text-brand-yellow"></i> Marketer Portal
@@ -127,97 +123,117 @@
               We spin, <span class="text-brand-yellow underline decoration-amber-400 decoration-wavy">so you can chill!</span>
             </h2>
             <p class="text-slate-300 text-sm md:text-base leading-relaxed">
-              Sparkling clean, fresh, and perfectly folded clothes delivered right to your doorstep. Select a service below to send an order directly to our WhatsApp!
+              Sparkling clean, fresh, and perfectly folded clothes delivered right to your doorstep. Select an item below or place an order directly to our WhatsApp lines!
             </p>
-            <div class="pt-2 flex flex-wrap gap-3">
-              <a href="tel:+254758589325" class="btn-yellow px-5 py-3 rounded-xl flex items-center gap-2 text-sm shadow-lg">
-                <i class="fas fa-phone-alt"></i> Call Admin: +254 758 589 325
+            
+            <div class="pt-2 flex flex-wrap gap-2 text-xs font-bold">
+              <a href="tel:+254758589325" class="btn-yellow px-4 py-2.5 rounded-xl flex items-center gap-1.5 shadow">
+                <i class="fas fa-phone-alt"></i> +254 758 589 325
               </a>
-              <a href="https://wa.me/254758589325" target="_blank" class="btn-whatsapp px-5 py-3 rounded-xl flex items-center gap-2 text-sm shadow-lg">
-                <i class="fab fa-whatsapp text-lg"></i> Instant WhatsApp Chat
+              <a href="tel:+254706765603" class="btn-yellow px-4 py-2.5 rounded-xl flex items-center gap-1.5 shadow">
+                <i class="fas fa-phone-alt"></i> +254 706 765 603
+              </a>
+              <a href="https://wa.me/254783410660" target="_blank" class="btn-whatsapp px-4 py-2.5 rounded-xl flex items-center gap-1.5 shadow">
+                <i class="fab fa-whatsapp text-base"></i> +254 783 410 660
               </a>
             </div>
           </div>
+
           <div class="md:col-span-4 flex justify-center">
             <div class="relative w-full max-w-xs rounded-2xl overflow-hidden border-4 border-amber-400 shadow-xl">
               <img src="https://images.unsplash.com/photo-1545173168-9f1947eebb7f?auto=format&fit=crop&w=600&q=80" alt="Fresh Laundry" class="w-full h-56 object-cover">
               <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-transparent to-transparent flex items-end p-4">
-                <p class="text-amber-300 font-black text-sm"><i class="fas fa-check-circle mr-1"></i> Quality & Speed Guaranteed</p>
+                <p class="text-amber-300 font-black text-sm"><i class="fas fa-check-circle mr-1"></i> Official Price Rates</p>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Interactive Services with Clear Prices -->
+      <!-- Official Rates Display (Exact Flyer Prices) -->
       <section class="space-y-6">
         <div class="text-center space-y-1">
-          <span class="text-xs font-black text-brand-blue uppercase tracking-widest bg-amber-100 px-3 py-1 rounded-full border border-amber-300">Click Any Service To Book</span>
-          <h3 class="text-3xl font-black text-brand-blue tracking-tight">Our Services & Pricing</h3>
+          <span class="text-xs font-black text-brand-blue uppercase tracking-widest bg-amber-100 px-3 py-1 rounded-full border border-amber-300">Official Rate Card</span>
+          <h3 class="text-3xl font-black text-brand-blue tracking-tight">Our Rates</h3>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           
-          <!-- Clothes -->
-          <div onclick="selectService('Clothes (Standard Basket - 500 KSh)')" class="service-card group">
-            <div class="h-40 overflow-hidden relative">
-              <img src="https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?auto=format&fit=crop&w=600&q=80" alt="Clothes" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
-              <span class="absolute top-2 right-2 bg-brand-header text-amber-300 text-xs font-black px-2.5 py-1 rounded-lg border border-amber-400">Click to Select</span>
+          <!-- Laundry Basket -->
+          <div class="service-card p-6 space-y-4">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-brand-header text-amber-300 flex items-center justify-center font-black text-lg">
+                <i class="fas fa-shopping-basket"></i>
+              </div>
+              <h4 class="font-black text-brand-blue text-xl">Laundry Basket</h4>
             </div>
-            <div class="p-4 space-y-2">
-              <h4 class="font-black text-brand-blue text-lg"><i class="fas fa-tshirt text-amber-500 mr-1"></i> Clothes</h4>
-              <p class="text-xs text-slate-600">Wash, dry & fold everyday clothes.</p>
-              <div class="pt-2 border-t border-slate-100 flex justify-between items-center">
-                <span class="text-xs font-bold text-slate-400">Rate:</span>
-                <span class="text-sm font-black text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">500 KSh / Basket</span>
+
+            <div class="space-y-2 text-sm font-bold divide-y divide-slate-100">
+              <div onclick="selectService('Laundry Basket (Large) - 400/=')" class="pt-2 flex justify-between items-center cursor-pointer hover:text-amber-600">
+                <span class="text-slate-700"><i class="fas fa-chevron-right text-amber-500 text-xs mr-2"></i>Large</span>
+                <span class="bg-amber-100 text-brand-blue px-3 py-1 rounded-lg font-black">400/=</span>
+              </div>
+              <div onclick="selectService('Laundry Basket (Medium) - 350/=')" class="pt-2 flex justify-between items-center cursor-pointer hover:text-amber-600">
+                <span class="text-slate-700"><i class="fas fa-chevron-right text-amber-500 text-xs mr-2"></i>Medium</span>
+                <span class="bg-amber-100 text-brand-blue px-3 py-1 rounded-lg font-black">350/=</span>
+              </div>
+              <div onclick="selectService('Laundry Basket (Small) - 300/=')" class="pt-2 flex justify-between items-center cursor-pointer hover:text-amber-600">
+                <span class="text-slate-700"><i class="fas fa-chevron-right text-amber-500 text-xs mr-2"></i>Small</span>
+                <span class="bg-amber-100 text-brand-blue px-3 py-1 rounded-lg font-black">300/=</span>
               </div>
             </div>
           </div>
 
           <!-- Duvets -->
-          <div onclick="selectService('Duvet / Bedding (600 - 800 KSh)')" class="service-card group">
-            <div class="h-40 overflow-hidden relative">
-              <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=600&q=80" alt="Duvets" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
-              <span class="absolute top-2 right-2 bg-brand-header text-amber-300 text-xs font-black px-2.5 py-1 rounded-lg border border-amber-400">Click to Select</span>
+          <div class="service-card p-6 space-y-4">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-brand-header text-amber-300 flex items-center justify-center font-black text-lg">
+                <i class="fas fa-bed"></i>
+              </div>
+              <h4 class="font-black text-brand-blue text-xl">Duvets</h4>
             </div>
-            <div class="p-4 space-y-2">
-              <h4 class="font-black text-brand-blue text-lg"><i class="fas fa-bed text-amber-500 mr-1"></i> Duvets</h4>
-              <p class="text-xs text-slate-600">Deep steam washing & sanitization.</p>
-              <div class="pt-2 border-t border-slate-100 flex justify-between items-center">
-                <span class="text-xs font-bold text-slate-400">Rate:</span>
-                <span class="text-sm font-black text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">600 - 800 KSh / Item</span>
+
+            <div class="space-y-2 text-sm font-bold divide-y divide-slate-100">
+              <div onclick="selectService('Duvet (4x6) - 250/=')" class="pt-2 flex justify-between items-center cursor-pointer hover:text-amber-600">
+                <span class="text-slate-700"><i class="fas fa-chevron-right text-amber-500 text-xs mr-2"></i>4x6</span>
+                <span class="bg-amber-100 text-brand-blue px-3 py-1 rounded-lg font-black">250/=</span>
+              </div>
+              <div onclick="selectService('Duvet (5x6) - 300/=')" class="pt-2 flex justify-between items-center cursor-pointer hover:text-amber-600">
+                <span class="text-slate-700"><i class="fas fa-chevron-right text-amber-500 text-xs mr-2"></i>5x6</span>
+                <span class="bg-amber-100 text-brand-blue px-3 py-1 rounded-lg font-black">300/=</span>
+              </div>
+              <div onclick="selectService('Duvet (6x6) - 350/=')" class="pt-2 flex justify-between items-center cursor-pointer hover:text-amber-600">
+                <span class="text-slate-700"><i class="fas fa-chevron-right text-amber-500 text-xs mr-2"></i>6x6</span>
+                <span class="bg-amber-100 text-brand-blue px-3 py-1 rounded-lg font-black">350/=</span>
               </div>
             </div>
           </div>
 
           <!-- Floor Mats & Carpets -->
-          <div onclick="selectService('Floor Mats & Carpets (From 300 KSh)')" class="service-card group">
-            <div class="h-40 overflow-hidden relative">
-              <img src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?auto=format&fit=crop&w=600&q=80" alt="Floor Mats" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
-              <span class="absolute top-2 right-2 bg-brand-header text-amber-300 text-xs font-black px-2.5 py-1 rounded-lg border border-amber-400">Click to Select</span>
-            </div>
-            <div class="p-4 space-y-2">
-              <h4 class="font-black text-brand-blue text-lg"><i class="fas fa-rug text-amber-500 mr-1"></i> Floor Mats & Carpets</h4>
-              <p class="text-xs text-slate-600">Stain removal & deep shampooing.</p>
-              <div class="pt-2 border-t border-slate-100 flex justify-between items-center">
-                <span class="text-xs font-bold text-slate-400">Rate:</span>
-                <span class="text-sm font-black text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">From 300 KSh / sqm</span>
+          <div class="service-card p-6 space-y-4">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-brand-header text-amber-300 flex items-center justify-center font-black text-lg">
+                <i class="fas fa-rug"></i>
               </div>
+              <h4 class="font-black text-brand-blue text-xl">Floor Mats & Carpets</h4>
             </div>
-          </div>
 
-          <!-- Towels -->
-          <div onclick="selectService('Towels Wash & Sanitize (300 KSh)')" class="service-card group">
-            <div class="h-40 overflow-hidden relative">
-              <img src="https://images.unsplash.com/photo-1616627547584-bf28cee262db?auto=format&fit=crop&w=600&q=80" alt="Towels" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
-              <span class="absolute top-2 right-2 bg-brand-header text-amber-300 text-xs font-black px-2.5 py-1 rounded-lg border border-amber-400">Click to Select</span>
-            </div>
-            <div class="p-4 space-y-2">
-              <h4 class="font-black text-brand-blue text-lg"><i class="fas fa-scroll text-amber-500 mr-1"></i> Towels</h4>
-              <p class="text-xs text-slate-600">Softening wash & hygienic treatment.</p>
-              <div class="pt-2 border-t border-slate-100 flex justify-between items-center">
-                <span class="text-xs font-bold text-slate-400">Rate:</span>
-                <span class="text-sm font-black text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">300 KSh / Bundle</span>
+            <div class="space-y-2 text-sm font-bold divide-y divide-slate-100">
+              <div onclick="selectService('Door Mat - 70/=')" class="pt-2 flex justify-between items-center cursor-pointer hover:text-amber-600">
+                <span class="text-slate-700"><i class="fas fa-chevron-right text-amber-500 text-xs mr-2"></i>Door Mat</span>
+                <span class="bg-amber-100 text-brand-blue px-3 py-1 rounded-lg font-black">70/=</span>
+              </div>
+              <div onclick="selectService('Fluffy Mat - 250/=')" class="pt-2 flex justify-between items-center cursor-pointer hover:text-amber-600">
+                <span class="text-slate-700"><i class="fas fa-chevron-right text-amber-500 text-xs mr-2"></i>Fluffy Mat</span>
+                <span class="bg-amber-100 text-brand-blue px-3 py-1 rounded-lg font-black">250/=</span>
+              </div>
+              <div onclick="selectService('Hard Carpet (Small) - 350/=')" class="pt-2 flex justify-between items-center cursor-pointer hover:text-amber-600">
+                <span class="text-slate-700"><i class="fas fa-chevron-right text-amber-500 text-xs mr-2"></i>Hard Carpet (Small)</span>
+                <span class="bg-amber-100 text-brand-blue px-3 py-1 rounded-lg font-black">350/=</span>
+              </div>
+              <div onclick="selectService('Hard Carpet (Large) - 450/=')" class="pt-2 flex justify-between items-center cursor-pointer hover:text-amber-600">
+                <span class="text-slate-700"><i class="fas fa-chevron-right text-amber-500 text-xs mr-2"></i>Hard Carpet (Large)</span>
+                <span class="bg-amber-100 text-brand-blue px-3 py-1 rounded-lg font-black">450/=</span>
               </div>
             </div>
           </div>
@@ -225,12 +241,12 @@
         </div>
       </section>
 
-      <!-- Booking Form (Sends directly to Admin WhatsApp 0758589325) -->
+      <!-- Booking Form -->
       <div id="bookingFormContainer" class="service-card p-6 md:p-8 max-w-2xl mx-auto shadow-xl">
         <div class="text-center space-y-1 mb-6">
-          <span class="text-xs font-black text-brand-blue uppercase tracking-widest bg-amber-100 px-3 py-1 rounded-full">Direct Admin Dispatch</span>
-          <h3 class="text-2xl font-black text-brand-blue">Send Order Request via WhatsApp</h3>
-          <p class="text-xs text-slate-500">Submitting will automatically send your order details directly to the SparkSpin Admin WhatsApp line (+254 758 589 325).</p>
+          <span class="text-xs font-black text-brand-blue uppercase tracking-widest bg-amber-100 px-3 py-1 rounded-full">Direct Dispatch</span>
+          <h3 class="text-2xl font-black text-brand-blue">Place Order Request via WhatsApp</h3>
+          <p class="text-xs text-slate-500">Select an admin WhatsApp number below to send your order details directly.</p>
         </div>
 
         <form onsubmit="handleOrderSubmit(event)" class="space-y-4">
@@ -245,14 +261,28 @@
           </div>
 
           <div>
-            <label class="block text-xs font-extrabold text-slate-700 uppercase mb-1">Selected Service Category</label>
+            <label class="block text-xs font-extrabold text-slate-700 uppercase mb-1">Send Request To Admin Line</label>
+            <select id="adminTargetPhone" required class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 outline-none text-sm font-bold bg-amber-50 text-brand-blue">
+              <option value="254758589325">Admin Line 1: +254 758 589 325 (Primary)</option>
+              <option value="254706765603">Admin Line 2: +254 706 765 603</option>
+              <option value="254783410660">Admin Line 3: +254 783 410 660</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-extrabold text-slate-700 uppercase mb-1">Selected Item / Service</label>
             <select id="clientServiceType" required class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 outline-none text-sm font-semibold bg-white text-brand-blue">
-              <option value="">-- Choose or click service card above --</option>
-              <option value="Clothes (Standard Basket - 500 KSh)">Clothes (Standard Basket - 500 KSh)</option>
-              <option value="Duvet / Bedding (600 - 800 KSh)">Duvet / Bedding (600 - 800 KSh)</option>
-              <option value="Floor Mats & Carpets (From 300 KSh)">Floor Mats & Carpets (From 300 KSh)</option>
-              <option value="Towels Wash & Sanitize (300 KSh)">Towels Wash & Sanitize (300 KSh)</option>
-              <option value="Mixed / Custom Laundry Batch">Mixed / Custom Laundry Batch</option>
+              <option value="">-- Choose item or click price rate above --</option>
+              <option value="Laundry Basket (Large) - 400/=">Laundry Basket (Large) - 400/=</option>
+              <option value="Laundry Basket (Medium) - 350/=">Laundry Basket (Medium) - 350/=</option>
+              <option value="Laundry Basket (Small) - 300/=">Laundry Basket (Small) - 300/=</option>
+              <option value="Duvet (4x6) - 250/=">Duvet (4x6) - 250/=</option>
+              <option value="Duvet (5x6) - 300/=">Duvet (5x6) - 300/=</option>
+              <option value="Duvet (6x6) - 350/=">Duvet (6x6) - 350/=</option>
+              <option value="Door Mat - 70/=">Door Mat - 70/=</option>
+              <option value="Fluffy Mat - 250/=">Fluffy Mat - 250/=</option>
+              <option value="Hard Carpet (Small) - 350/=">Hard Carpet (Small) - 350/=</option>
+              <option value="Hard Carpet (Large) - 450/=">Hard Carpet (Large) - 450/=</option>
             </select>
           </div>
 
@@ -270,8 +300,8 @@
           </div>
 
           <div>
-            <label class="block text-xs font-extrabold text-slate-700 uppercase mb-1">Laundry Quantity / Extra Details</label>
-            <textarea id="clientItems" rows="2" placeholder="e.g. 2 Duvets, 1 Basket of Clothes, pick up at 2 PM" required class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 outline-none text-sm font-semibold"></textarea>
+            <label class="block text-xs font-extrabold text-slate-700 uppercase mb-1">Quantity / Extra Pickup Details</label>
+            <textarea id="clientItems" rows="2" placeholder="e.g. 2 Large Baskets, pick up at 2 PM" required class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 outline-none text-sm font-semibold"></textarea>
           </div>
 
           <div>
@@ -280,16 +310,15 @@
           </div>
 
           <button type="submit" class="w-full btn-whatsapp py-4 rounded-xl text-base font-black shadow-lg uppercase tracking-wider flex items-center justify-center gap-2">
-            <i class="fab fa-whatsapp text-2xl"></i> Send Order Request to Admin WhatsApp
+            <i class="fab fa-whatsapp text-2xl"></i> Send Order Request via WhatsApp
           </button>
         </form>
       </div>
 
     </div>
 
-    <!-- TAB 2: MARKETER PORTAL (LOG IN WITH ADMIN CODE) -->
+    <!-- TAB 2: MARKETER PORTAL -->
     <div id="tab-marketer" class="hidden space-y-6">
-      
       <div id="marketerLoginCard" class="service-card p-6 md:p-8 max-w-md mx-auto shadow-xl space-y-4">
         <div class="text-center space-y-2">
           <div class="w-12 h-12 bg-brand-header text-brand-yellow rounded-2xl flex items-center justify-center mx-auto text-xl font-black">
@@ -333,7 +362,6 @@
           </div>
         </div>
       </div>
-
     </div>
 
     <!-- TAB 3: CUSTOMER CARE HUB -->
@@ -341,7 +369,7 @@
       <div class="text-center space-y-2">
         <span class="text-xs font-black text-brand-blue uppercase tracking-widest bg-emerald-100 px-3 py-1 rounded-full border border-emerald-300">Fast Customer Support</span>
         <h3 class="text-3xl font-black text-brand-blue">Customer Care Hub</h3>
-        <p class="text-xs text-slate-500 max-w-lg mx-auto">Have questions regarding your laundry order or delivery timing? Reach our admin lines instantly.</p>
+        <p class="text-xs text-slate-500 max-w-lg mx-auto">Have questions regarding your laundry order or pickup timing? Reach any of our 3 admin lines instantly.</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -349,9 +377,18 @@
           <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center mx-auto text-2xl font-black">
             <i class="fas fa-phone-alt"></i>
           </div>
-          <h4 class="font-black text-brand-blue text-lg">Direct Line</h4>
-          <p class="text-xs text-slate-500">Call admin line for quick pickup requests.</p>
+          <h4 class="font-black text-brand-blue text-lg">Admin Line 1</h4>
+          <p class="text-xs text-slate-500">Primary dispatch & call hotline.</p>
           <a href="tel:+254758589325" class="btn-yellow inline-block px-4 py-2 rounded-xl text-xs font-bold">+254 758 589 325</a>
+        </div>
+
+        <div class="service-card p-6 text-center space-y-3">
+          <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center mx-auto text-2xl font-black">
+            <i class="fas fa-phone-alt"></i>
+          </div>
+          <h4 class="font-black text-brand-blue text-lg">Admin Line 2</h4>
+          <p class="text-xs text-slate-500">Secondary hotline for orders.</p>
+          <a href="tel:+254706765603" class="btn-yellow inline-block px-4 py-2 rounded-xl text-xs font-bold">+254 706 765 603</a>
         </div>
 
         <div class="service-card p-6 text-center space-y-3">
@@ -359,24 +396,14 @@
             <i class="fab fa-whatsapp"></i>
           </div>
           <h4 class="font-black text-brand-blue text-lg">WhatsApp Hotline</h4>
-          <p class="text-xs text-slate-500">Send pickup coordinates or order queries.</p>
-          <a href="https://wa.me/254758589325" target="_blank" class="btn-whatsapp inline-block px-4 py-2 rounded-xl text-xs font-bold">+254 758 589 325</a>
-        </div>
-
-        <div class="service-card p-6 text-center space-y-3">
-          <div class="w-14 h-14 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mx-auto text-2xl font-black">
-            <i class="fas fa-envelope"></i>
-          </div>
-          <h4 class="font-black text-brand-blue text-lg">Email Support</h4>
-          <p class="text-xs text-slate-500">Official business inquiries & support.</p>
-          <a href="mailto:sparkspinlaundry@gmail.com" class="bg-brand-header text-white inline-block px-4 py-2 rounded-xl text-xs font-bold">sparkspinlaundry@gmail.com</a>
+          <p class="text-xs text-slate-500">Send location pins & pickup details.</p>
+          <a href="https://wa.me/254783410660" target="_blank" class="btn-whatsapp inline-block px-4 py-2 rounded-xl text-xs font-bold">+254 783 410 660</a>
         </div>
       </div>
     </div>
 
     <!-- TAB 4: ADMIN PANEL -->
     <div id="tab-admin" class="hidden space-y-6">
-      
       <div id="adminLoginCard" class="service-card p-6 md:p-8 max-w-md mx-auto shadow-xl space-y-4">
         <div class="text-center space-y-2">
           <div class="w-12 h-12 bg-brand-dark text-brand-yellow rounded-2xl flex items-center justify-center mx-auto text-xl font-black">
@@ -395,29 +422,28 @@
       </div>
 
       <div id="adminControlPanel" class="hidden space-y-6">
-        
         <div class="bg-brand-dark text-white p-6 rounded-2xl border-2 border-amber-400 flex justify-between items-center">
           <div>
             <h3 class="text-2xl font-black text-white">SparkSpin Admin Console</h3>
-            <p class="text-xs text-amber-300">Admin Line: +254 758 589 325</p>
+            <p class="text-xs text-amber-300">3 Active Lines: +254 758 589 325 | +254 706 765 603 | +254 783 410 660</p>
           </div>
           <button onclick="logoutAdmin()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-xs font-bold">Log Out</button>
         </div>
 
         <!-- Add Marketer -->
         <div class="service-card p-6 space-y-3">
-          <h4 class="font-black text-brand-blue text-base"><i class="fas fa-user-plus text-amber-500 mr-1"></i> Pre-Register Marketer & Generate Access Code</h4>
+          <h4 class="font-black text-brand-blue text-base"><i class="fas fa-user-plus text-amber-500 mr-1"></i> Register Marketer & Generate Access Code</h4>
           <form onsubmit="handleRegisterMarketer(event)" class="grid grid-cols-1 md:grid-cols-3 gap-3">
             <input type="text" id="regMktName" placeholder="Full Name" required class="px-4 py-2.5 rounded-xl border-2 border-slate-200 text-sm">
             <input type="tel" id="regMktPhone" placeholder="Phone Number" required class="px-4 py-2.5 rounded-xl border-2 border-slate-200 text-sm">
             <input type="text" id="regMktPass" placeholder="Set Password" required class="px-4 py-2.5 rounded-xl border-2 border-slate-200 text-sm">
-            <button type="submit" class="md:col-span-3 btn-yellow py-3 rounded-xl text-sm font-bold">Register & Generate Marketer Code</button>
+            <button type="submit" class="md:col-span-3 btn-yellow py-3 rounded-xl text-sm font-bold">Register & Generate Code</button>
           </form>
         </div>
 
         <!-- Marketers Table -->
         <div class="service-card p-6 overflow-x-auto space-y-3">
-          <h4 class="font-black text-brand-blue text-base"><i class="fas fa-users text-amber-500 mr-1"></i> Active Marketers & Commission Performance</h4>
+          <h4 class="font-black text-brand-blue text-base"><i class="fas fa-users text-amber-500 mr-1"></i> Active Marketers & Performance</h4>
           <table class="w-full text-left text-xs">
             <thead class="bg-brand-header text-white uppercase font-black">
               <tr>
@@ -433,9 +459,7 @@
             </tbody>
           </table>
         </div>
-
       </div>
-
     </div>
 
   </main>
@@ -447,15 +471,13 @@
         <p class="text-xs text-slate-400">Too busy for laundry? Don't stress – We've got you covered!</p>
       </div>
       <div class="text-xs font-bold text-slate-300 space-y-1">
-        <p><i class="fas fa-phone-alt text-brand-yellow mr-1"></i> Admin WhatsApp/Call: +254 758 589 325</p>
-        <p><i class="fas fa-map-marker-alt text-emerald-400 mr-1"></i> Marine, Ndagani, Chuka town, Slaughter, Mungoni</p>
+        <p><i class="fas fa-phone-alt text-brand-yellow mr-1"></i> +254 758 589 325 / +254 706 765 603 / +254 783 410 660</p>
+        <p><i class="fas fa-map-marker-alt text-emerald-400 mr-1"></i> Serving Marine, Ndagani, Chuka town, Slaughter, Mungoni</p>
       </div>
     </div>
   </footer>
 
   <script>
-    const ADMIN_WHATSAPP_PHONE = "254758589325";
-
     const getStorage = (key) => JSON.parse(localStorage.getItem(key) || '[]');
     const setStorage = (key, data) => localStorage.setItem(key, JSON.stringify(data));
 
@@ -473,19 +495,18 @@
       if (activeNav) activeNav.className = 'px-3.5 py-2 rounded-xl btn-yellow shadow-md flex items-center gap-1.5';
     }
 
-    // Auto-select service when clicking service card
     function selectService(serviceName) {
       const selectElem = document.getElementById('clientServiceType');
       selectElem.value = serviceName;
       document.getElementById('bookingFormContainer').scrollIntoView({ behavior: 'smooth' });
     }
 
-    // Order Submission -> Formats message & Opens WhatsApp directly to Admin (0758589325)
     function handleOrderSubmit(e) {
       e.preventDefault();
 
       const name = document.getElementById('clientName').value.trim();
       const phone = document.getElementById('clientPhone').value.trim();
+      const targetAdminPhone = document.getElementById('adminTargetPhone').value;
       const service = document.getElementById('clientServiceType').value;
       const location = document.getElementById('clientLocation').value;
       const items = document.getElementById('clientItems').value.trim();
@@ -496,20 +517,19 @@
       orders.push(order);
       setStorage('clientOrders', orders);
 
-      // Build WhatsApp message string
       let msg = `*NEW SPARKSPIN LAUNDRY ORDER REQUEST*\n\n`;
       msg += `*Customer Name:* ${name}\n`;
       msg += `*Phone:* ${phone}\n`;
-      msg += `*Service:* ${service}\n`;
+      msg += `*Selected Rate Item:* ${service}\n`;
       msg += `*Pickup Zone:* ${location}\n`;
-      msg += `*Details/Items:* ${items}\n`;
+      msg += `*Details/Quantity:* ${items}\n`;
       if (refCode) msg += `*Marketer Code:* ${refCode}\n`;
       msg += `\n_Sent via SparkSpin Web Application_`;
 
       const encodedMsg = encodeURIComponent(msg);
-      const whatsappUrl = `https://wa.me/${ADMIN_WHATSAPP_PHONE}?text=${encodedMsg}`;
+      const whatsappUrl = `https://wa.me/${targetAdminPhone}?text=${encodedMsg}`;
 
-      alert(`Redirecting to WhatsApp to dispatch your order to Admin (+254 758 589 325)...`);
+      alert(`Opening WhatsApp to send your order details to SparkSpin Admin...`);
       window.open(whatsappUrl, '_blank');
       e.target.reset();
     }
@@ -572,7 +592,7 @@
       marketers.push({ name, phone, password, code });
       setStorage('registeredMarketers', marketers);
 
-      alert(`Marketer Registered Successfully!\n\nSEND THIS ACCESS CODE TO THE MARKETER: ${code}`);
+      alert(`Marketer Registered Successfully!\n\nSHARE THIS ACCESS CODE WITH THE MARKETER: ${code}`);
       e.target.reset();
       renderAdminMarketers();
     }
