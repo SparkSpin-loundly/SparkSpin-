@@ -55,22 +55,30 @@
       border-radius: 1.25rem;
       overflow: hidden;
       transition: all 0.3s ease;
-      cursor: pointer;
     }
-    .service-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 24px -6px rgba(0, 59, 115, 0.25);
+
+    .picture-card {
+      position: relative;
+      border: 3px solid var(--brand-yellow);
+      border-radius: 1.25rem;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .picture-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px -5px rgba(0, 59, 115, 0.3);
     }
   </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between">
 
-  <!-- Top Announcement Bar displaying all 3 Primary Admin Numbers -->
+  <!-- Top Announcement Bar displaying all 3 Primary Admin WhatsApp Lines -->
   <div class="bg-brand-dark text-white text-xs py-2.5 px-4 border-b-2 border-amber-400">
     <div class="max-w-6xl mx-auto flex flex-wrap justify-between items-center gap-2">
       <div class="flex items-center flex-wrap gap-3 font-bold text-[11px] md:text-xs">
-        <a href="tel:+254758589325" class="hover:text-amber-300"><i class="fas fa-phone-alt text-brand-yellow mr-1"></i> +254 758 589 325</a>
-        <a href="tel:+254706765603" class="hover:text-amber-300"><i class="fas fa-phone-alt text-brand-yellow mr-1"></i> +254 706 765 603</a>
+        <a href="https://wa.me/254758589325" target="_blank" class="hover:text-emerald-400"><i class="fab fa-whatsapp text-emerald-400 mr-1"></i> +254 758 589 325</a>
+        <a href="https://wa.me/254706765603" target="_blank" class="hover:text-emerald-400"><i class="fab fa-whatsapp text-emerald-400 mr-1"></i> +254 706 765 603</a>
         <a href="https://wa.me/254783410660" target="_blank" class="hover:text-emerald-400"><i class="fab fa-whatsapp text-emerald-400 mr-1"></i> +254 783 410 660</a>
       </div>
       <div class="text-brand-yellow font-extrabold tracking-wide uppercase text-[11px] flex items-center gap-1.5">
@@ -128,15 +136,15 @@
               We spin, <span class="text-brand-yellow underline decoration-amber-400 decoration-wavy">so you can chill!</span>
             </h2>
             <p class="text-slate-300 text-sm md:text-base leading-relaxed">
-              Click any image below to auto-select its rate, or place a direct WhatsApp order to our primary admin lines!
+              Click any picture card below to auto-select its service rate, then send your order request to any of our WhatsApp numbers!
             </p>
             
             <div class="pt-2 flex flex-wrap gap-2 text-xs font-bold">
-              <a href="tel:+254758589325" class="btn-yellow px-4 py-2.5 rounded-xl flex items-center gap-1.5 shadow">
-                <i class="fas fa-phone-alt"></i> +254 758 589 325
+              <a href="https://wa.me/254758589325" target="_blank" class="btn-whatsapp px-4 py-2.5 rounded-xl flex items-center gap-1.5 shadow">
+                <i class="fab fa-whatsapp text-base"></i> +254 758 589 325
               </a>
-              <a href="tel:+254706765603" class="btn-yellow px-4 py-2.5 rounded-xl flex items-center gap-1.5 shadow">
-                <i class="fas fa-phone-alt"></i> +254 706 765 603
+              <a href="https://wa.me/254706765603" target="_blank" class="btn-whatsapp px-4 py-2.5 rounded-xl flex items-center gap-1.5 shadow">
+                <i class="fab fa-whatsapp text-base"></i> +254 706 765 603
               </a>
               <a href="https://wa.me/254783410660" target="_blank" class="btn-whatsapp px-4 py-2.5 rounded-xl flex items-center gap-1.5 shadow">
                 <i class="fab fa-whatsapp text-base"></i> +254 783 410 660
@@ -148,124 +156,133 @@
             <div class="relative w-full max-w-xs rounded-2xl overflow-hidden border-4 border-amber-400 shadow-xl">
               <img src="https://images.unsplash.com/photo-1545173168-9f1947eebb7f?auto=format&fit=crop&w=600&q=80" alt="Fresh Laundry" class="w-full h-56 object-cover">
               <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-transparent to-transparent flex items-end p-4">
-                <p class="text-amber-300 font-black text-sm"><i class="fas fa-check-circle mr-1"></i> Quality & Speed Guaranteed</p>
+                <p class="text-amber-300 font-black text-sm"><i class="fas fa-check-circle mr-1"></i> Quality Clean Guaranteed</p>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Service Pictures with Prices Overlaid Directly inside Images -->
+      <!-- Professional Large Picture Service Cards with Embedded Flyer Rates -->
       <section class="space-y-6">
         <div class="text-center space-y-1">
           <span class="text-xs font-black text-brand-blue uppercase tracking-widest bg-amber-100 px-3 py-1 rounded-full border border-amber-300">Click Any Picture To Select Rate</span>
           <h3 class="text-3xl font-black text-brand-blue tracking-tight">Services & Official Rates</h3>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           
-          <!-- Laundry Basket -->
-          <div class="service-card group space-y-3 p-4">
+          <!-- Laundry Baskets Category -->
+          <div class="space-y-3">
             <h4 class="font-black text-brand-blue text-lg flex items-center gap-2">
-              <i class="fas fa-shopping-basket text-amber-500"></i> Laundry Basket
+              <i class="fas fa-shopping-basket text-amber-500"></i> Laundry Baskets
             </h4>
-            
-            <div class="grid grid-cols-3 gap-2">
-              <div onclick="selectService('Laundry Basket (Large) - 400/=')" class="relative rounded-xl overflow-hidden h-32 border-2 border-amber-400 group/img cursor-pointer">
-                <img src="https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover/img:scale-110 transition duration-300">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-2 text-center">
-                  <span class="text-[10px] font-bold text-slate-200 uppercase">Large</span>
-                  <span class="text-xs font-black text-amber-300">400/=</span>
+
+            <div onclick="selectService('Laundry Basket (Large) - 400/=')" class="picture-card h-48 group">
+              <img src="https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent p-4 flex flex-col justify-between">
+                <span class="self-end bg-amber-400 text-brand-dark text-xs font-black px-2.5 py-1 rounded-lg uppercase tracking-wider">Click to Select</span>
+                <div>
+                  <h5 class="text-white font-black text-xl">Large Laundry Basket</h5>
+                  <p class="text-amber-300 font-black text-2xl">400/=</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div onclick="selectService('Laundry Basket (Medium) - 350/=')" class="picture-card h-36 group">
+                <img src="https://images.unsplash.com/photo-1582735689369-4fe89db7114c?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-transparent to-transparent p-3 flex flex-col justify-end">
+                  <h5 class="text-white font-bold text-xs">Medium Basket</h5>
+                  <p class="text-amber-300 font-black text-lg">350/=</p>
                 </div>
               </div>
 
-              <div onclick="selectService('Laundry Basket (Medium) - 350/=')" class="relative rounded-xl overflow-hidden h-32 border-2 border-amber-400 group/img cursor-pointer">
-                <img src="https://images.unsplash.com/photo-1582735689369-4fe89db7114c?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover/img:scale-110 transition duration-300">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-2 text-center">
-                  <span class="text-[10px] font-bold text-slate-200 uppercase">Medium</span>
-                  <span class="text-xs font-black text-amber-300">350/=</span>
-                </div>
-              </div>
-
-              <div onclick="selectService('Laundry Basket (Small) - 300/=')" class="relative rounded-xl overflow-hidden h-32 border-2 border-amber-400 group/img cursor-pointer">
-                <img src="https://images.unsplash.com/photo-1610557892470-55d9e80c0bce?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover/img:scale-110 transition duration-300">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-2 text-center">
-                  <span class="text-[10px] font-bold text-slate-200 uppercase">Small</span>
-                  <span class="text-xs font-black text-amber-300">300/=</span>
+              <div onclick="selectService('Laundry Basket (Small) - 300/=')" class="picture-card h-36 group">
+                <img src="https://images.unsplash.com/photo-1610557892470-55d9e80c0bce?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-transparent to-transparent p-3 flex flex-col justify-end">
+                  <h5 class="text-white font-bold text-xs">Small Basket</h5>
+                  <p class="text-amber-300 font-black text-lg">300/=</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Duvets -->
-          <div class="service-card group space-y-3 p-4">
+          <!-- Duvets Category -->
+          <div class="space-y-3">
             <h4 class="font-black text-brand-blue text-lg flex items-center gap-2">
-              <i class="fas fa-bed text-amber-500"></i> Duvets
+              <i class="fas fa-bed text-amber-500"></i> Duvet Steam Clean
             </h4>
-            
-            <div class="grid grid-cols-3 gap-2">
-              <div onclick="selectService('Duvet (4x6) - 250/=')" class="relative rounded-xl overflow-hidden h-32 border-2 border-amber-400 group/img cursor-pointer">
-                <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover/img:scale-110 transition duration-300">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-2 text-center">
-                  <span class="text-[10px] font-bold text-slate-200 uppercase">4x6</span>
-                  <span class="text-xs font-black text-amber-300">250/=</span>
+
+            <div onclick="selectService('Duvet (6x6) - 350/=')" class="picture-card h-48 group">
+              <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent p-4 flex flex-col justify-between">
+                <span class="self-end bg-amber-400 text-brand-dark text-xs font-black px-2.5 py-1 rounded-lg uppercase tracking-wider">Click to Select</span>
+                <div>
+                  <h5 class="text-white font-black text-xl">Duvet (6x6 Extra Large)</h5>
+                  <p class="text-amber-300 font-black text-2xl">350/=</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div onclick="selectService('Duvet (5x6) - 300/=')" class="picture-card h-36 group">
+                <img src="https://images.unsplash.com/photo-1616046229478-9901c5536a45?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-transparent to-transparent p-3 flex flex-col justify-end">
+                  <h5 class="text-white font-bold text-xs">Duvet (5x6)</h5>
+                  <p class="text-amber-300 font-black text-lg">300/=</p>
                 </div>
               </div>
 
-              <div onclick="selectService('Duvet (5x6) - 300/=')" class="relative rounded-xl overflow-hidden h-32 border-2 border-amber-400 group/img cursor-pointer">
-                <img src="https://images.unsplash.com/photo-1616046229478-9901c5536a45?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover/img:scale-110 transition duration-300">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-2 text-center">
-                  <span class="text-[10px] font-bold text-slate-200 uppercase">5x6</span>
-                  <span class="text-xs font-black text-amber-300">300/=</span>
-                </div>
-              </div>
-
-              <div onclick="selectService('Duvet (6x6) - 350/=')" class="relative rounded-xl overflow-hidden h-32 border-2 border-amber-400 group/img cursor-pointer">
-                <img src="https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover/img:scale-110 transition duration-300">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-2 text-center">
-                  <span class="text-[10px] font-bold text-slate-200 uppercase">6x6</span>
-                  <span class="text-xs font-black text-amber-300">350/=</span>
+              <div onclick="selectService('Duvet (4x6) - 250/=')" class="picture-card h-36 group">
+                <img src="https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-transparent to-transparent p-3 flex flex-col justify-end">
+                  <h5 class="text-white font-bold text-xs">Duvet (4x6)</h5>
+                  <p class="text-amber-300 font-black text-lg">250/=</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Floor Mats & Carpets -->
-          <div class="service-card group space-y-3 p-4 sm:col-span-2 lg:col-span-1">
+          <!-- Floor Mats & Carpets Category -->
+          <div class="space-y-3 md:col-span-2 lg:col-span-1">
             <h4 class="font-black text-brand-blue text-lg flex items-center gap-2">
               <i class="fas fa-rug text-amber-500"></i> Floor Mats & Carpets
             </h4>
-            
-            <div class="grid grid-cols-2 gap-2">
-              <div onclick="selectService('Fluffy Mat - 250/=')" class="relative rounded-xl overflow-hidden h-28 border-2 border-amber-400 group/img cursor-pointer">
-                <img src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover/img:scale-110 transition duration-300">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-2 text-center">
-                  <span class="text-[10px] font-bold text-slate-200 uppercase">Fluffy Mat</span>
-                  <span class="text-xs font-black text-amber-300">250/=</span>
+
+            <div onclick="selectService('Hard Carpet (Large) - 450/=')" class="picture-card h-48 group">
+              <img src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent p-4 flex flex-col justify-between">
+                <span class="self-end bg-amber-400 text-brand-dark text-xs font-black px-2.5 py-1 rounded-lg uppercase tracking-wider">Click to Select</span>
+                <div>
+                  <h5 class="text-white font-black text-xl">Hard Carpet (Large)</h5>
+                  <p class="text-amber-300 font-black text-2xl">450/=</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-3 gap-2">
+              <div onclick="selectService('Hard Carpet (Small) - 350/=')" class="picture-card h-36 group">
+                <img src="https://images.unsplash.com/photo-1534349735944-2b3a6f7a268f?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-transparent to-transparent p-2 flex flex-col justify-end">
+                  <h5 class="text-white font-bold text-[10px]">Carpet (Small)</h5>
+                  <p class="text-amber-300 font-black text-sm">350/=</p>
                 </div>
               </div>
 
-              <div onclick="selectService('Door Mat - 70/=')" class="relative rounded-xl overflow-hidden h-28 border-2 border-amber-400 group/img cursor-pointer">
-                <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover/img:scale-110 transition duration-300">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-2 text-center">
-                  <span class="text-[10px] font-bold text-slate-200 uppercase">Door Mat</span>
-                  <span class="text-xs font-black text-amber-300">70/=</span>
+              <div onclick="selectService('Fluffy Mat - 250/=')" class="picture-card h-36 group">
+                <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-transparent to-transparent p-2 flex flex-col justify-end">
+                  <h5 class="text-white font-bold text-[10px]">Fluffy Mat</h5>
+                  <p class="text-amber-300 font-black text-sm">250/=</p>
                 </div>
               </div>
 
-              <div onclick="selectService('Hard Carpet (Small) - 350/=')" class="relative rounded-xl overflow-hidden h-28 border-2 border-amber-400 group/img cursor-pointer">
-                <img src="https://images.unsplash.com/photo-1534349735944-2b3a6f7a268f?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover/img:scale-110 transition duration-300">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-2 text-center">
-                  <span class="text-[10px] font-bold text-slate-200 uppercase">Hard Carpet (Small)</span>
-                  <span class="text-xs font-black text-amber-300">350/=</span>
-                </div>
-              </div>
-
-              <div onclick="selectService('Hard Carpet (Large) - 450/=')" class="relative rounded-xl overflow-hidden h-28 border-2 border-amber-400 group/img cursor-pointer">
-                <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover/img:scale-110 transition duration-300">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-2 text-center">
-                  <span class="text-[10px] font-bold text-slate-200 uppercase">Hard Carpet (Large)</span>
-                  <span class="text-xs font-black text-amber-300">450/=</span>
+              <div onclick="selectService('Door Mat - 70/=')" class="picture-card h-36 group">
+                <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-transparent to-transparent p-2 flex flex-col justify-end">
+                  <h5 class="text-white font-bold text-[10px]">Door Mat</h5>
+                  <p class="text-amber-300 font-black text-sm">70/=</p>
                 </div>
               </div>
             </div>
@@ -274,12 +291,12 @@
         </div>
       </section>
 
-      <!-- Booking Form (Dispatches to Primary Admin WhatsApp Lines) -->
+      <!-- Booking Form -->
       <div id="bookingFormContainer" class="service-card p-6 md:p-8 max-w-2xl mx-auto shadow-xl">
         <div class="text-center space-y-1 mb-6">
           <span class="text-xs font-black text-brand-blue uppercase tracking-widest bg-amber-100 px-3 py-1 rounded-full">Direct Admin Dispatch</span>
           <h3 class="text-2xl font-black text-brand-blue">Place Order Request via WhatsApp</h3>
-          <p class="text-xs text-slate-500">Submitting will send order details directly to the primary SparkSpin Admin WhatsApp line (+254 758 589 325).</p>
+          <p class="text-xs text-slate-500">Choose any of our primary admin WhatsApp numbers to receive your order request immediately.</p>
         </div>
 
         <form onsubmit="handleOrderSubmit(event)" class="space-y-4">
@@ -294,24 +311,33 @@
           </div>
 
           <div>
-            <label class="block text-xs font-extrabold text-slate-700 uppercase mb-1">Selected Item / Service Rate</label>
-            <select id="clientServiceType" required class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 outline-none text-sm font-semibold bg-white text-brand-blue">
-              <option value="">-- Choose item or click picture above --</option>
-              <option value="Laundry Basket (Large) - 400/=">Laundry Basket (Large) - 400/=</option>
-              <option value="Laundry Basket (Medium) - 350/=">Laundry Basket (Medium) - 350/=</option>
-              <option value="Laundry Basket (Small) - 300/=">Laundry Basket (Small) - 300/=</option>
-              <option value="Duvet (4x6) - 250/=">Duvet (4x6) - 250/=</option>
-              <option value="Duvet (5x6) - 300/=">Duvet (5x6) - 300/=</option>
-              <option value="Duvet (6x6) - 350/=">Duvet (6x6) - 350/=</option>
-              <option value="Door Mat - 70/=">Door Mat - 70/=</option>
-              <option value="Fluffy Mat - 250/=">Fluffy Mat - 250/=</option>
-              <option value="Hard Carpet (Small) - 350/=">Hard Carpet (Small) - 350/=</option>
-              <option value="Hard Carpet (Large) - 450/=">Hard Carpet (Large) - 450/=</option>
+            <label class="block text-xs font-extrabold text-slate-700 uppercase mb-1">Send Request To Admin WhatsApp Number</label>
+            <select id="adminTargetPhone" required class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 outline-none text-sm font-bold bg-amber-50 text-brand-blue">
+              <option value="254758589325">Primary Admin WhatsApp Line 1 (+254 758 589 325)</option>
+              <option value="254706765603">Primary Admin WhatsApp Line 2 (+254 706 765 603)</option>
+              <option value="254783410660">Primary Admin WhatsApp Line 3 (+254 783 410 660)</option>
             </select>
           </div>
 
           <div>
-            <label class="block text-xs font-extrabold text-slate-700 uppercase mb-1">Pickup Area / Free Delivery Zone</label>
+            <label class="block text-xs font-extrabold text-slate-700 uppercase mb-1">Selected Service Rate Item</label>
+            <select id="clientServiceType" required class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 outline-none text-sm font-semibold bg-white text-brand-blue">
+              <option value="">-- Choose item or click picture card above --</option>
+              <option value="Laundry Basket (Large) - 400/=">Laundry Basket (Large) - 400/=</option>
+              <option value="Laundry Basket (Medium) - 350/=">Laundry Basket (Medium) - 350/=</option>
+              <option value="Laundry Basket (Small) - 300/=">Laundry Basket (Small) - 300/=</option>
+              <option value="Duvet (6x6) - 350/=">Duvet (6x6) - 350/=</option>
+              <option value="Duvet (5x6) - 300/=">Duvet (5x6) - 300/=</option>
+              <option value="Duvet (4x6) - 250/=">Duvet (4x6) - 250/=</option>
+              <option value="Hard Carpet (Large) - 450/=">Hard Carpet (Large) - 450/=</option>
+              <option value="Hard Carpet (Small) - 350/=">Hard Carpet (Small) - 350/=</option>
+              <option value="Fluffy Mat - 250/=">Fluffy Mat - 250/=</option>
+              <option value="Door Mat - 70/=">Door Mat - 70/=</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-extrabold text-slate-700 uppercase mb-1">Pickup Area / Delivery Zone</label>
             <select id="clientLocation" required class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 outline-none text-sm font-semibold bg-white">
               <option value="">Select Pickup Location</option>
               <option value="Marine">Marine</option>
@@ -324,13 +350,13 @@
           </div>
 
           <div>
-            <label class="block text-xs font-extrabold text-slate-700 uppercase mb-1">Quantity / Extra Pickup Details</label>
-            <textarea id="clientItems" rows="2" placeholder="e.g. 2 Large Baskets, pick up at 2 PM" required class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 outline-none text-sm font-semibold"></textarea>
+            <label class="block text-xs font-extrabold text-slate-700 uppercase mb-1">Quantity / Pickup Notes</label>
+            <textarea id="clientItems" rows="2" placeholder="e.g. 2 Large Baskets, pickup at 2 PM" required class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 outline-none text-sm font-semibold"></textarea>
           </div>
 
           <div>
-            <label class="block text-xs font-extrabold text-slate-700 uppercase mb-1">Marketer Code (Optional)</label>
-            <input type="text" id="clientRefCode" placeholder="Enter Marketer Code given to you (e.g., MK-1024)" class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 outline-none text-sm font-mono uppercase">
+            <label class="block text-xs font-extrabold text-slate-700 uppercase mb-1">Marketer Access Code (Optional)</label>
+            <input type="text" id="clientRefCode" placeholder="e.g. MK-1024" class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 outline-none text-sm font-mono uppercase">
           </div>
 
           <button type="submit" class="w-full btn-whatsapp py-4 rounded-xl text-base font-black shadow-lg uppercase tracking-wider flex items-center justify-center gap-2">
@@ -341,7 +367,7 @@
 
     </div>
 
-    <!-- TAB 2: MARKETER PORTAL -->
+    <!-- TAB 2: MARKETER PORTAL (DIRECT ACCESS CODE LOGIN ONLY) -->
     <div id="tab-marketer" class="hidden space-y-6">
       <div id="marketerLoginCard" class="service-card p-6 md:p-8 max-w-md mx-auto shadow-xl space-y-4">
         <div class="text-center space-y-2">
@@ -349,19 +375,17 @@
             <i class="fas fa-id-badge"></i>
           </div>
           <h3 class="text-xl font-black text-brand-blue">Marketer Portal Access</h3>
-          <p class="text-xs text-slate-500">Log in using your assigned Marketer Code and Password from Admin</p>
+          <p class="text-xs text-slate-500">Enter your assigned Access Code issued by Admin to automatically log in</p>
         </div>
 
         <form onsubmit="handleMarketerLogin(event)" class="space-y-4">
           <div>
             <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Marketer Access Code</label>
-            <input type="text" id="mktLoginCode" required placeholder="e.g. MK-4821" class="w-full px-4 py-2.5 rounded-xl border-2 border-slate-200 text-sm font-mono uppercase">
+            <input type="text" id="mktLoginCode" required placeholder="e.g. MK-4821" class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 text-base font-mono uppercase tracking-widest text-center">
           </div>
-          <div>
-            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Password</label>
-            <input type="password" id="mktLoginPass" required class="w-full px-4 py-2.5 rounded-xl border-2 border-slate-200 text-sm">
-          </div>
-          <button type="submit" class="w-full btn-yellow py-3 rounded-xl text-sm font-extrabold">Open Marketer Dashboard</button>
+          <button type="submit" class="w-full btn-yellow py-3.5 rounded-xl text-sm font-black uppercase tracking-wider">
+            <i class="fas fa-sign-in-alt mr-2"></i> Log In To Dashboard
+          </button>
         </form>
       </div>
 
@@ -393,34 +417,34 @@
       <div class="text-center space-y-2">
         <span class="text-xs font-black text-brand-blue uppercase tracking-widest bg-emerald-100 px-3 py-1 rounded-full border border-emerald-300">Automated Direct Support</span>
         <h3 class="text-3xl font-black text-brand-blue">Customer Care Hub</h3>
-        <p class="text-xs text-slate-500 max-w-lg mx-auto">Click any primary line below to initiate immediate automated contact with SparkSpin support.</p>
+        <p class="text-xs text-slate-500 max-w-lg mx-auto">Click any of our primary lines below to instantly initiate direct WhatsApp support or calls.</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div class="service-card p-6 text-center space-y-3">
-          <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center mx-auto text-2xl font-black">
-            <i class="fas fa-phone-alt"></i>
+          <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mx-auto text-2xl font-black">
+            <i class="fab fa-whatsapp"></i>
           </div>
-          <h4 class="font-black text-brand-blue text-lg">Primary Admin Line 1</h4>
-          <p class="text-xs text-slate-500">Automated direct call hotline.</p>
-          <a href="tel:+254758589325" class="btn-yellow inline-block px-5 py-2.5 rounded-xl text-xs font-extrabold">+254 758 589 325</a>
-        </div>
-
-        <div class="service-card p-6 text-center space-y-3">
-          <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center mx-auto text-2xl font-black">
-            <i class="fas fa-phone-alt"></i>
-          </div>
-          <h4 class="font-black text-brand-blue text-lg">Primary Admin Line 2</h4>
-          <p class="text-xs text-slate-500">Secondary direct call hotline.</p>
-          <a href="tel:+254706765603" class="btn-yellow inline-block px-5 py-2.5 rounded-xl text-xs font-extrabold">+254 706 765 603</a>
+          <h4 class="font-black text-brand-blue text-lg">Primary Line 1</h4>
+          <p class="text-xs text-slate-500">Automated WhatsApp Chat & Call Hotline.</p>
+          <a href="https://wa.me/254758589325" target="_blank" class="btn-whatsapp inline-block px-5 py-2.5 rounded-xl text-xs font-extrabold">+254 758 589 325</a>
         </div>
 
         <div class="service-card p-6 text-center space-y-3">
           <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mx-auto text-2xl font-black">
             <i class="fab fa-whatsapp"></i>
           </div>
-          <h4 class="font-black text-brand-blue text-lg">Primary WhatsApp Line 3</h4>
-          <p class="text-xs text-slate-500">Automated live WhatsApp chat.</p>
+          <h4 class="font-black text-brand-blue text-lg">Primary Line 2</h4>
+          <p class="text-xs text-slate-500">Automated WhatsApp Chat & Call Hotline.</p>
+          <a href="https://wa.me/254706765603" target="_blank" class="btn-whatsapp inline-block px-5 py-2.5 rounded-xl text-xs font-extrabold">+254 706 765 603</a>
+        </div>
+
+        <div class="service-card p-6 text-center space-y-3">
+          <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mx-auto text-2xl font-black">
+            <i class="fab fa-whatsapp"></i>
+          </div>
+          <h4 class="font-black text-brand-blue text-lg">Primary Line 3</h4>
+          <p class="text-xs text-slate-500">Automated WhatsApp Chat & Call Hotline.</p>
           <a href="https://wa.me/254783410660" target="_blank" class="btn-whatsapp inline-block px-5 py-2.5 rounded-xl text-xs font-extrabold">+254 783 410 660</a>
         </div>
       </div>
@@ -449,7 +473,7 @@
         <div class="bg-brand-dark text-white p-6 rounded-2xl border-2 border-amber-400 flex justify-between items-center">
           <div>
             <h3 class="text-2xl font-black text-white">SparkSpin Admin Console</h3>
-            <p class="text-xs text-amber-300">All Primary Admin Lines Active: +254 758 589 325 | +254 706 765 603 | +254 783 410 660</p>
+            <p class="text-xs text-amber-300">Active Lines: +254 758 589 325 | +254 706 765 603 | +254 783 410 660</p>
           </div>
           <button onclick="logoutAdmin()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-xs font-bold">Log Out</button>
         </div>
@@ -457,11 +481,10 @@
         <!-- Add Marketer -->
         <div class="service-card p-6 space-y-3">
           <h4 class="font-black text-brand-blue text-base"><i class="fas fa-user-plus text-amber-500 mr-1"></i> Register Marketer & Generate Access Code</h4>
-          <form onsubmit="handleRegisterMarketer(event)" class="grid grid-cols-1 md:grid-cols-3 gap-3">
-            <input type="text" id="regMktName" placeholder="Full Name" required class="px-4 py-2.5 rounded-xl border-2 border-slate-200 text-sm">
+          <form onsubmit="handleRegisterMarketer(event)" class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <input type="text" id="regMktName" placeholder="Marketer Full Name" required class="px-4 py-2.5 rounded-xl border-2 border-slate-200 text-sm">
             <input type="tel" id="regMktPhone" placeholder="Phone Number" required class="px-4 py-2.5 rounded-xl border-2 border-slate-200 text-sm">
-            <input type="text" id="regMktPass" placeholder="Set Password" required class="px-4 py-2.5 rounded-xl border-2 border-slate-200 text-sm">
-            <button type="submit" class="md:col-span-3 btn-yellow py-3 rounded-xl text-sm font-bold">Register & Generate Code</button>
+            <button type="submit" class="md:col-span-2 btn-yellow py-3 rounded-xl text-sm font-bold">Register & Issue Access Code</button>
           </form>
         </div>
 
@@ -495,15 +518,13 @@
         <p class="text-xs text-slate-400">Too busy for laundry? Don't stress – We've got you covered!</p>
       </div>
       <div class="text-xs font-bold text-slate-300 space-y-1">
-        <p><i class="fas fa-phone-alt text-brand-yellow mr-1"></i> +254 758 589 325 / +254 706 765 603 / +254 783 410 660</p>
-        <p><i class="fas fa-map-marker-alt text-emerald-400 mr-1"></i> Serving Marine, Ndagani, Chuka town, Slaughter, Mungoni</p>
+        <p><i class="fab fa-whatsapp text-emerald-400 mr-1"></i> +254 758 589 325 / +254 706 765 603 / +254 783 410 660</p>
+        <p><i class="fas fa-map-marker-alt text-amber-400 mr-1"></i> Serving Marine, Ndagani, Chuka town, Slaughter, Mungoni</p>
       </div>
     </div>
   </footer>
 
   <script>
-    const PRIMARY_ADMIN_PHONES = ["254758589325", "254706765603", "254783410660"];
-
     const getStorage = (key) => JSON.parse(localStorage.getItem(key) || '[]');
     const setStorage = (key, data) => localStorage.setItem(key, JSON.stringify(data));
 
@@ -532,6 +553,7 @@
 
       const name = document.getElementById('clientName').value.trim();
       const phone = document.getElementById('clientPhone').value.trim();
+      const targetAdminPhone = document.getElementById('adminTargetPhone').value;
       const service = document.getElementById('clientServiceType').value;
       const location = document.getElementById('clientLocation').value;
       const items = document.getElementById('clientItems').value.trim();
@@ -552,22 +574,20 @@
       msg += `\n_Sent via SparkSpin Web Application_`;
 
       const encodedMsg = encodeURIComponent(msg);
-      
-      // Dispatch order directly to primary admin WhatsApp line
-      const whatsappUrl = `https://wa.me/${PRIMARY_ADMIN_PHONES[0]}?text=${encodedMsg}`;
+      const whatsappUrl = `https://wa.me/${targetAdminPhone}?text=${encodedMsg}`;
 
-      alert(`Sending order details directly to SparkSpin Admin lines (+254 758 589 325 / +254 706 765 603 / +254 783 410 660)...`);
+      alert(`Opening WhatsApp to send your order details to SparkSpin Admin...`);
       window.open(whatsappUrl, '_blank');
       e.target.reset();
     }
 
+    // Code-only Marketer Login
     function handleMarketerLogin(e) {
       e.preventDefault();
       const code = document.getElementById('mktLoginCode').value.trim().toUpperCase();
-      const pass = document.getElementById('mktLoginPass').value;
 
       const marketers = getStorage('registeredMarketers');
-      const found = marketers.find(m => m.code === code && m.password === pass);
+      const found = marketers.find(m => m.code === code);
 
       if (found) {
         document.getElementById('marketerLoginCard').classList.add('hidden');
@@ -582,13 +602,14 @@
         document.getElementById('mktDashCount').innerText = refCount;
         document.getElementById('mktDashEarnings').innerText = `${refCount * 50} KSh`;
       } else {
-        alert('Invalid Marketer Code or Password!');
+        alert('Invalid Marketer Access Code! Please verify the code issued by the Admin.');
       }
     }
 
     function logoutMarketer() {
       document.getElementById('marketerDash').classList.add('hidden');
       document.getElementById('marketerLoginCard').classList.remove('hidden');
+      document.getElementById('mktLoginCode').value = '';
     }
 
     function handleAdminLogin(e) {
@@ -598,7 +619,7 @@
         document.getElementById('adminControlPanel').classList.remove('hidden');
         renderAdminMarketers();
       } else {
-        alert('Incorrect Password!');
+        alert('Incorrect Admin Password!');
       }
     }
 
@@ -609,17 +630,16 @@
 
     function handleRegisterMarketer(e) {
       e.preventDefault();
-      const name = document.getElementById('regMktName').value;
+      const name = document.getElementById('regMktName').value.trim();
       const phone = document.getElementById('regMktPhone').value.trim();
-      const password = document.getElementById('regMktPass').value;
 
       const marketers = getStorage('registeredMarketers');
       const code = `MK-${Math.floor(1000 + Math.random() * 9000)}`;
 
-      marketers.push({ name, phone, password, code });
+      marketers.push({ name, phone, code });
       setStorage('registeredMarketers', marketers);
 
-      alert(`Marketer Registered Successfully!\n\nSHARE THIS ACCESS CODE WITH THE MARKETER: ${code}`);
+      alert(`Marketer Registered Successfully!\n\nSHARE THIS UNIQUE ACCESS CODE WITH THE MARKETER: ${code}`);
       e.target.reset();
       renderAdminMarketers();
     }
