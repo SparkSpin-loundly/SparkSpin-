@@ -55,20 +55,25 @@
       border-radius: 1.25rem;
       overflow: hidden;
       transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px -6px rgba(0, 59, 115, 0.2);
     }
   </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between">
 
-  <!-- Announcement Bar -->
+  <!-- Top Announcement Bar -->
   <div class="bg-brand-dark text-white text-xs py-2.5 px-4 border-b-2 border-amber-400">
     <div class="max-w-6xl mx-auto flex flex-wrap justify-between items-center gap-2">
       <div class="flex items-center gap-4 font-bold">
-        <span><i class="fas fa-phone-alt text-brand-yellow mr-1"></i> +254 706 765 603</span>
-        <span><i class="fab fa-whatsapp text-emerald-400 mr-1"></i> +254 783 410 660</span>
+        <span><i class="fas fa-phone-alt text-brand-yellow mr-1"></i> +254 758 589 325</span>
+        <span><i class="fab fa-whatsapp text-emerald-400 mr-1"></i> +254 758 589 325</span>
       </div>
       <div class="text-brand-yellow font-extrabold tracking-wide uppercase text-[11px] flex items-center gap-1.5">
-        <i class="fas fa-truck-fast"></i> Free Delivery Areas Active
+        <i class="fas fa-truck-fast"></i> Free Pickup & Delivery Active
       </div>
     </div>
   </div>
@@ -97,7 +102,7 @@
           <i class="fas fa-bullhorn text-brand-yellow"></i> Marketer Portal
         </button>
         <button onclick="switchTab('support')" id="nav-support" class="px-3.5 py-2 rounded-xl bg-slate-800 text-slate-200 hover:bg-slate-700 flex items-center gap-1.5">
-          <i class="fas fa-headset text-emerald-400"></i> Customer Care Hub
+          <i class="fas fa-headset text-emerald-400"></i> Customer Care
         </button>
         <button onclick="switchTab('admin')" id="nav-admin" class="px-3 py-2 rounded-xl bg-slate-800 text-slate-200 hover:bg-slate-700 flex items-center gap-1.5">
           <i class="fas fa-lock text-slate-400"></i> Admin
@@ -122,14 +127,14 @@
               We spin, <span class="text-brand-yellow underline decoration-amber-400 decoration-wavy">so you can chill!</span>
             </h2>
             <p class="text-slate-300 text-sm md:text-base leading-relaxed">
-              Experience sparkling clean, fresh, and folded clothes without lifting a finger. Professional washing, duvet steam cleaning, and carpet care with fast turnaround.
+              Sparkling clean, fresh, and perfectly folded clothes delivered right to your doorstep. Select a service below to send an order directly to our WhatsApp!
             </p>
             <div class="pt-2 flex flex-wrap gap-3">
-              <a href="tel:+254706765603" class="btn-yellow px-5 py-3 rounded-xl flex items-center gap-2 text-sm shadow-lg">
-                <i class="fas fa-phone-alt"></i> Call: +254 706 765 603
+              <a href="tel:+254758589325" class="btn-yellow px-5 py-3 rounded-xl flex items-center gap-2 text-sm shadow-lg">
+                <i class="fas fa-phone-alt"></i> Call Admin: +254 758 589 325
               </a>
-              <a href="https://wa.me/254783410660" target="_blank" class="btn-whatsapp px-5 py-3 rounded-xl flex items-center gap-2 text-sm shadow-lg">
-                <i class="fab fa-whatsapp text-lg"></i> WhatsApp Order
+              <a href="https://wa.me/254758589325" target="_blank" class="btn-whatsapp px-5 py-3 rounded-xl flex items-center gap-2 text-sm shadow-lg">
+                <i class="fab fa-whatsapp text-lg"></i> Instant WhatsApp Chat
               </a>
             </div>
           </div>
@@ -137,96 +142,152 @@
             <div class="relative w-full max-w-xs rounded-2xl overflow-hidden border-4 border-amber-400 shadow-xl">
               <img src="https://images.unsplash.com/photo-1545173168-9f1947eebb7f?auto=format&fit=crop&w=600&q=80" alt="Fresh Laundry" class="w-full h-56 object-cover">
               <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-transparent to-transparent flex items-end p-4">
-                <p class="text-amber-300 font-black text-sm"><i class="fas fa-check-circle mr-1"></i> Fresh Guarantee</p>
+                <p class="text-amber-300 font-black text-sm"><i class="fas fa-check-circle mr-1"></i> Quality & Speed Guaranteed</p>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Services -->
+      <!-- Interactive Services with Clear Prices -->
       <section class="space-y-6">
         <div class="text-center space-y-1">
-          <span class="text-xs font-black text-brand-blue uppercase tracking-widest bg-amber-100 px-3 py-1 rounded-full border border-amber-300">Cleaned To Perfection</span>
-          <h3 class="text-3xl font-black text-brand-blue tracking-tight">Our Cleaning Services</h3>
+          <span class="text-xs font-black text-brand-blue uppercase tracking-widest bg-amber-100 px-3 py-1 rounded-full border border-amber-300">Click Any Service To Book</span>
+          <h3 class="text-3xl font-black text-brand-blue tracking-tight">Our Services & Pricing</h3>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div class="service-card">
-            <img src="https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?auto=format&fit=crop&w=600&q=80" alt="Clothes" class="w-full h-40 object-cover">
+          
+          <!-- Clothes -->
+          <div onclick="selectService('Clothes (Standard Basket - 500 KSh)')" class="service-card group">
+            <div class="h-40 overflow-hidden relative">
+              <img src="https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?auto=format&fit=crop&w=600&q=80" alt="Clothes" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+              <span class="absolute top-2 right-2 bg-brand-header text-amber-300 text-xs font-black px-2.5 py-1 rounded-lg border border-amber-400">Click to Select</span>
+            </div>
             <div class="p-4 space-y-2">
               <h4 class="font-black text-brand-blue text-lg"><i class="fas fa-tshirt text-amber-500 mr-1"></i> Clothes</h4>
-              <p class="text-xs text-slate-600">Thorough wash, drying & neat folding for all everyday garments.</p>
+              <p class="text-xs text-slate-600">Wash, dry & fold everyday clothes.</p>
+              <div class="pt-2 border-t border-slate-100 flex justify-between items-center">
+                <span class="text-xs font-bold text-slate-400">Rate:</span>
+                <span class="text-sm font-black text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">500 KSh / Basket</span>
+              </div>
             </div>
           </div>
-          <div class="service-card">
-            <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=600&q=80" alt="Duvets" class="w-full h-40 object-cover">
+
+          <!-- Duvets -->
+          <div onclick="selectService('Duvet / Bedding (600 - 800 KSh)')" class="service-card group">
+            <div class="h-40 overflow-hidden relative">
+              <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=600&q=80" alt="Duvets" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+              <span class="absolute top-2 right-2 bg-brand-header text-amber-300 text-xs font-black px-2.5 py-1 rounded-lg border border-amber-400">Click to Select</span>
+            </div>
             <div class="p-4 space-y-2">
               <h4 class="font-black text-brand-blue text-lg"><i class="fas fa-bed text-amber-500 mr-1"></i> Duvets</h4>
-              <p class="text-xs text-slate-600">Deep steam wash & allergen elimination for heavy comforters.</p>
+              <p class="text-xs text-slate-600">Deep steam washing & sanitization.</p>
+              <div class="pt-2 border-t border-slate-100 flex justify-between items-center">
+                <span class="text-xs font-bold text-slate-400">Rate:</span>
+                <span class="text-sm font-black text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">600 - 800 KSh / Item</span>
+              </div>
             </div>
           </div>
-          <div class="service-card">
-            <img src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?auto=format&fit=crop&w=600&q=80" alt="Floor Mats" class="w-full h-40 object-cover">
+
+          <!-- Floor Mats & Carpets -->
+          <div onclick="selectService('Floor Mats & Carpets (From 300 KSh)')" class="service-card group">
+            <div class="h-40 overflow-hidden relative">
+              <img src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?auto=format&fit=crop&w=600&q=80" alt="Floor Mats" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+              <span class="absolute top-2 right-2 bg-brand-header text-amber-300 text-xs font-black px-2.5 py-1 rounded-lg border border-amber-400">Click to Select</span>
+            </div>
             <div class="p-4 space-y-2">
               <h4 class="font-black text-brand-blue text-lg"><i class="fas fa-rug text-amber-500 mr-1"></i> Floor Mats & Carpets</h4>
-              <p class="text-xs text-slate-600">Heavy dirt extraction, stain removal, and deep shampooing.</p>
+              <p class="text-xs text-slate-600">Stain removal & deep shampooing.</p>
+              <div class="pt-2 border-t border-slate-100 flex justify-between items-center">
+                <span class="text-xs font-bold text-slate-400">Rate:</span>
+                <span class="text-sm font-black text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">From 300 KSh / sqm</span>
+              </div>
             </div>
           </div>
-          <div class="service-card">
-            <img src="https://images.unsplash.com/photo-1616627547584-bf28cee262db?auto=format&fit=crop&w=600&q=80" alt="Towels" class="w-full h-40 object-cover">
+
+          <!-- Towels -->
+          <div onclick="selectService('Towels Wash & Sanitize (300 KSh)')" class="service-card group">
+            <div class="h-40 overflow-hidden relative">
+              <img src="https://images.unsplash.com/photo-1616627547584-bf28cee262db?auto=format&fit=crop&w=600&q=80" alt="Towels" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+              <span class="absolute top-2 right-2 bg-brand-header text-amber-300 text-xs font-black px-2.5 py-1 rounded-lg border border-amber-400">Click to Select</span>
+            </div>
             <div class="p-4 space-y-2">
               <h4 class="font-black text-brand-blue text-lg"><i class="fas fa-scroll text-amber-500 mr-1"></i> Towels</h4>
-              <p class="text-xs text-slate-600">Softening wash, deodorizing treatment, and sanitization.</p>
+              <p class="text-xs text-slate-600">Softening wash & hygienic treatment.</p>
+              <div class="pt-2 border-t border-slate-100 flex justify-between items-center">
+                <span class="text-xs font-bold text-slate-400">Rate:</span>
+                <span class="text-sm font-black text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">300 KSh / Bundle</span>
+              </div>
             </div>
           </div>
+
         </div>
       </section>
 
-      <!-- Booking Form -->
-      <div class="service-card p-6 md:p-8 max-w-2xl mx-auto shadow-xl">
+      <!-- Booking Form (Sends directly to Admin WhatsApp 0758589325) -->
+      <div id="bookingFormContainer" class="service-card p-6 md:p-8 max-w-2xl mx-auto shadow-xl">
         <div class="text-center space-y-1 mb-6">
-          <span class="text-xs font-black text-brand-blue uppercase tracking-widest bg-amber-100 px-3 py-1 rounded-full">Book In Seconds</span>
-          <h3 class="text-2xl font-black text-brand-blue">Schedule Your Laundry Pickup</h3>
+          <span class="text-xs font-black text-brand-blue uppercase tracking-widest bg-amber-100 px-3 py-1 rounded-full">Direct Admin Dispatch</span>
+          <h3 class="text-2xl font-black text-brand-blue">Send Order Request via WhatsApp</h3>
+          <p class="text-xs text-slate-500">Submitting will automatically send your order details directly to the SparkSpin Admin WhatsApp line (+254 758 589 325).</p>
         </div>
 
         <form onsubmit="handleOrderSubmit(event)" class="space-y-4">
           <div>
-            <label class="block text-xs font-extrabold text-slate-700 uppercase mb-1">Full Name</label>
-            <input type="text" id="clientName" required placeholder="e.g. Jane Doe" class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 outline-none text-sm font-semibold">
+            <label class="block text-xs font-extrabold text-slate-700 uppercase mb-1">Your Full Name</label>
+            <input type="text" id="clientName" required placeholder="e.g. John Doe" class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 outline-none text-sm font-semibold">
           </div>
+
           <div>
             <label class="block text-xs font-extrabold text-slate-700 uppercase mb-1">Phone Number</label>
             <input type="tel" id="clientPhone" required placeholder="07XX XXX XXX" class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 outline-none text-sm font-semibold">
           </div>
+
           <div>
-            <label class="block text-xs font-extrabold text-slate-700 uppercase mb-1">Pickup Location / Area</label>
+            <label class="block text-xs font-extrabold text-slate-700 uppercase mb-1">Selected Service Category</label>
+            <select id="clientServiceType" required class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 outline-none text-sm font-semibold bg-white text-brand-blue">
+              <option value="">-- Choose or click service card above --</option>
+              <option value="Clothes (Standard Basket - 500 KSh)">Clothes (Standard Basket - 500 KSh)</option>
+              <option value="Duvet / Bedding (600 - 800 KSh)">Duvet / Bedding (600 - 800 KSh)</option>
+              <option value="Floor Mats & Carpets (From 300 KSh)">Floor Mats & Carpets (From 300 KSh)</option>
+              <option value="Towels Wash & Sanitize (300 KSh)">Towels Wash & Sanitize (300 KSh)</option>
+              <option value="Mixed / Custom Laundry Batch">Mixed / Custom Laundry Batch</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-extrabold text-slate-700 uppercase mb-1">Pickup Area / Free Delivery Zone</label>
             <select id="clientLocation" required class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 outline-none text-sm font-semibold bg-white">
-              <option value="">Select Delivery Zone</option>
+              <option value="">Select Pickup Location</option>
               <option value="Marine">Marine</option>
               <option value="Ndagani">Ndagani</option>
               <option value="Chuka town">Chuka town</option>
               <option value="Slaughter">Slaughter</option>
               <option value="Mungoni">Mungoni</option>
+              <option value="Other Location">Other Area (Specify in details)</option>
             </select>
           </div>
+
           <div>
-            <label class="block text-xs font-extrabold text-slate-700 uppercase mb-1">Laundry Items</label>
-            <textarea id="clientItems" rows="2" placeholder="e.g. 1 Duvet, 1 Basket Clothes" required class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 outline-none text-sm font-semibold"></textarea>
+            <label class="block text-xs font-extrabold text-slate-700 uppercase mb-1">Laundry Quantity / Extra Details</label>
+            <textarea id="clientItems" rows="2" placeholder="e.g. 2 Duvets, 1 Basket of Clothes, pick up at 2 PM" required class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 outline-none text-sm font-semibold"></textarea>
           </div>
+
           <div>
             <label class="block text-xs font-extrabold text-slate-700 uppercase mb-1">Marketer Code (Optional)</label>
-            <input type="text" id="clientRefCode" placeholder="Enter Marketer Code given by Admin (e.g., MK-1024)" class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 outline-none text-sm font-mono uppercase">
+            <input type="text" id="clientRefCode" placeholder="Enter Marketer Code given to you (e.g., MK-1024)" class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 outline-none text-sm font-mono uppercase">
           </div>
-          <button type="submit" class="w-full btn-yellow py-4 rounded-xl text-base font-black shadow-lg uppercase tracking-wider">
-            <i class="fas fa-paper-plane mr-2"></i> Submit Order
+
+          <button type="submit" class="w-full btn-whatsapp py-4 rounded-xl text-base font-black shadow-lg uppercase tracking-wider flex items-center justify-center gap-2">
+            <i class="fab fa-whatsapp text-2xl"></i> Send Order Request to Admin WhatsApp
           </button>
         </form>
       </div>
 
     </div>
 
-    <!-- TAB 2: MARKETER DASHBOARD (ACCESSED VIA CODE) -->
+    <!-- TAB 2: MARKETER PORTAL (LOG IN WITH ADMIN CODE) -->
     <div id="tab-marketer" class="hidden space-y-6">
       
       <div id="marketerLoginCard" class="service-card p-6 md:p-8 max-w-md mx-auto shadow-xl space-y-4">
@@ -234,36 +295,36 @@
           <div class="w-12 h-12 bg-brand-header text-brand-yellow rounded-2xl flex items-center justify-center mx-auto text-xl font-black">
             <i class="fas fa-id-badge"></i>
           </div>
-          <h3 class="text-xl font-black text-brand-blue">Marketer Code Login</h3>
-          <p class="text-xs text-slate-500">Enter the unique Marketer Code sent to you by the Admin</p>
+          <h3 class="text-xl font-black text-brand-blue">Marketer Portal Access</h3>
+          <p class="text-xs text-slate-500">Log in using your assigned Marketer Code and Password from Admin</p>
         </div>
 
         <form onsubmit="handleMarketerLogin(event)" class="space-y-4">
           <div>
-            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Marketer Code</label>
+            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Marketer Access Code</label>
             <input type="text" id="mktLoginCode" required placeholder="e.g. MK-4821" class="w-full px-4 py-2.5 rounded-xl border-2 border-slate-200 text-sm font-mono uppercase">
           </div>
           <div>
             <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Password</label>
             <input type="password" id="mktLoginPass" required class="w-full px-4 py-2.5 rounded-xl border-2 border-slate-200 text-sm">
           </div>
-          <button type="submit" class="w-full btn-yellow py-3 rounded-xl text-sm font-extrabold">Access Dashboard</button>
+          <button type="submit" class="w-full btn-yellow py-3 rounded-xl text-sm font-extrabold">Open Marketer Dashboard</button>
         </form>
       </div>
 
       <div id="marketerDash" class="hidden space-y-6">
         <div class="bg-brand-dark text-white p-6 rounded-2xl border-2 border-amber-400 flex flex-col md:flex-row justify-between items-center gap-4">
           <div>
-            <span class="text-xs text-amber-300 font-bold uppercase tracking-wider">Verified Marketer</span>
+            <span class="text-xs text-amber-300 font-bold uppercase tracking-wider">SparkSpin Partner</span>
             <h3 id="mktDashName" class="text-2xl font-black text-white">Marketer</h3>
-            <p class="text-xs text-slate-300">Your Code: <span id="mktDashCode" class="font-mono text-brand-yellow font-bold text-sm bg-slate-800 px-2 py-0.5 rounded"></span></p>
+            <p class="text-xs text-slate-300">Your Unique Access Code: <span id="mktDashCode" class="font-mono text-brand-yellow font-bold text-sm bg-slate-800 px-2 py-0.5 rounded"></span></p>
           </div>
           <button onclick="logoutMarketer()" class="px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white rounded-xl text-xs font-bold">Log Out</button>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="service-card p-6 text-center space-y-1">
-            <p class="text-xs font-extrabold text-slate-400 uppercase">Total Referrals Placed</p>
+            <p class="text-xs font-extrabold text-slate-400 uppercase">Total Referrals Processed</p>
             <h4 id="mktDashCount" class="text-5xl font-black text-brand-blue">0</h4>
           </div>
           <div class="service-card p-6 text-center space-y-1">
@@ -275,12 +336,12 @@
 
     </div>
 
-    <!-- TAB 3: CUSTOMER CARE SERVICES HUB -->
+    <!-- TAB 3: CUSTOMER CARE HUB -->
     <div id="tab-support" class="hidden space-y-8">
       <div class="text-center space-y-2">
-        <span class="text-xs font-black text-brand-blue uppercase tracking-widest bg-emerald-100 px-3 py-1 rounded-full border border-emerald-300">Help & Support</span>
-        <h3 class="text-3xl font-black text-brand-blue">Customer Care Services Hub</h3>
-        <p class="text-xs text-slate-500 max-w-lg mx-auto">Have questions about your order or need custom pickup support? Reach our support team instantly.</p>
+        <span class="text-xs font-black text-brand-blue uppercase tracking-widest bg-emerald-100 px-3 py-1 rounded-full border border-emerald-300">Fast Customer Support</span>
+        <h3 class="text-3xl font-black text-brand-blue">Customer Care Hub</h3>
+        <p class="text-xs text-slate-500 max-w-lg mx-auto">Have questions regarding your laundry order or delivery timing? Reach our admin lines instantly.</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -288,18 +349,18 @@
           <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center mx-auto text-2xl font-black">
             <i class="fas fa-phone-alt"></i>
           </div>
-          <h4 class="font-black text-brand-blue text-lg">Direct Call Hotline</h4>
-          <p class="text-xs text-slate-500">Call us directly for urgent pickup requests and scheduling.</p>
-          <a href="tel:+254706765603" class="btn-yellow inline-block px-4 py-2 rounded-xl text-xs font-bold">+254 706 765 603</a>
+          <h4 class="font-black text-brand-blue text-lg">Direct Line</h4>
+          <p class="text-xs text-slate-500">Call admin line for quick pickup requests.</p>
+          <a href="tel:+254758589325" class="btn-yellow inline-block px-4 py-2 rounded-xl text-xs font-bold">+254 758 589 325</a>
         </div>
 
         <div class="service-card p-6 text-center space-y-3">
           <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mx-auto text-2xl font-black">
             <i class="fab fa-whatsapp"></i>
           </div>
-          <h4 class="font-black text-brand-blue text-lg">WhatsApp Support</h4>
-          <p class="text-xs text-slate-500">Chat with support, send location pins, or query order status.</p>
-          <a href="https://wa.me/254783410660" target="_blank" class="btn-whatsapp inline-block px-4 py-2 rounded-xl text-xs font-bold">+254 783 410 660</a>
+          <h4 class="font-black text-brand-blue text-lg">WhatsApp Hotline</h4>
+          <p class="text-xs text-slate-500">Send pickup coordinates or order queries.</p>
+          <a href="https://wa.me/254758589325" target="_blank" class="btn-whatsapp inline-block px-4 py-2 rounded-xl text-xs font-bold">+254 758 589 325</a>
         </div>
 
         <div class="service-card p-6 text-center space-y-3">
@@ -307,7 +368,7 @@
             <i class="fas fa-envelope"></i>
           </div>
           <h4 class="font-black text-brand-blue text-lg">Email Support</h4>
-          <p class="text-xs text-slate-500">Official email for business inquiries and marketing partnerships.</p>
+          <p class="text-xs text-slate-500">Official business inquiries & support.</p>
           <a href="mailto:sparkspinlaundry@gmail.com" class="bg-brand-header text-white inline-block px-4 py-2 rounded-xl text-xs font-bold">sparkspinlaundry@gmail.com</a>
         </div>
       </div>
@@ -326,10 +387,10 @@
 
         <form onsubmit="handleAdminLogin(event)" class="space-y-4">
           <div>
-            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Password</label>
+            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Admin Password</label>
             <input type="password" id="adminPassInput" required class="w-full px-4 py-2.5 rounded-xl border-2 border-slate-200 text-sm">
           </div>
-          <button type="submit" class="w-full btn-yellow py-3 rounded-xl text-sm font-extrabold">Login as Admin</button>
+          <button type="submit" class="w-full btn-yellow py-3 rounded-xl text-sm font-extrabold">Log In</button>
         </form>
       </div>
 
@@ -338,25 +399,25 @@
         <div class="bg-brand-dark text-white p-6 rounded-2xl border-2 border-amber-400 flex justify-between items-center">
           <div>
             <h3 class="text-2xl font-black text-white">SparkSpin Admin Console</h3>
-            <p class="text-xs text-amber-300">Live Permanent Database Sync Active</p>
+            <p class="text-xs text-amber-300">Admin Line: +254 758 589 325</p>
           </div>
           <button onclick="logoutAdmin()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-xs font-bold">Log Out</button>
         </div>
 
         <!-- Add Marketer -->
         <div class="service-card p-6 space-y-3">
-          <h4 class="font-black text-brand-blue text-base"><i class="fas fa-user-plus text-amber-500 mr-1"></i> Add Marketer & Issue Access Code</h4>
+          <h4 class="font-black text-brand-blue text-base"><i class="fas fa-user-plus text-amber-500 mr-1"></i> Pre-Register Marketer & Generate Access Code</h4>
           <form onsubmit="handleRegisterMarketer(event)" class="grid grid-cols-1 md:grid-cols-3 gap-3">
             <input type="text" id="regMktName" placeholder="Full Name" required class="px-4 py-2.5 rounded-xl border-2 border-slate-200 text-sm">
             <input type="tel" id="regMktPhone" placeholder="Phone Number" required class="px-4 py-2.5 rounded-xl border-2 border-slate-200 text-sm">
             <input type="text" id="regMktPass" placeholder="Set Password" required class="px-4 py-2.5 rounded-xl border-2 border-slate-200 text-sm">
-            <button type="submit" class="md:col-span-3 btn-yellow py-3 rounded-xl text-sm font-bold">Register & Generate Permanent Access Code</button>
+            <button type="submit" class="md:col-span-3 btn-yellow py-3 rounded-xl text-sm font-bold">Register & Generate Marketer Code</button>
           </form>
         </div>
 
-        <!-- Marketer Table -->
+        <!-- Marketers Table -->
         <div class="service-card p-6 overflow-x-auto space-y-3">
-          <h4 class="font-black text-brand-blue text-base"><i class="fas fa-users text-amber-500 mr-1"></i> Active Marketers</h4>
+          <h4 class="font-black text-brand-blue text-base"><i class="fas fa-users text-amber-500 mr-1"></i> Active Marketers & Commission Performance</h4>
           <table class="w-full text-left text-xs">
             <thead class="bg-brand-header text-white uppercase font-black">
               <tr>
@@ -385,12 +446,16 @@
         <h4 class="text-xl font-black text-brand-yellow">SparkSpin LAUNDRY Co.</h4>
         <p class="text-xs text-slate-400">Too busy for laundry? Don't stress – We've got you covered!</p>
       </div>
-      <p class="text-xs font-bold text-slate-400">© 2026 SparkSpin Laundry Co.</p>
+      <div class="text-xs font-bold text-slate-300 space-y-1">
+        <p><i class="fas fa-phone-alt text-brand-yellow mr-1"></i> Admin WhatsApp/Call: +254 758 589 325</p>
+        <p><i class="fas fa-map-marker-alt text-emerald-400 mr-1"></i> Marine, Ndagani, Chuka town, Slaughter, Mungoni</p>
+      </div>
     </div>
   </footer>
 
   <script>
-    // Storage Engine (Saves locally and syncs across sessions)
+    const ADMIN_WHATSAPP_PHONE = "254758589325";
+
     const getStorage = (key) => JSON.parse(localStorage.getItem(key) || '[]');
     const setStorage = (key, data) => localStorage.setItem(key, JSON.stringify(data));
 
@@ -408,22 +473,44 @@
       if (activeNav) activeNav.className = 'px-3.5 py-2 rounded-xl btn-yellow shadow-md flex items-center gap-1.5';
     }
 
+    // Auto-select service when clicking service card
+    function selectService(serviceName) {
+      const selectElem = document.getElementById('clientServiceType');
+      selectElem.value = serviceName;
+      document.getElementById('bookingFormContainer').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Order Submission -> Formats message & Opens WhatsApp directly to Admin (0758589325)
     function handleOrderSubmit(e) {
       e.preventDefault();
-      const order = {
-        name: document.getElementById('clientName').value,
-        phone: document.getElementById('clientPhone').value,
-        location: document.getElementById('clientLocation').value,
-        items: document.getElementById('clientItems').value,
-        refCode: document.getElementById('clientRefCode').value.trim().toUpperCase(),
-        date: new Date().toISOString()
-      };
 
+      const name = document.getElementById('clientName').value.trim();
+      const phone = document.getElementById('clientPhone').value.trim();
+      const service = document.getElementById('clientServiceType').value;
+      const location = document.getElementById('clientLocation').value;
+      const items = document.getElementById('clientItems').value.trim();
+      const refCode = document.getElementById('clientRefCode').value.trim().toUpperCase();
+
+      const order = { name, phone, service, location, items, refCode, date: new Date().toISOString() };
       const orders = getStorage('clientOrders');
       orders.push(order);
       setStorage('clientOrders', orders);
 
-      alert('Order placed successfully! SparkSpin team will contact you shortly.');
+      // Build WhatsApp message string
+      let msg = `*NEW SPARKSPIN LAUNDRY ORDER REQUEST*\n\n`;
+      msg += `*Customer Name:* ${name}\n`;
+      msg += `*Phone:* ${phone}\n`;
+      msg += `*Service:* ${service}\n`;
+      msg += `*Pickup Zone:* ${location}\n`;
+      msg += `*Details/Items:* ${items}\n`;
+      if (refCode) msg += `*Marketer Code:* ${refCode}\n`;
+      msg += `\n_Sent via SparkSpin Web Application_`;
+
+      const encodedMsg = encodeURIComponent(msg);
+      const whatsappUrl = `https://wa.me/${ADMIN_WHATSAPP_PHONE}?text=${encodedMsg}`;
+
+      alert(`Redirecting to WhatsApp to dispatch your order to Admin (+254 758 589 325)...`);
+      window.open(whatsappUrl, '_blank');
       e.target.reset();
     }
 
@@ -485,7 +572,7 @@
       marketers.push({ name, phone, password, code });
       setStorage('registeredMarketers', marketers);
 
-      alert(`Marketer Added!\n\nSEND THIS ACCESS CODE TO THE MARKETER: ${code}`);
+      alert(`Marketer Registered Successfully!\n\nSEND THIS ACCESS CODE TO THE MARKETER: ${code}`);
       e.target.reset();
       renderAdminMarketers();
     }
@@ -507,7 +594,7 @@
             <td class="p-3"><button onclick="removeMarketer('${m.code}')" class="text-xs text-rose-600 hover:underline font-bold">Delete</button></td>
           </tr>
         `;
-      }).join('') : '<tr><td colspan="6" class="p-4 text-center text-slate-400">No active marketers.</td></tr>';
+      }).join('') : '<tr><td colspan="6" class="p-4 text-center text-slate-400">No registered marketers yet.</td></tr>';
     }
 
     function removeMarketer(code) {
